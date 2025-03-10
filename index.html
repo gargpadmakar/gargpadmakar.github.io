@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script type="text/javascript" src="app.js"></script>
+		<link rel="stylesheet" href="app.css" type="text/css" />
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padmakar Garg - Android Developer Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f2f2f2; /* Light Gray background for Apple theme */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #1a1a1a; /* Dark text color for headings */
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0071e3; /* Apple-like blue color */
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 85%;
+            margin: auto;
+        }
+
+        header {
+            padding: 60px 0;
+            background-color: #fff;
+            text-align: center;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.4rem;
+            margin-top: 5px;
+        }
+
+        /* Image Styling */
+        header .profile-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+            margin-top: 20px;
+        }
+
+        .contact-info, .social-links {
+            margin-top: 30px;
+        }
+
+        .contact-info a, .social-links a {
+            display: inline-block;
+            margin-right: 15px;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .contact-info i, .social-links i {
+            margin-right: 8px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        section:nth-child(even) {
+            background-color: #f7f7f7; /* Light grey alternating section background */
+        }
+
+        .job, .project {
+            margin-bottom: 40px;
+        }
+
+        .skills-category ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .skills-category li {
+            margin: 5px 0;
+        }
+
+        footer {
+            background-color: #fff;
+            padding: 30px 0;
+            text-align: center;
+            box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Animation Styles */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+
+        .animate-delay {
+            animation-delay: 0.3s;
+        }
+
+        .animate-delay-2 {
+            animation-delay: 0.6s;
+        }
+
+        .animate-delay-3 {
+            animation-delay: 0.9s;
+        }
+
+        .animate-delay-4 {
+            animation-delay: 1.2s;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <!-- Profile Image -->
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBfcwxT-iZohllaO_o6nobSB3vVmO5y4l41g&s" alt="Padmakar Garg" class="profile-image animate-fade-in">
+
+            <h1 class="animate-fade-in">Padmakar Garg</h1>
+            <p class="animate-fade-in animate-delay">Android Developer | 5+ Years of Experience</p>
+            <div class="contact-info animate-fade-in animate-delay-2">
+                <a href="mailto:worldpadmakar007@gmail.com"><i class="fas fa-envelope"></i> worldpadmakar007@gmail.com</a>
+                <a href="tel:+919918130073"><i class="fas fa-phone"></i> +91 9918130073</a>
+            </div>
+            <div class="social-links animate-fade-in animate-delay-3">
+                <a href="https://linkedin.com/in/padmakar-garg" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/padmakar1811" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                <a href="https://medium.com/@worldpadmakar007" target="_blank"><i class="fab fa-medium"></i> Medium</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="animate-fade-in">About Me</h2>
+            <p class="animate-fade-in animate-delay">
+                I am an Android Developer with over 5 years of experience in building high-performance, user-centric applications. Skilled in Kotlin and Java, I specialize in building scalable mobile solutions. I strive to create seamless user experiences and thrive in a collaborative environment to drive innovative projects.
+            </p>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <div class="container">
+            <h2 class="animate-fade-in">Work Experience</h2>
+            <div class="job animate-fade-in animate-delay-2">
+                <h3>Senior Android Developer - Sveltetech Technologies Pvt. Ltd.</h3>
+                <p><strong>08/2022 - Present | Gurugram, Haryana</strong></p>
+                <ul>
+                    <li>Developed real-time messaging functionality for a chat app using Socket Programming.</li>
+                    <li>Integrated Live Kit WebRTC for seamless voice and video calling.</li>
+                    <li>Implemented end-to-end encryption to ensure secure messaging and data privacy.</li>
+                    <li>Optimized app performance, ensuring smooth communication during real-time features.</li>
+                </ul>
+            </div>
+            <div class="job animate-fade-in animate-delay-3">
+                <h3>Associate Android Developer - Duplex Technologies Services Pvt. Ltd.</h3>
+                <p><strong>01/2018 - 08/2022 | Lucknow, Uttar Pradesh</strong></p>
+                <ul>
+                    <li>Developed native Android applications for diverse industries such as E-Commerce and CRM.</li>
+                    <li>Collaborated with a 3-member team on the full project lifecycle, from planning to deployment.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="animate-fade-in">Skills</h2>
+            <div class="skills-category animate-fade-in animate-delay-2">
+                <h3>Programming & Tools</h3>
+                <ul>
+                    <li>Kotlin, Java</li>
+                    <li>Android SDK, Jetpack Libraries</li>
+                    <li>Retrofit, RESTful APIs</li>
+                    <li>Socket.IO, Push Notifications</li>
+                    <li>Room DB, LiveKit</li>
+                    <li>Version Control (Git)</li>
+                </ul>
+            </div>
+            <div class="skills-category animate-fade-in animate-delay-3">
+                <h3>Mobile Security</h3>
+                <ul>
+                    <li>Cryptography & Data Encryption</li>
+                    <li>Secure Data Transmission</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="animate-fade-in">Projects</h2>
+            <div class="project animate-fade-in animate-delay-2">
+                <h3>Samwad</h3>
+                <p>Integrated VoIP calling with AES & ECDH encryption for secure communication. Developed real-time chat functionality using Socket.IO.</p>
+            </div>
+            <div class="project animate-fade-in animate-delay-3">
+                <h3>Simplisync</h3>
+                <p>Developed an app to sync call data with backend systems for better lead tracking and reporting.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Padmakar Garg | Android Developer Portfolio</p>
+        </div>
+    </footer>
+
+</body>
+</html>

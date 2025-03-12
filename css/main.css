@@ -4251,6 +4251,7 @@ form textarea:required:valid {
 
 .cards__descr {
   padding: 3rem;
+  height: auto;
 }
 
 @media only screen and (min-width: 1400px) {

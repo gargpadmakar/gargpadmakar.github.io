@@ -4854,3 +4854,17 @@ form textarea:required:valid {
 .pl_6{
   padding-left: 6px;
 }
+
+.cards__card {
+  width: 100%;
+}
+
+.app-image {
+  width: 100%;  /* Ensures the image fills the container */
+  height: auto; /* Maintains aspect ratio */
+  display: block; /* Ensures the image is displayed as a block element */
+  margin-top: 15px; /* Optional: add some spacing above the image */
+}
+
+
+

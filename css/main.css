@@ -1,68 +1,9 @@
-/*! ------------------------------------------------
- * Project Name: Name: Braxton - Personal Portfolio & Resume HTML Template
- * Project Description: Show yourself brightly with Braxton - unique and creative portfolio and resume template!
- * Tags: mix_design, resume, portfolio, personal page, cv, template, one page, responsive, html5, css3, creative, clean 
- * Version: 1.0.0
- * Build Date: March 2024
- * Last Update: March 2024
- * This product is available exclusively on Themeforest
- * Author: mix_design
- * Author URI: https://themeforest.net/user/mix_design */
-/*! File name: main.css
- * ------------------------------------------------
- *
- * ------------------------------------------------
- * Table of Contents
- * ------------------------------------------------
- *  01. Fonts
- *  02. Template Backgrounds
- *  03. Variables
- *  04. Basic Styles
- *  05. Animations - Backgrounds
- *  06. Elements - Typography
- *  07. Elements - Controls
- *  08. Elements - Forms
- *  09. Sections Main
- *  10. Sections Inner
- *  11. Blocks Common
- *  12. Blocks Header
- *  13. Blocks Avatar
- *  14. Blocks Menu
- *  15. Blocks Footer
- *  16. Features About
- *  17. Features Gallery
- *  18. Features Achievements
- *  19. Features Services
- *  20. Features Resume
- *  21. Features Tools
- *  22. Features Testimonials
- *  23. Features Slider
- *  24. Features Socials
- * ------------------------------------------------
- * Table of Contents End
- * ------------------------------------------------ */
-/* ------------------------------------------------*/
-/* Fonts Start */
-/* ------------------------------------------------*/
+
 /* Syne font */
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&amp;display=swap");
-
-/* ------------------------------------------------*/
-/* Fonts End */
-/* ------------------------------------------------*/
-/* ------------------------------------------------*/
-/* Template Backgrounds Start */
-/* ------------------------------------------------*/
 .image-background {
   background-image: url(../img/backgrounds/1920x1080-main-bg.webp);
 }
-
-/* ------------------------------------------------*/
-/* Template Backgrounds End */
-/* ------------------------------------------------*/
-/* ------------------------------------------------*/
-/* Variables Start */
-/* ------------------------------------------------*/
 :root {
   --_size: 1.6rem;
   --_font-default: "Syne", sans-serif;

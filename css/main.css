@@ -4172,12 +4172,12 @@ form textarea:required:valid {
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  height: 520px;
+  height: fit-content;
 }
 
 @media only screen and (min-width: 1400px) {
   .cards__item {
-    height: 620px;
+    height: fit-content;
   }
 }
 

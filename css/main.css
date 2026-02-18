@@ -3358,7 +3358,7 @@ form textarea:required:valid {
 .avatar__container {
   position: relative;
   width: 100%;
-  height: 100%;
+  height: auto;
   padding: 3rem;
 }
 
@@ -3379,6 +3379,7 @@ form textarea:required:valid {
 @media only screen and (min-width: 1400px) {
   .avatar__container {
     padding: 5rem;
+    gap: 4rem;
   }
 }
 

@@ -332,6 +332,31 @@
     .proj article.half{grid-column:span 3}
     .filter.pf{margin:0 0 20px}
 
+
+    /* contact */
+    .contact{display:grid;grid-template-columns:.85fr 1.15fr;gap:32px;align-items:start}
+    .contact .cinfo p{color:var(--mute);font-size:1rem;line-height:1.75;max-width:30em}
+    .contact .cinfo .copy{margin-top:22px}
+    .contact .cinfo .links{margin-top:22px}
+    .cform{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:28px;display:grid;gap:16px}
+    .cform .row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .cform label{display:grid;gap:7px;font-size:.8rem;font-weight:500;color:var(--mute)}
+    .cform input,.cform textarea{font:inherit;font-size:.95rem;color:var(--ink);background:var(--bg);border:1px solid var(--line2);border-radius:10px;padding:12px 14px;transition:border-color .2s,box-shadow .2s;width:100%}
+    .cform textarea{min-height:140px;resize:vertical}
+    .cform input:focus,.cform textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--glow)}
+    .cform input::placeholder,.cform textarea::placeholder{color:var(--dim)}
+    .cform .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+    .cform .send{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+    .cform button[disabled]{opacity:.6;cursor:progress}
+    .fstatus{font-size:.86rem;color:var(--mute)}
+    .fstatus.ok{color:#34d399}
+    :root[data-theme="light"] .fstatus.ok{color:#047857}
+    .fstatus.err{color:#f87171}
+    :root[data-theme="light"] .fstatus.err{color:#b91c1c}
+    .fstatus a{color:var(--blue2)}
+    @media(max-width:960px){.contact{grid-template-columns:1fr}}
+    @media(max-width:520px){.cform .row{grid-template-columns:1fr}.cform{padding:20px}}
+
     /* dialogs */
     dialog{background:var(--card);color:var(--ink);border:1px solid var(--line2);border-radius:18px;padding:0;box-shadow:0 40px 100px -20px rgba(0,0,0,.7);margin:auto}
     dialog::backdrop{background:rgba(3,6,12,.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
@@ -344,7 +369,7 @@
     .cmd li[aria-selected="true"]{background:var(--glow);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(59,130,246,.3)}
     .cmd .empty{padding:18px;color:var(--dim);font-size:.9rem;cursor:default}
     .cmd .foot{display:flex;gap:16px;padding:10px 16px;border-top:1px solid var(--line);font:500 .7rem/1 var(--mono);color:var(--dim)}
-    dialog.resume{width:min(940px,94vw);height:88vh;display:flex;flex-direction:column;overflow:hidden}
+    dialog.resume{width:min(940px,94vw);height:88vh;flex-direction:column;overflow:hidden}
     dialog.resume[open]{display:flex}
     .rhead{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
     .rhead strong{font-weight:600;font-size:.95rem}
@@ -415,7 +440,7 @@
     </nav>
     <details class="menu">
       <summary aria-label="Menu"><i></i><i></i></summary>
-      <div><a href="#writing">Articles</a><a href="#who">About</a><a href="#experience">Experience</a><a href="#work">Projects</a><a href="#architecture">Architecture</a><a href="#faq">FAQ</a><a href="https://gargpadmakar.github.io/">Portfolio</a></div>
+      <div><a href="#writing">Articles</a><a href="#who">About</a><a href="#experience">Experience</a><a href="#work">Projects</a><a href="#architecture">Architecture</a><a href="#faq">FAQ</a><a href="#contact">Contact</a><a href="https://gargpadmakar.github.io/">Portfolio</a></div>
     </details>
     <button class="cmdk-btn" type="button" id="cmdk-open" aria-label="Open command menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="lbl">Search</span><kbd>Ctrl K</kbd></button>
     <button class="theme" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle light / dark theme">
@@ -676,6 +701,36 @@
       </div>
     </section>
 
+    <section id="contact">
+      <div class="head rv"><span class="kicker">Contact</span><h2>Get in touch</h2></div>
+      <div class="contact rv">
+        <div class="cinfo">
+          <p>Have a question, a project or a role in mind? Send a message with the form and it will reach my inbox.</p>
+          <nav class="links" aria-label="Contact links">
+            <a href="https://linkedin.com/in/padmakar-garg" rel="me noopener">LinkedIn</a>
+            <a href="https://github.com/gargpadmakar" rel="me noopener">GitHub</a>
+            <a href="https://medium.com/@worldpadmakar007" rel="me noopener">Medium</a>
+            <a href="https://dev.to/gargpadmakar" rel="me noopener">dev.to</a>
+          </nav>
+        </div>
+        <form class="cform" id="cform" method="post" action="https://formsubmit.co/pgdev1811@gmail.com">
+          <input type="hidden" name="_subject" value="New message from gargpadmakar.github.io">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="false">
+          <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <div class="row">
+            <label>Name<input type="text" name="name" required maxlength="80" autocomplete="name" placeholder="Your name"></label>
+            <label>Email<input type="email" name="email" required maxlength="120" autocomplete="email" placeholder="you@example.com"></label>
+          </div>
+          <label>Message<textarea name="message" required minlength="10" maxlength="3000" placeholder="How can I help?"></textarea></label>
+          <div class="send">
+            <button class="btn fill" type="submit">Send message <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+            <span class="fstatus" id="fstatus" role="status" aria-live="polite"></span>
+          </div>
+        </form>
+      </div>
+    </section>
+
     <section id="faq">
       <div class="head rv"><span class="kicker">FAQ</span><h2>Questions people ask</h2></div>
       <div class="faq rv">
@@ -706,6 +761,7 @@
     <span>© 2026 Padmakar Garg</span>
     <div class="fl">
       <a href="https://gargpadmakar.github.io/">Portfolio</a>
+      <a href="#contact">Contact</a>
       <a href="mailto:worldpadmakar007@gmail.com">Email</a>
       <a href="https://linkedin.com/in/padmakar-garg" rel="me noopener">LinkedIn</a>
       <a href="https://github.com/gargpadmakar" rel="me noopener">GitHub</a>
@@ -774,7 +830,7 @@
   var cmdItems=[
     {l:'Topics',k:'Section',f:function(){go('topics')}},{l:'Latest articles',k:'Section',f:function(){go('writing')}},
     {l:'About the author',k:'Section',f:function(){go('who')}},{l:'Experience',k:'Section',f:function(){go('experience')}},
-    {l:'Projects',k:'Section',f:function(){go('work')}},{l:'Architecture',k:'Section',f:function(){go('architecture')}},{l:'FAQ',k:'Section',f:function(){go('faq')}},
+    {l:'Projects',k:'Section',f:function(){go('work')}},{l:'Architecture',k:'Section',f:function(){go('architecture')}},{l:'FAQ',k:'Section',f:function(){go('faq')}},{l:'Contact form',k:'Section',f:function(){go('contact')}},
     {l:'View CV',k:'Action',f:openCV},
     {l:'Copy email address',k:'Action',f:function(){document.querySelector('[data-copy]').click()}},
     {l:'Toggle light / dark theme',k:'Action',f:function(){tb.click()}},
@@ -802,6 +858,22 @@
   document.addEventListener('keydown',function(e){
     if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmd.open?cmd.close():openCmd()}
   });
+
+  // --- contact form (FormSubmit AJAX -> pgdev1811@gmail.com) ---
+  var cf=document.getElementById('cform'),fs=document.getElementById('fstatus');
+  if(cf){cf.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(!cf.checkValidity()){cf.reportValidity();return}
+    var btn=cf.querySelector('button[type=submit]');btn.disabled=true;fs.className='fstatus';fs.textContent='Sending…';
+    var fd=new FormData(cf);
+    function fail(){
+      var body=encodeURIComponent((fd.get('message')||'')+'\n\n— '+(fd.get('name')||'')+' ('+(fd.get('email')||'')+')');
+      fs.className='fstatus err';fs.innerHTML='Could not send right now. <a href="mailto:pgdev1811@gmail.com?subject=Message%20from%20gargpadmakar.github.io&body='+body+'">Email me directly</a> instead.';btn.disabled=false}
+    fetch('https://formsubmit.co/ajax/pgdev1811@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
+      .then(function(r){return r.json()})
+      .then(function(d){if(d&&(d.success===true||d.success==='true')){fs.className='fstatus ok';fs.textContent='Thanks! Your message has been sent.';cf.reset();btn.disabled=false}else{fail()}})
+      .catch(fail);
+  })}
   // --- scroll progress + active nav ---
   var bar=document.getElementById('progress'),tick=false;
   function prog(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.transform='scaleX('+(m>0?Math.min(h.scrollTop/m,1):0)+')';tick=false}

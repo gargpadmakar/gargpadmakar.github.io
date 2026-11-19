@@ -259,9 +259,8 @@
     .links a:hover{color:var(--ink);border-color:var(--blue);background:var(--glow)}
 
     /* projects */
-    .proj{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .proj{display:grid;gap:14px}
     .proj article{padding:28px;display:flex;flex-direction:column}
-    .proj article.wide{grid-column:span 2}
     .proj h3{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
     .proj h3 a{text-decoration:none}
     .proj h3 a::after{content:"";position:absolute;inset:0}
@@ -288,6 +287,87 @@
     footer a{text-decoration:none;transition:color .2s}footer a:hover{color:var(--blue2)}
     footer .fl{display:flex;gap:22px;flex-wrap:wrap}
 
+
+    /* progress + active nav + cmd button */
+    .progress{position:fixed;left:0;top:0;height:2px;width:100%;background:var(--blue);transform:scaleX(0);transform-origin:0 50%;z-index:60;pointer-events:none}
+    nav.desk a.active{color:var(--ink);background:var(--hover)}
+    .cmdk-btn{display:inline-flex;align-items:center;gap:8px;height:40px;padding:0 12px;border:1px solid var(--line2);border-radius:10px;background:none;color:var(--mute);font:500 .78rem/1 var(--mono);cursor:pointer;transition:border-color .2s,color .2s,background .2s}
+    .cmdk-btn:hover{border-color:var(--blue);color:var(--ink);background:var(--glow)}
+    .cmdk-btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .cmdk-btn kbd{font:inherit;border:1px solid var(--line2);border-radius:5px;padding:3px 6px;font-size:.7rem}
+    .copy{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font:500 .8rem/1 var(--mono);color:var(--mute);background:var(--card);border:1px dashed var(--line2);border-radius:10px;padding:11px 14px;cursor:pointer;transition:border-color .2s,color .2s}
+    .copy:hover{border-color:var(--blue);color:var(--ink)}
+    .copy svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+    /* tabs (experience + architecture) */
+    .tablist{display:flex;gap:8px}
+    .tablist button{font:inherit;text-align:left;color:var(--mute);background:none;border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;transition:color .2s,border-color .2s,background .2s}
+    .tablist button:hover{color:var(--ink);border-color:var(--line2)}
+    .tablist button[aria-selected="true"]{color:var(--ink);border-color:rgba(59,130,246,.55);background:linear-gradient(180deg,var(--card2),var(--card));box-shadow:0 0 0 1px rgba(59,130,246,.12)}
+    .tablist button small{display:block;font:500 .7rem/1 var(--mono);color:var(--blue2);margin-bottom:7px;letter-spacing:.02em}
+    .tablist button b{display:block;font-weight:600;font-size:.92rem;letter-spacing:-.01em;line-height:1.35}
+    .tablist button span{display:block;font-size:.78rem;color:var(--dim);margin-top:2px}
+    .panel{background:linear-gradient(180deg,var(--card2),var(--card));border:1px solid var(--line);border-radius:var(--r);padding:30px}
+    .panel[hidden]{display:none}
+    .panel .period{font:500 .75rem/1 var(--mono);color:var(--blue2)}
+    .panel h3{font-size:1.35rem;font-weight:700;letter-spacing:-.025em;margin-top:12px;line-height:1.3}
+    .panel .co{color:var(--mute);font-size:.95rem;margin-top:2px}
+    .panel p{color:var(--mute);margin-top:16px;font-size:.96rem;line-height:1.75;max-width:46em}
+    .exp{display:grid;grid-template-columns:300px 1fr;gap:20px;align-items:start}
+    .exp .tablist{flex-direction:column}
+    .arch .tablist{flex-wrap:wrap;margin-bottom:16px}
+    .arch .tablist button{padding:11px 18px}
+    ol.flow{list-style:none;display:flex;gap:28px;margin-top:26px}
+    ol.flow li{flex:1 1 0;min-width:0;position:relative;background:var(--bg);border:1px solid var(--line2);border-radius:12px;padding:14px}
+    ol.flow li+li::before{content:"";position:absolute;left:-20px;top:50%;width:12px;height:12px;border-top:2px solid var(--blue);border-right:2px solid var(--blue);transform:translateY(-50%) rotate(45deg) scale(.7)}
+    ol.flow strong{display:block;font-size:.84rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
+    ol.flow span{display:block;font-size:.74rem;color:var(--mute);margin-top:6px;line-height:1.45}
+    .chipset{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
+    .chipset span{font:500 .72rem/1 var(--mono);color:var(--blue2);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:6px;padding:6px 9px}
+    .panel .note{font-size:.78rem;color:var(--dim);margin-top:18px;max-width:none}
+    .panel .btn{margin-top:18px}
+    .proj{grid-template-columns:repeat(6,1fr)}
+    .proj article{grid-column:span 2}
+    .proj article.wide{grid-column:span 4}
+    .proj article.half{grid-column:span 3}
+    .filter.pf{margin:0 0 20px}
+
+    /* dialogs */
+    dialog{background:var(--card);color:var(--ink);border:1px solid var(--line2);border-radius:18px;padding:0;box-shadow:0 40px 100px -20px rgba(0,0,0,.7);margin:auto}
+    dialog::backdrop{background:rgba(3,6,12,.62);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px)}
+    dialog.cmd{width:min(560px,92vw);margin-top:12vh;overflow:hidden}
+    .cmd input{width:100%;font:inherit;font-size:1rem;color:var(--ink);background:none;border:0;border-bottom:1px solid var(--line);padding:18px 20px;outline:none}
+    .cmd input::placeholder{color:var(--dim)}
+    .cmd ul{list-style:none;max-height:min(52vh,380px);overflow:auto;padding:8px}
+    .cmd li{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:11px 12px;border-radius:10px;cursor:pointer;font-size:.92rem;color:var(--mute)}
+    .cmd li small{font:500 .68rem/1 var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.06em}
+    .cmd li[aria-selected="true"]{background:var(--glow);color:var(--ink);box-shadow:inset 0 0 0 1px rgba(59,130,246,.3)}
+    .cmd .empty{padding:18px;color:var(--dim);font-size:.9rem;cursor:default}
+    .cmd .foot{display:flex;gap:16px;padding:10px 16px;border-top:1px solid var(--line);font:500 .7rem/1 var(--mono);color:var(--dim)}
+    dialog.resume{width:min(940px,94vw);height:88vh;display:flex;flex-direction:column;overflow:hidden}
+    dialog.resume[open]{display:flex}
+    .rhead{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;border-bottom:1px solid var(--line)}
+    .rhead strong{font-weight:600;font-size:.95rem}
+    .rhead div{display:flex;gap:8px}
+    .rhead .btn{padding:8px 14px;font-size:.8rem}
+    .rbody{flex:1;background:var(--bg2)}
+    .rbody iframe{width:100%;height:100%;border:0;background:#fff}
+    .toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--card2);border:1px solid rgba(59,130,246,.45);color:var(--ink);padding:12px 18px;border-radius:12px;font-size:.88rem;box-shadow:var(--pop);transition:opacity .25s,transform .25s;z-index:80}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+
+    @media(max-width:960px){
+      .exp{grid-template-columns:1fr}
+      .exp .tablist{flex-direction:row;overflow-x:auto;padding-bottom:4px}
+      .exp .tablist button{flex:0 0 auto;min-width:210px}
+      ol.flow{flex-direction:column;gap:22px}
+      ol.flow li+li::before{left:50%;top:-17px;transform:translateX(-50%) rotate(135deg) scale(.7)}
+      .proj{grid-template-columns:repeat(2,1fr)}
+      .proj article,.proj article.half{grid-column:auto}
+      .proj article.wide{grid-column:span 2}
+    }
+    @media(max-width:760px){.cmdk-btn kbd,.cmdk-btn .lbl{display:none}.cmdk-btn{width:40px;padding:0;justify-content:center}}
+    @media(max-width:520px){.proj article.wide{grid-column:auto}.panel{padding:22px}}
+
     /* motion */
     @media (prefers-reduced-motion:no-preference){
       .hero>*{opacity:0;transform:translateY(14px);animation:in .8s cubic-bezier(.2,.7,.2,1) forwards}
@@ -299,8 +379,6 @@
     @media(max-width:960px){
       .bento{grid-template-columns:repeat(2,1fr)}
       .tcard.s2{grid-column:span 2}
-      .proj{grid-template-columns:repeat(2,1fr)}
-      .proj article.wide{grid-column:span 2}
       .about{grid-template-columns:1fr;gap:32px}
     }
     @media(max-width:760px){
@@ -315,8 +393,8 @@
     }
     @media(max-width:520px){
       .wrap{padding:0 18px}
-      .bento,.proj{grid-template-columns:1fr}
-      .tcard.s2,.proj article.wide{grid-column:auto}
+      .bento{grid-template-columns:1fr}
+      .tcard.s2{grid-column:auto}
       .stats{grid-template-columns:1fr}
       .filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:4px;-webkit-overflow-scrolling:touch}
       .filter button{flex:none}
@@ -326,18 +404,20 @@
 <body>
 
 <a class="skip" href="#writing">Skip to articles</a>
+<div class="progress" id="progress" aria-hidden="true"></div>
 
 <header class="top">
   <div class="wrap">
     <a class="mark" href="https://gargpadmakar.github.io/blog/"><i aria-hidden="true">PG</i>Padmakar Garg</a>
     <div class="hdr-r">
     <nav class="desk" aria-label="Primary">
-      <a href="#writing">Articles</a><a href="#who">About</a><a href="#work">Projects</a><a href="#faq">FAQ</a><a class="pill" href="https://gargpadmakar.github.io/">Portfolio</a>
+      <a href="#writing">Articles</a><a href="#who">About</a><a href="#experience">Experience</a><a href="#work">Projects</a><a href="#architecture">Architecture</a><a href="#faq">FAQ</a><a class="pill" href="https://gargpadmakar.github.io/">Portfolio</a>
     </nav>
     <details class="menu">
       <summary aria-label="Menu"><i></i><i></i></summary>
-      <div><a href="#writing">Articles</a><a href="#who">About</a><a href="#work">Projects</a><a href="#faq">FAQ</a><a href="https://gargpadmakar.github.io/">Portfolio</a></div>
+      <div><a href="#writing">Articles</a><a href="#who">About</a><a href="#experience">Experience</a><a href="#work">Projects</a><a href="#architecture">Architecture</a><a href="#faq">FAQ</a><a href="https://gargpadmakar.github.io/">Portfolio</a></div>
     </details>
+    <button class="cmdk-btn" type="button" id="cmdk-open" aria-label="Open command menu" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg><span class="lbl">Search</span><kbd>Ctrl K</kbd></button>
     <button class="theme" type="button" aria-label="Switch to light theme" aria-pressed="false" title="Toggle light / dark theme">
       <svg class="moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z"/></svg>
       <svg class="sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
@@ -363,7 +443,9 @@
         <div class="actions">
           <a class="btn fill" href="#writing">Read the articles <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
           <a class="btn" href="#who">About the author</a>
+          <button class="btn" type="button" data-open-cv>View CV</button>
         </div>
+        <button class="copy" type="button" data-copy="worldpadmakar007@gmail.com" aria-label="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>worldpadmakar007@gmail.com</button>
       </div>
       <figure class="visual">
         <div class="frame">
@@ -482,34 +564,115 @@
       </div>
     </section>
 
+    <section id="experience">
+      <div class="head rv"><span class="kicker">Career</span><h2>Professional experience</h2></div>
+      <div class="exp rv" data-tabs>
+        <div class="tablist" role="tablist" aria-label="Work experience">
+          <button role="tab" type="button" aria-selected="true"><small>Aug 2022 – present</small><b>Senior Android Developer</b><span>Sveltetech Technology Pvt Ltd</span></button>
+          <button role="tab" type="button" aria-selected="false"><small>Jan 2018 – Jul 2022</small><b>Associate Android Developer</b><span>Duplex Technologies Services Pvt.Ltd</span></button>
+          <button role="tab" type="button" aria-selected="false"><small>Oct 2017 – Oct 2018</small><b>Network Administrator</b><span>Wipro Infotech</span></button>
+        </div>
+        <div>
+          <div class="panel" role="tabpanel"><span class="period">Aug 2022 – present</span><h3>Senior Android Developer</h3><div class="co">Sveltetech Technology Pvt Ltd</div>
+            <p>Developed real-time messaging with Socket Programming, integrated Live Kit WebRTC for voice and video calls, and implemented end-to-end encryption for secure messaging. Optimized app performance for smooth calls and messaging while contributing to new features with innovative technologies. Enhanced security with encryption and secure data transmission.</p></div>
+          <div class="panel" role="tabpanel" hidden><span class="period">Jan 2018 – Jul 2022</span><h3>Associate Android Developer</h3><div class="co">Duplex Technologies Services Pvt.Ltd</div>
+            <p>Worked on E-Commerce, CRM, Cab Booking, Astrologer, Service Provider, and News Apps. Delivered feature-rich, user-centric mobile applications. Collaborated in a 3-member team, managing the full project lifecycle from requirements to deployment. Resolved complex technical issues with an average bug resolution time under 24 hours.</p></div>
+          <div class="panel" role="tabpanel" hidden><span class="period">Oct 2017 – Oct 2018</span><h3>Network Administrator</h3><div class="co">Wipro Infotech</div>
+            <p>Worked as Network Administrator in UPSWAN Project under the collaboration of Delhi NIC.</p></div>
+        </div>
+      </div>
+    </section>
+
     <section id="work">
       <div class="head rv"><span class="kicker">Open source &amp; security</span><h2>Open source and featured projects</h2></div>
+      <div class="filter pf" role="group" aria-label="Filter projects"><button type="button" class="on" data-pf="all">All</button><button type="button" data-pf="security">Security</button><button type="button" data-pf="sdk">SDKs &amp; libraries</button></div>
       <div class="proj rv">
-        <article class="wide">
+        <article class="wide" data-cat="security">
           <h3><a href="https://github.com/padmakarsveltetech/SecureSDK" rel="noopener">Enterprise Android SecureSDK</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
           <p>Runtime application self-protection (RASP) ecosystem for Android: an SDK with root and emulator detection, Frida and hook detection, anti-tamper checks, biometric and behavioural signals, and device risk scoring. A Spring Boot backend and React dashboard deliver remote security policies over the air and receive AES-GCM encrypted threat telemetry.</p>
           <p class="tags"><span>Kotlin</span><span>C++ (NDK)</span><span>Spring Boot</span><span>React</span></p>
         </article>
-        <article>
+        <article data-cat="security sdk">
           <h3><a href="https://github.com/gargpadmakar/MTProtoCrypto" rel="noopener">MTProtoCrypto</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
           <p>Kotlin cryptography SDK for Android implementing MTProto 2.0 primitives, AES-IGE, key derivation, Diffie-Hellman key exchange and media encryption.</p>
           <p class="tags"><span>Kotlin</span><span>Compose</span><span>Clean Architecture</span></p>
         </article>
-        <article>
-          <h3><a href="https://github.com/gargpadmakar/screen-analytics-android" rel="noopener">screen-analytics-android</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
-          <p>Offline-first screen analytics SDK for Android, with Compose and XML samples and no boilerplate.</p>
-          <p class="tags"><span>Kotlin</span><span>Compose</span><span>Navigation</span></p>
-        </article>
-        <article>
+        <article class="wide" data-cat="security">
           <h3>SvelteShield EDR</h3>
           <p>Enterprise Android endpoint detection and response: root, emulator and hooking (Frida, Xposed) detection, loopback-VPN traffic inspection, malicious IP, domain and APK blocking, and policy-driven enforcement.</p>
           <p class="tags"><span>Java</span><span>C/C++ (NDK)</span><span>JNI</span><span>OkHttp</span></p>
         </article>
-        <article>
+        <article data-cat="sdk">
+          <h3><a href="https://github.com/gargpadmakar/screen-analytics-android" rel="noopener">screen-analytics-android</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+          <p>Offline-first screen analytics SDK for Android, with Compose and XML samples and no boilerplate.</p>
+          <p class="tags"><span>Kotlin</span><span>Compose</span><span>Navigation</span></p>
+        </article>
+        <article class="half" data-cat="sdk">
+          <h3><a href="https://github.com/gargpadmakar/OfflineFirstKit" rel="noopener">OfflineFirstKit</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+          <p>Offline-first synchronization SDK for Android: a persistent Room-backed operation queue with WorkManager background sync, exponential backoff with jitter, Retry-After handling and debounced auto-sync on reconnect.</p>
+          <p class="tags"><span>Kotlin</span><span>Room</span><span>WorkManager</span><span>Coroutines</span></p>
+        </article>
+        <article class="half" data-cat="security">
           <h3><a href="https://github.com/gargpadmakar" rel="noopener">AppProtectGuard</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
           <p>Open-source Android security project built around practical application protection and secure development.</p>
           <p class="tags"><span>Android</span><span>Security</span></p>
         </article>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <div class="head rv"><span class="kicker">Architecture</span><h2>How the open-source SDKs are built</h2></div>
+      <div class="arch rv" data-tabs>
+        <div class="tablist" role="tablist" aria-label="SDK architectures">
+          <button role="tab" type="button" aria-selected="true"><b>MTProtoCrypto</b></button>
+          <button role="tab" type="button" aria-selected="false"><b>OfflineFirstKit</b></button>
+          <button role="tab" type="button" aria-selected="false"><b>screen-analytics-android</b></button>
+        </div>
+        <div class="panel" role="tabpanel">
+          <h3>MTProtoCrypto</h3>
+          <p>An Android cryptography library with MTProto 2.0 message encryption, 2048-bit Diffie-Hellman key exchange and streaming media encryption, built without native NDK binaries.</p>
+          <ol class="flow">
+            <li><strong>Android app</strong><span>Koin · Coroutines · MVVM</span></li>
+            <li><strong>SDK use cases</strong><span>Encrypt, decrypt and verify</span></li>
+            <li><strong>MTProto 2.0 KDF</strong><span>Directional SHA-256 key derivation</span></li>
+            <li><strong>AES-256-IGE</strong><span>Bouncy Castle block engine</span></li>
+            <li><strong>msg_key check</strong><span>Constant-time verification</span></li>
+            <li><strong>Node.js demo server</strong><span>API request and response encryption</span></li>
+          </ol>
+          <div class="chipset"><span>DH 2048-bit (RFC 3526 Group 14)</span><span>64 KB streaming chunks</span><span>Apache-2.0</span></div>
+          <p class="note">Simplified from the project README.</p>
+          <a class="btn" href="https://github.com/gargpadmakar/MTProtoCrypto" rel="noopener">View on GitHub</a>
+        </div>
+        <div class="panel" role="tabpanel" hidden>
+          <h3>OfflineFirstKit</h3>
+          <p>Queues API requests and data mutations so they survive bad connectivity and process death, then syncs them with retry policies once the device is back online.</p>
+          <ol class="flow">
+            <li><strong>Android app</strong><span>Jetpack Compose sample · MVVM</span></li>
+            <li><strong>Public facade</strong><span>OfflineFirstKit client</span></li>
+            <li><strong>Domain layer</strong><span>Use cases, retry and backoff policies</span></li>
+            <li><strong>Room queue</strong><span>Persistent operations, atomic claims</span></li>
+            <li><strong>SyncEngine</strong><span>Lease heartbeat, jittered backoff</span></li>
+            <li><strong>HTTP executor</strong><span>Retrofit, Ktor or OkHttp adapters</span></li>
+          </ol>
+          <div class="chipset"><span>WorkManager SyncWorker</span><span>Debounced auto-sync</span><span>Retry-After (RFC 7231)</span><span>Kotlin Serialization</span></div>
+          <p class="note">Simplified from the project README.</p>
+          <a class="btn" href="https://github.com/gargpadmakar/OfflineFirstKit" rel="noopener">View on GitHub</a>
+        </div>
+        <div class="panel" role="tabpanel" hidden>
+          <h3>screen-analytics-android</h3>
+          <p>Tracks screens, time spent and user journeys automatically, from Activity and Fragment lifecycle events and Compose navigation, with no analytics calls in UI code.</p>
+          <ol class="flow">
+            <li><strong>UI layer</strong><span>Activities, Fragments, Compose NavHost</span></li>
+            <li><strong>Route sanitizer</strong><span>Removes IDs, e.g. /user/123 to /user</span></li>
+            <li><strong>Dedup manager</strong><span>Filters double-triggers</span></li>
+            <li><strong>Duration tracker</strong><span>Time spent per screen</span></li>
+            <li><strong>Session manager</strong><span>Generates events</span></li>
+            <li><strong>Room SQLite</strong><span>Local stats, CSV and JSON export</span></li>
+          </ol>
+          <div class="chipset"><span>Zero boilerplate</span><span>Offline-first</span><span>Compose + XML samples</span></div>
+          <p class="note">Simplified from the project README.</p>
+          <a class="btn" href="https://github.com/gargpadmakar/screen-analytics-android" rel="noopener">View on GitHub</a>
+        </div>
       </div>
     </section>
 
@@ -552,9 +715,20 @@
   </div>
 </footer>
 
+<dialog class="cmd" id="cmd" aria-label="Command menu">
+  <input id="cmd-in" type="text" placeholder="Jump to a section, open a link…" autocomplete="off" spellcheck="false" aria-label="Search commands">
+  <ul id="cmd-list" role="listbox"></ul>
+  <div class="foot"><span>↑↓ navigate</span><span>↵ open</span><span>esc close</span></div>
+</dialog>
+<dialog class="resume" id="cv" aria-label="Curriculum vitae">
+  <div class="rhead"><strong>Padmakar Garg — CV</strong><div><a class="btn" href="https://gargpadmakar.github.io/img/ResumePadmakar.pdf" rel="noopener" download>Download PDF</a><button class="btn" type="button" id="cv-close">Close</button></div></div>
+  <div class="rbody"><iframe id="cv-frame" title="Padmakar Garg CV (PDF)" loading="lazy"></iframe></div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
 <script>
 (function(){
-  var btns=document.querySelectorAll('.filter button'),items=document.querySelectorAll('ol.posts li');
+  var btns=document.querySelectorAll('.filter:not(.pf) button'),items=document.querySelectorAll('ol.posts li');
   btns.forEach(function(b){b.addEventListener('click',function(){
     btns.forEach(function(x){x.classList.toggle('on',x===b)});
     items.forEach(function(li){li.hidden=b.dataset.f!=='All'&&li.dataset.topic!==b.dataset.f});
@@ -564,6 +738,79 @@
   function paint(t){root.setAttribute('data-theme',t);tb.setAttribute('aria-pressed',t==='light');tb.setAttribute('aria-label',t==='light'?'Switch to dark theme':'Switch to light theme');if(meta)meta.setAttribute('content',t==='light'?'#f5f7fb':'#0a0e17')}
   paint(root.getAttribute('data-theme'));
   tb.addEventListener('click',function(){var n=root.getAttribute('data-theme')==='light'?'dark':'light';paint(n);try{localStorage.setItem('theme',n)}catch(e){}});
+
+  // --- tabs ---
+  document.querySelectorAll('[data-tabs]').forEach(function(box){
+    var tabs=[].slice.call(box.querySelectorAll('[role=tab]')),panels=[].slice.call(box.querySelectorAll('[role=tabpanel]'));
+    function sel(i,f){tabs.forEach(function(b,j){b.setAttribute('aria-selected',j===i);b.tabIndex=j===i?0:-1;panels[j].hidden=j!==i});if(f)tabs[i].focus()}
+    tabs.forEach(function(b,i){b.addEventListener('click',function(){sel(i)});b.addEventListener('keydown',function(e){
+      var n=null;if(e.key==='ArrowRight'||e.key==='ArrowDown')n=(i+1)%tabs.length;else if(e.key==='ArrowLeft'||e.key==='ArrowUp')n=(i-1+tabs.length)%tabs.length;
+      if(n!==null){e.preventDefault();sel(n,true)}})});
+    sel(0);
+  });
+  // --- project filter ---
+  var pfb=document.querySelectorAll('[data-pf]'),pfa=document.querySelectorAll('.proj article');
+  pfb.forEach(function(b){b.addEventListener('click',function(){
+    pfb.forEach(function(x){x.classList.toggle('on',x===b)});
+    pfa.forEach(function(a){a.hidden=b.dataset.pf!=='all'&&(' '+a.dataset.cat+' ').indexOf(' '+b.dataset.pf+' ')<0});
+  })});
+  // --- toast + copy ---
+  var toast=document.getElementById('toast'),tt;
+  function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(function(){toast.classList.remove('show')},2400)}
+  document.querySelectorAll('[data-copy]').forEach(function(b){b.addEventListener('click',function(){
+    var v=b.dataset.copy;
+    function ok(){say('Email copied: '+v)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(v).then(ok,function(){location.href='mailto:'+v})}else{location.href='mailto:'+v}
+  })});
+  // --- CV modal ---
+  var cv=document.getElementById('cv'),fr=document.getElementById('cv-frame');
+  function openCV(){if(!fr.src||fr.src==='about:blank'||!fr.getAttribute('src'))fr.src='https://gargpadmakar.github.io/img/ResumePadmakar.pdf';cv.showModal()}
+  document.querySelectorAll('[data-open-cv]').forEach(function(b){b.addEventListener('click',openCV)});
+  document.getElementById('cv-close').addEventListener('click',function(){cv.close()});
+  cv.addEventListener('click',function(e){if(e.target===cv)cv.close()});
+  // --- command palette ---
+  var cmd=document.getElementById('cmd'),inp=document.getElementById('cmd-in'),list=document.getElementById('cmd-list'),cur=0,shown=[];
+  function go(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:window.matchMedia('(prefers-reduced-motion:reduce)').matches?'auto':'smooth'});history.replaceState(null,'','#'+id)}}
+  var cmdItems=[
+    {l:'Topics',k:'Section',f:function(){go('topics')}},{l:'Latest articles',k:'Section',f:function(){go('writing')}},
+    {l:'About the author',k:'Section',f:function(){go('who')}},{l:'Experience',k:'Section',f:function(){go('experience')}},
+    {l:'Projects',k:'Section',f:function(){go('work')}},{l:'Architecture',k:'Section',f:function(){go('architecture')}},{l:'FAQ',k:'Section',f:function(){go('faq')}},
+    {l:'View CV',k:'Action',f:openCV},
+    {l:'Copy email address',k:'Action',f:function(){document.querySelector('[data-copy]').click()}},
+    {l:'Toggle light / dark theme',k:'Action',f:function(){tb.click()}},
+    {l:'Portfolio',k:'Link',u:'https://gargpadmakar.github.io/'},{l:'GitHub',k:'Link',u:'https://github.com/gargpadmakar'},
+    {l:'LinkedIn',k:'Link',u:'https://linkedin.com/in/padmakar-garg'},{l:'Medium',k:'Link',u:'https://medium.com/@worldpadmakar007'},{l:'dev.to',k:'Link',u:'https://dev.to/gargpadmakar'}
+  ];
+  function draw(){
+    var q=inp.value.trim().toLowerCase();shown=cmdItems.filter(function(i){return !q||i.l.toLowerCase().indexOf(q)>-1||i.k.toLowerCase().indexOf(q)>-1});
+    if(cur>=shown.length)cur=0;list.innerHTML='';
+    if(!shown.length){var e=document.createElement('li');e.className='empty';e.textContent='No results';list.appendChild(e);return}
+    shown.forEach(function(i,n){var li=document.createElement('li');li.setAttribute('role','option');li.setAttribute('aria-selected',n===cur);
+      li.innerHTML='<span></span><small></small>';li.firstChild.textContent=i.l;li.lastChild.textContent=i.k;
+      li.addEventListener('click',function(){run(i)});li.addEventListener('mousemove',function(){if(cur!==n){cur=n;draw()}});list.appendChild(li)});
+  }
+  function run(i){cmd.close();if(i.u){window.open(i.u,'_blank','noopener')}else{setTimeout(i.f,30)}}
+  function openCmd(){inp.value='';cur=0;draw();cmd.showModal();inp.focus()}
+  document.getElementById('cmdk-open').addEventListener('click',openCmd);
+  cmd.addEventListener('click',function(e){if(e.target===cmd)cmd.close()});
+  inp.addEventListener('input',function(){cur=0;draw()});
+  inp.addEventListener('keydown',function(e){
+    if(e.key==='ArrowDown'){e.preventDefault();cur=(cur+1)%Math.max(shown.length,1);draw()}
+    else if(e.key==='ArrowUp'){e.preventDefault();cur=(cur-1+shown.length)%Math.max(shown.length,1);draw()}
+    else if(e.key==='Enter'&&shown[cur]){e.preventDefault();run(shown[cur])}
+  });
+  document.addEventListener('keydown',function(e){
+    if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmd.open?cmd.close():openCmd()}
+  });
+  // --- scroll progress + active nav ---
+  var bar=document.getElementById('progress'),tick=false;
+  function prog(){var h=document.documentElement;var m=h.scrollHeight-h.clientHeight;bar.style.transform='scaleX('+(m>0?Math.min(h.scrollTop/m,1):0)+')';tick=false}
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(prog)}},{passive:true});prog();
+  var navA={};document.querySelectorAll('nav.desk a[href^="#"]').forEach(function(a){navA[a.getAttribute('href').slice(1)]=a});
+  if('IntersectionObserver' in window){
+    var so=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){Object.keys(navA).forEach(function(k){navA[k].classList.toggle('active',k===x.target.id)})}})},{rootMargin:'-45% 0px -50% 0px'});
+    Object.keys(navA).forEach(function(k){var s=document.getElementById(k);if(s)so.observe(s)});
+  }
   // cursor glow on cards
   document.querySelectorAll('.bento>li,.proj article').forEach(function(c){
     c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')});

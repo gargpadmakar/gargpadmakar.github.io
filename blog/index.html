@@ -865,14 +865,17 @@
     e.preventDefault();
     if(!cf.checkValidity()){cf.reportValidity();return}
     var btn=cf.querySelector('button[type=submit]');btn.disabled=true;fs.className='fstatus';fs.textContent='Sending…';
-    var fd=new FormData(cf);
-    function fail(){
-      var body=encodeURIComponent((fd.get('message')||'')+'\n\n— '+(fd.get('name')||'')+' ('+(fd.get('email')||'')+')');
+    var f=cf.elements,data={name:f.name.value.trim(),email:f.email.value.trim(),message:f.message.value.trim(),_subject:'New message from gargpadmakar.github.io',_template:'table',_captcha:'false',_honey:f._honey.value};
+    function fail(why){
+      try{console.error('Contact form failed:',why)}catch(x){}
+      var body=encodeURIComponent(data.message+'\n\n— '+data.name+' ('+data.email+')');
       fs.className='fstatus err';fs.innerHTML='Could not send right now. <a href="mailto:pgdev1811@gmail.com?subject=Message%20from%20gargpadmakar.github.io&body='+body+'">Email me directly</a> instead.';btn.disabled=false}
-    fetch('https://formsubmit.co/ajax/pgdev1811@gmail.com',{method:'POST',headers:{'Accept':'application/json'},body:fd})
-      .then(function(r){return r.json()})
-      .then(function(d){if(d&&(d.success===true||d.success==='true')){fs.className='fstatus ok';fs.textContent='Thanks! Your message has been sent.';cf.reset();btn.disabled=false}else{fail()}})
-      .catch(fail);
+    fetch('https://formsubmit.co/ajax/pgdev1811@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){return r.text().then(function(tx){var d;try{d=JSON.parse(tx)}catch(x){}return {ok:r.ok,status:r.status,d:d,tx:tx}})})
+      .then(function(x){
+        if(x.d&&(x.d.success===true||x.d.success==='true')){fs.className='fstatus ok';fs.textContent='Thanks! Your message has been sent.';cf.reset();btn.disabled=false}
+        else{fail('HTTP '+x.status+' · '+(x.d&&x.d.message?x.d.message:x.tx.slice(0,200)))}})
+      .catch(function(err){fail(err&&err.message?err.message:err)});
   })}
   // --- scroll progress + active nav ---
   var bar=document.getElementById('progress'),tick=false;

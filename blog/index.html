@@ -3,262 +3,353 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Padmakar Garg — Android Engineering Blog | Kotlin, Compose, Mobile Security</title>
-  <meta name="description" content="Articles by Padmakar Garg, Senior Android Developer, on Kotlin, Jetpack Compose, Android system design, mobile security, cryptography and CI/CD.">
+  <title>Padmakar Garg — Senior Android Developer | Blog on Kotlin, Compose &amp; Mobile Security</title>
+  <meta name="description" content="Who is Padmakar Garg? A Senior Android Developer with 8+ years of experience in Kotlin, Jetpack Compose, KMP and mobile security. Read his articles, projects and open-source work.">
   <meta name="author" content="Padmakar Garg">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://gargpadmakar.github.io/blog/">
+  <link rel="icon" href="https://gargpadmakar.github.io/img/favicon/favicon.ico" sizes="any">
+  <meta name="theme-color" content="#f5f2ec" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Padmakar Garg — Android Engineering Blog">
-  <meta property="og:description" content="Kotlin, Jetpack Compose, Android system design, mobile security and CI/CD, by Padmakar Garg.">
+  <meta property="og:site_name" content="Padmakar Garg">
+  <meta property="og:title" content="Padmakar Garg — Senior Android Developer">
+  <meta property="og:description" content="Who is Padmakar Garg? Senior Android Developer writing about Kotlin, Jetpack Compose, KMP and mobile security.">
   <meta property="og:url" content="https://gargpadmakar.github.io/blog/">
   <meta property="og:image" content="https://gargpadmakar.github.io/img/myprofile.png">
+  <meta property="og:image:alt" content="Padmakar Garg, Senior Android Developer">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="theme-color" content="#0d0d10">
-  <link rel="icon" href="../img/favicon/favicon.ico" sizes="any">
+  <meta name="twitter:title" content="Padmakar Garg — Senior Android Developer">
+  <meta name="twitter:description" content="Who is Padmakar Garg? Senior Android Developer writing about Kotlin, Jetpack Compose, KMP and mobile security.">
+  <meta name="twitter:image" content="https://gargpadmakar.github.io/img/myprofile.png">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Blog",
-    "@id": "https://gargpadmakar.github.io/blog/#blog",
-    "url": "https://gargpadmakar.github.io/blog/",
-    "name": "Padmakar Garg — Android Engineering Blog",
-    "description": "Articles on Kotlin, Jetpack Compose, Android system design, mobile security and CI/CD.",
-    "inLanguage": "en",
-    "author": {
-      "@type": "Person",
-      "@id": "https://gargpadmakar.github.io/#person",
-      "name": "Padmakar Garg",
-      "url": "https://gargpadmakar.github.io/",
-      "jobTitle": "Senior Android Developer",
-      "sameAs": [
-        "https://github.com/gargpadmakar",
-        "https://linkedin.com/in/padmakar-garg",
-        "https://dev.to/gargpadmakar",
-        "https://medium.com/@worldpadmakar007"
-      ]
-    }
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://gargpadmakar.github.io/#person",
+        "name": "Padmakar Garg",
+        "url": "https://gargpadmakar.github.io/",
+        "image": "https://gargpadmakar.github.io/img/myprofile.png",
+        "jobTitle": "Senior Android Developer",
+        "description": "Padmakar Garg is a Senior Android Developer with 8+ years of experience in Kotlin, Java, Jetpack Compose, Kotlin Multiplatform and mobile security.",
+        "worksFor": { "@type": "Organization", "name": "Sveltetech Technology Pvt Ltd" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "United College of Engineering & Management, Prayagraj (GBTU)" },
+        "knowsAbout": ["Android Development","Kotlin","Jetpack Compose","Kotlin Multiplatform","Mobile Security","Cryptography","Android System Design","CI/CD"],
+        "sameAs": [
+          "https://github.com/gargpadmakar",
+          "https://linkedin.com/in/padmakar-garg",
+          "https://dev.to/gargpadmakar",
+          "https://medium.com/@worldpadmakar007"
+        ]
+      },
+      {
+        "@type": "Blog",
+        "@id": "https://gargpadmakar.github.io/blog/#blog",
+        "url": "https://gargpadmakar.github.io/blog/",
+        "name": "Padmakar Garg — Android Engineering Notes",
+        "inLanguage": "en",
+        "author": { "@id": "https://gargpadmakar.github.io/#person" }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://gargpadmakar.github.io/" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://gargpadmakar.github.io/blog/" }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is Padmakar Garg?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Padmakar Garg is a Senior Android Developer with 8+ years of experience in Kotlin, Java, Jetpack Compose and Kotlin Multiplatform. He works at Sveltetech Technology on real-time messaging, WebRTC voice and video calling, and end-to-end encrypted communication." }
+          },
+          {
+            "@type": "Question",
+            "name": "What does Padmakar Garg specialise in?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Android app development, mobile application security, Android system design, Kotlin Multiplatform and CI/CD automation." }
+          },
+          {
+            "@type": "Question",
+            "name": "What open-source projects has Padmakar Garg published?",
+            "acceptedAnswer": { "@type": "Answer", "text": "MTProtoCrypto, a Kotlin cryptography SDK for Android; screen-analytics-android, an offline-first screen analytics SDK; and AppProtectGuard, an Android security project. All are on GitHub at github.com/gargpadmakar." }
+          },
+          {
+            "@type": "Question",
+            "name": "Where can I read Padmakar Garg's articles?",
+            "acceptedAnswer": { "@type": "Answer", "text": "His articles are published on Medium (medium.com/@worldpadmakar007), dev.to (dev.to/gargpadmakar) and on this blog." }
+          }
+        ]
+      }
+    ]
   }
   </script>
 
   <style>
     :root{
-      --bg:#0d0d10; --panel:#15151b; --panel2:#1b1b23; --line:#262631;
-      --text:#ececf1; --muted:#9a9aa8; --accent:#cec4ef; --accent2:#8f7df0;
-      --radius:18px;
+      --bg:#f5f2ec; --ink:#171512; --mute:#6b665d; --rule:#d9d3c7;
+      --card:#fbf9f5; --accent:#9a3f1d; --accent-ink:#fff;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#121110; --ink:#ece8df; --mute:#9d978a; --rule:#2c2925;
+        --card:#181614; --accent:#e08a5b; --accent-ink:#121110;
+      }
     }
     *{box-sizing:border-box;margin:0;padding:0}
     html{scroll-behavior:smooth}
     body{
-      background:
-        radial-gradient(900px 500px at 85% -10%, rgba(143,125,240,.18), transparent 60%),
-        radial-gradient(700px 400px at -10% 30%, rgba(206,196,239,.08), transparent 60%),
-        var(--bg);
-      color:var(--text);
-      font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-      line-height:1.65; -webkit-font-smoothing:antialiased;
+      background:var(--bg); color:var(--ink);
+      font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
+      font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
     }
-    a{color:inherit;text-decoration:none}
-    .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+    a{color:inherit}
+    .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+    .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
 
-    /* nav */
-    nav{position:sticky;top:0;z-index:10;backdrop-filter:blur(14px);
-        background:rgba(13,13,16,.72);border-bottom:1px solid var(--line)}
-    nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px}
-    .brand{font-weight:700;letter-spacing:.2px}
-    .brand span{color:var(--accent)}
-    .links{display:flex;gap:22px;font-size:.95rem;color:var(--muted)}
-    .links a:hover{color:var(--text)}
-    .cta{padding:9px 18px;border-radius:999px;background:var(--accent);color:#14121f;font-weight:600;font-size:.9rem}
+    header.top{border-bottom:1px solid var(--rule)}
+    header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:72px}
+    .mark{font-size:1.15rem;font-weight:700;letter-spacing:.01em;text-decoration:none}
+    nav.sans{display:flex;gap:26px;font-size:.88rem;letter-spacing:.04em;text-transform:uppercase}
+    nav a{text-decoration:none;color:var(--mute)}
+    nav a:hover{color:var(--ink)}
 
-    /* hero */
-    .hero{padding:96px 0 56px}
-    .eyebrow{display:inline-block;padding:6px 14px;border:1px solid var(--line);border-radius:999px;
-             color:var(--accent);font-size:.82rem;letter-spacing:.08em;text-transform:uppercase}
-    h1{font-size:clamp(2.4rem,6vw,4.2rem);line-height:1.08;margin:22px 0 18px;letter-spacing:-.02em}
-    h1 em{font-style:normal;background:linear-gradient(90deg,var(--accent),var(--accent2));
-          -webkit-background-clip:text;background-clip:text;color:transparent}
-    .lead{max-width:640px;color:var(--muted);font-size:1.15rem}
-    .chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-    .chip{padding:7px 14px;border-radius:999px;background:var(--panel);border:1px solid var(--line);
-          font-size:.85rem;color:var(--muted)}
+    .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;padding:84px 0 72px}
+    .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+    h1{font-size:clamp(2.3rem,5vw,3.7rem);line-height:1.08;font-weight:700;letter-spacing:-.015em}
+    .lede{margin-top:26px;color:var(--mute);max-width:34em}
+    .lede strong{color:var(--ink);font-weight:600}
+    .actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+    .btn{font-size:.9rem;letter-spacing:.03em;padding:12px 22px;border:1px solid var(--ink);text-decoration:none}
+    .btn.fill{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+    .btn:hover{opacity:.85}
 
-    /* sections */
-    section{padding:34px 0}
-    h2{font-size:1.5rem;margin-bottom:22px;letter-spacing:-.01em}
-    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px}
-    .card{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line);
-          border-radius:var(--radius);padding:26px;display:flex;flex-direction:column;gap:12px;
-          transition:transform .25s,border-color .25s,box-shadow .25s}
-    .card:hover{transform:translateY(-5px);border-color:var(--accent2);
-                box-shadow:0 18px 40px -18px rgba(143,125,240,.45)}
-    .tag{font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}
-    .card h3{font-size:1.2rem;line-height:1.35}
-    .card p{color:var(--muted);font-size:.96rem;flex:1}
-    .meta{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);
-          border-top:1px solid var(--line);padding-top:12px}
-    .read{color:var(--accent);font-weight:600}
+    .portrait{position:relative;aspect-ratio:4/5;background:var(--card);border:1px solid var(--rule);overflow:hidden}
+    .portrait .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+                  font-size:4rem;color:var(--mute);letter-spacing:.06em}
+    .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+    figcaption{font-size:.78rem;color:var(--mute);margin-top:10px;letter-spacing:.03em}
 
-    /* featured */
-    .featured{display:grid;grid-template-columns:1.3fr 1fr;gap:0;border:1px solid var(--line);
-              border-radius:24px;overflow:hidden;background:var(--panel)}
-    .featured .l{padding:38px}
-    .featured h3{font-size:1.7rem;line-height:1.25;margin:12px 0}
-    .featured p{color:var(--muted);margin-bottom:22px}
-    .featured .r{background:
-        radial-gradient(circle at 30% 30%, rgba(143,125,240,.55), transparent 55%),
-        linear-gradient(135deg,#1d1a33,#0f0e18);
-        display:flex;align-items:center;justify-content:center;font-size:4.5rem;min-height:220px}
-    .btn{display:inline-block;padding:11px 22px;border-radius:999px;background:var(--accent);
-         color:#14121f;font-weight:600}
+    section{padding:64px 0;border-top:1px solid var(--rule)}
+    .label{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:34px}
+    h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;font-weight:700;letter-spacing:-.01em;margin-bottom:22px}
 
-    /* author */
-    .author{display:flex;gap:22px;align-items:center;background:var(--panel);border:1px solid var(--line);
-            border-radius:24px;padding:28px}
-    .author img{width:92px;height:92px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
-    .author h3{font-size:1.2rem}
-    .author p{color:var(--muted);margin:6px 0 10px}
-    .social{display:flex;flex-wrap:wrap;gap:14px;font-size:.9rem}
-    .social a{color:var(--accent)}
-    .social a:hover{text-decoration:underline}
+    .who{display:grid;grid-template-columns:1fr 1fr;gap:56px}
+    .who p+p{margin-top:1em}
+    dl{display:grid;grid-template-columns:auto 1fr;gap:14px 24px;font-size:.95rem}
+    dt{color:var(--mute)}
+    dd{color:var(--ink)}
+    dl a{color:var(--accent)}
 
-    footer{border-top:1px solid var(--line);margin-top:60px;padding:34px 0;color:var(--muted);font-size:.9rem}
-    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    ol.posts{list-style:none}
+    ol.posts li{border-bottom:1px solid var(--rule)}
+    ol.posts a{display:grid;grid-template-columns:56px 1fr auto;gap:18px;align-items:baseline;
+               padding:24px 0;text-decoration:none}
+    ol.posts a:hover h3{color:var(--accent)}
+    .n{color:var(--mute);font-size:.9rem}
+    ol.posts h3{font-size:1.25rem;line-height:1.35;font-weight:600;transition:color .2s}
+    ol.posts p{color:var(--mute);font-size:.95rem;margin-top:4px;line-height:1.55}
+    .src{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
 
-    @media(max-width:760px){
-      .links{display:none}
-      .featured{grid-template-columns:1fr}
-      .author{flex-direction:column;text-align:center}
-      .hero{padding:64px 0 36px}
+    .proj{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+    .proj article{padding:28px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+    .proj h3{font-size:1.15rem;margin-bottom:6px}
+    .proj p{color:var(--mute);font-size:.95rem;line-height:1.6}
+    .proj .stack{margin-top:12px;font-size:.78rem;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+
+    details{border-bottom:1px solid var(--rule);padding:20px 0}
+    summary{cursor:pointer;font-size:1.12rem;font-weight:600;list-style:none}
+    summary::-webkit-details-marker{display:none}
+    summary::after{content:"+";float:right;color:var(--mute)}
+    details[open] summary::after{content:"–"}
+    details p{margin-top:12px;color:var(--mute);font-size:.98rem}
+
+    footer{border-top:1px solid var(--rule);padding:38px 0 56px;font-size:.88rem;color:var(--mute)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+    footer a{text-decoration:none;color:var(--ink)}
+    footer .links{display:flex;gap:20px;flex-wrap:wrap}
+
+    @media(max-width:820px){
+      .hero{grid-template-columns:1fr;gap:36px;padding:52px 0 48px}
+      .portrait{max-width:320px}
+      .who{grid-template-columns:1fr;gap:36px}
+      .proj{grid-template-columns:1fr}
+      ol.posts a{grid-template-columns:36px 1fr}
+      .src{grid-column:2}
+      nav.sans{display:none}
+      body{font-size:17px}
     }
   </style>
 </head>
 <body>
 
-<nav>
+<header class="top">
   <div class="wrap">
-    <a class="brand" href="../">Padmakar<span>.</span>Garg</a>
-    <div class="links">
-      <a href="#articles">Articles</a>
-      <a href="#topics">Topics</a>
-      <a href="#about">About</a>
-    </div>
-    <a class="cta" href="../">Portfolio</a>
-  </div>
-</nav>
-
-<header class="hero">
-  <div class="wrap">
-    <span class="eyebrow">Android Engineering Blog</span>
-    <h1>Building <em>secure, scalable</em> Android apps</h1>
-    <p class="lead">
-      Practical writing by <strong>Padmakar Garg</strong>, Senior Android Developer with 8+ years of experience,
-      on Kotlin, Jetpack Compose, system design, mobile security and CI/CD.
-    </p>
-    <div class="chips">
-      <span class="chip">Kotlin</span><span class="chip">Jetpack Compose</span>
-      <span class="chip">Kotlin Multiplatform</span><span class="chip">Mobile Security</span>
-      <span class="chip">Cryptography</span><span class="chip">CI/CD</span>
-    </div>
+    <a class="mark" href="https://gargpadmakar.github.io/">Padmakar Garg</a>
+    <nav class="sans" aria-label="Primary">
+      <a href="#who">About</a>
+      <a href="#writing">Writing</a>
+      <a href="#work">Work</a>
+      <a href="#faq">FAQ</a>
+    </nav>
   </div>
 </header>
 
-<main class="wrap">
+<main>
+  <div class="wrap">
 
-  <section id="featured">
-    <div class="featured">
-      <div class="l">
-        <span class="tag">Featured · Security</span>
-        <h3>Post-Quantum Cryptography Explained: Why Today's Encryption Needs an Upgrade</h3>
-        <p>What quantum computing means for the encryption in your Android apps, and how to start preparing today.</p>
-        <a class="btn" href="https://dev.to/gargpadmakar" target="_blank" rel="noopener">Read on dev.to</a>
-      </div>
-      <div class="r" aria-hidden="true">🔐</div>
-    </div>
-  </section>
-
-  <section id="articles">
-    <h2>Latest articles</h2>
-    <div class="grid">
-
-      <a class="card" href="https://medium.com/@worldpadmakar007" target="_blank" rel="noopener">
-        <span class="tag">CI/CD</span>
-        <h3>Automating Android CI/CD with Jenkins: Build, Sign &amp; Deploy to Google Play Store</h3>
-        <p>A step-by-step pipeline from commit to Play Store release using Jenkins.</p>
-        <div class="meta"><span>Medium</span><span class="read">Read →</span></div>
-      </a>
-
-      <a class="card" href="https://medium.com/@worldpadmakar007" target="_blank" rel="noopener">
-        <span class="tag">Android</span>
-        <h3>Android 16 Developer Guide: Key Features, APIs &amp; Updates You Must Know</h3>
-        <p>What changed in Android 16 and what it means for your app.</p>
-        <div class="meta"><span>Medium</span><span class="read">Read →</span></div>
-      </a>
-
-      <a class="card" href="https://dev.to/gargpadmakar" target="_blank" rel="noopener">
-        <span class="tag">Architecture</span>
-        <h3>Android System Design: A Practical Guide for Senior Android Engineers</h3>
-        <p>Designing scalable, maintainable Android apps beyond the basics.</p>
-        <div class="meta"><span>dev.to</span><span class="read">Read →</span></div>
-      </a>
-
-      <a class="card" href="https://dev.to/gargpadmakar" target="_blank" rel="noopener">
-        <span class="tag">Security</span>
-        <h3>OSINT Learning Roadmap for Android Developers: Tools, Techniques &amp; Practices</h3>
-        <p>How Android developers can use OSINT thinking to build safer apps.</p>
-        <div class="meta"><span>dev.to</span><span class="read">Read →</span></div>
-      </a>
-
-      <a class="card" href="https://medium.com/@worldpadmakar007" target="_blank" rel="noopener">
-        <span class="tag">Tools</span>
-        <h3>Git and GitHub Complete Handbook: Step-by-Step Guide for Beginners and Professionals</h3>
-        <p>Version control from the first commit to professional team workflows.</p>
-        <div class="meta"><span>Medium</span><span class="read">Read →</span></div>
-      </a>
-
-      <a class="card" href="https://github.com/gargpadmakar" target="_blank" rel="noopener">
-        <span class="tag">Open Source</span>
-        <h3>MTProtoCrypto, screen-analytics-android &amp; AppProtectGuard</h3>
-        <p>Open-source Android SDKs for cryptography, analytics and app protection.</p>
-        <div class="meta"><span>GitHub</span><span class="read">Explore →</span></div>
-      </a>
-
-    </div>
-  </section>
-
-  <section id="topics">
-    <h2>Topics I write about</h2>
-    <div class="grid">
-      <div class="card"><span class="tag">01</span><h3>Kotlin &amp; Jetpack Compose</h3><p>Modern UI, state management, coroutines and Flow.</p></div>
-      <div class="card"><span class="tag">02</span><h3>Mobile Security</h3><p>Encryption, secure communication, root and hooking detection.</p></div>
-      <div class="card"><span class="tag">03</span><h3>System Design &amp; KMP</h3><p>Clean architecture, MVVM and sharing logic with Kotlin Multiplatform.</p></div>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="author">
-      <img src="../img/myprofile.png" alt="Padmakar Garg — Senior Android Developer">
+    <div class="hero">
       <div>
-        <h3>Padmakar Garg</h3>
-        <p>Senior Android Developer with 8+ years of experience building secure, scalable mobile apps with Kotlin, Jetpack Compose and Kotlin Multiplatform.</p>
-        <div class="social">
-          <a href="../">Portfolio</a>
-          <a href="https://linkedin.com/in/padmakar-garg" target="_blank" rel="noopener">LinkedIn</a>
-          <a href="https://github.com/gargpadmakar" target="_blank" rel="noopener">GitHub</a>
-          <a href="https://medium.com/@worldpadmakar007" target="_blank" rel="noopener">Medium</a>
-          <a href="https://dev.to/gargpadmakar" target="_blank" rel="noopener">dev.to</a>
+        <p class="kicker sans">Notes on Android engineering</p>
+        <h1>Padmakar Garg writes about Android, security and the code behind both.</h1>
+        <p class="lede">
+          <strong>Padmakar Garg</strong> is a Senior Android Developer with more than eight years of experience.
+          He builds secure, real-time mobile software in Kotlin and Jetpack Compose, and writes about
+          architecture, cryptography and release automation.
+        </p>
+        <div class="actions sans">
+          <a class="btn fill" href="#writing">Read the writing</a>
+          <a class="btn" href="https://gargpadmakar.github.io/">Portfolio</a>
         </div>
       </div>
+      <figure>
+        <div class="portrait">
+          <div class="ph sans" aria-hidden="true">PG</div>
+          <img src="https://gargpadmakar.github.io/img/myprofile.png" alt="Padmakar Garg, Senior Android Developer" width="480" height="600" onerror="this.remove()">
+        </div>
+        <figcaption class="sans">Padmakar Garg, Senior Android Developer</figcaption>
+      </figure>
     </div>
-  </section>
 
+    <section id="who">
+      <p class="label sans">About</p>
+      <div class="who">
+        <div>
+          <h2>Who is Padmakar Garg?</h2>
+          <p>Padmakar Garg is an Android developer who has spent eight-plus years shipping production apps, from e-commerce and CRM to news, astrology and secure messaging.</p>
+          <p>Since August 2022 he has been a Senior Android Developer at Sveltetech Technology, working on real-time messaging, WebRTC voice and video calling, and end-to-end encrypted communication.</p>
+          <p>Outside client work he publishes open-source Android libraries and writes on Medium and dev.to about system design, mobile security and CI/CD.</p>
+        </div>
+        <dl class="sans">
+          <dt>Role</dt><dd>Senior Android Developer</dd>
+          <dt>Experience</dt><dd>8+ years</dd>
+          <dt>Focus</dt><dd>Kotlin, Jetpack Compose, KMP, mobile security</dd>
+          <dt>Education</dt><dd>B.Tech, Information Technology (GBTU)</dd>
+          <dt>Elsewhere</dt>
+          <dd>
+            <a href="https://linkedin.com/in/padmakar-garg" rel="me noopener">LinkedIn</a> ·
+            <a href="https://github.com/gargpadmakar" rel="me noopener">GitHub</a> ·
+            <a href="https://medium.com/@worldpadmakar007" rel="me noopener">Medium</a> ·
+            <a href="https://dev.to/gargpadmakar" rel="me noopener">dev.to</a>
+          </dd>
+        </dl>
+      </div>
+    </section>
+
+    <section id="writing">
+      <p class="label sans">Writing</p>
+      <h2>Selected articles</h2>
+      <!-- Replace each href below with the direct link to that article. -->
+      <ol class="posts">
+        <li><a href="https://dev.to/gargpadmakar" rel="noopener">
+          <span class="n sans">01</span>
+          <div><h3>Post-Quantum Cryptography Explained: Why Today's Encryption Needs an Upgrade</h3>
+          <p>What quantum computing changes for the encryption inside Android apps, and how to prepare.</p></div>
+          <span class="src sans">dev.to</span></a></li>
+        <li><a href="https://medium.com/@worldpadmakar007" rel="noopener">
+          <span class="n sans">02</span>
+          <div><h3>Automating Android CI/CD with Jenkins: Build, Sign and Deploy to Google Play</h3>
+          <p>A pipeline from commit to Play Store release.</p></div>
+          <span class="src sans">Medium</span></a></li>
+        <li><a href="https://medium.com/@worldpadmakar007" rel="noopener">
+          <span class="n sans">03</span>
+          <div><h3>Android 16 Developer Guide: Key Features, APIs and Updates</h3>
+          <p>What changed in Android 16 and what it means for your app.</p></div>
+          <span class="src sans">Medium</span></a></li>
+        <li><a href="https://dev.to/gargpadmakar" rel="noopener">
+          <span class="n sans">04</span>
+          <div><h3>Android System Design: A Practical Guide for Senior Android Engineers</h3>
+          <p>Designing scalable, maintainable apps beyond the basics.</p></div>
+          <span class="src sans">dev.to</span></a></li>
+        <li><a href="https://dev.to/gargpadmakar" rel="noopener">
+          <span class="n sans">05</span>
+          <div><h3>OSINT Learning Roadmap for Android Developers: Tools, Techniques and Practices</h3>
+          <p>Using open-source intelligence thinking to build safer apps.</p></div>
+          <span class="src sans">dev.to</span></a></li>
+        <li><a href="https://medium.com/@worldpadmakar007" rel="noopener">
+          <span class="n sans">06</span>
+          <div><h3>Git and GitHub Complete Handbook: A Step-by-Step Guide</h3>
+          <p>Version control from the first commit to team workflows.</p></div>
+          <span class="src sans">Medium</span></a></li>
+      </ol>
+    </section>
+
+    <section id="work">
+      <p class="label sans">Work</p>
+      <h2>Open source and selected projects</h2>
+      <div class="proj">
+        <article>
+          <h3><a href="https://github.com/gargpadmakar/MTProtoCrypto" rel="noopener">MTProtoCrypto</a></h3>
+          <p>Kotlin cryptography SDK for Android implementing MTProto 2.0 primitives, AES-IGE, key derivation, Diffie-Hellman key exchange and media encryption.</p>
+          <p class="stack sans">Kotlin · Compose · Clean Architecture</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/gargpadmakar/screen-analytics-android" rel="noopener">screen-analytics-android</a></h3>
+          <p>Offline-first screen analytics SDK for Android, with Compose and XML samples and no boilerplate.</p>
+          <p class="stack sans">Kotlin · Compose · Navigation</p>
+        </article>
+        <article>
+          <h3>SvelteShield EDR</h3>
+          <p>Enterprise Android endpoint detection and response: root, emulator and hooking (Frida, Xposed) detection, loopback-VPN traffic inspection, malicious IP, domain and APK blocking, and policy-driven enforcement.</p>
+          <p class="stack sans">Java · C/C++ (NDK) · JNI · OkHttp</p>
+        </article>
+        <article>
+          <h3><a href="https://github.com/gargpadmakar" rel="noopener">AppProtectGuard</a></h3>
+          <p>Open-source Android security project built around practical application protection and secure development.</p>
+          <p class="stack sans">Android · Security</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="faq">
+      <p class="label sans">FAQ</p>
+      <h2>Questions people ask</h2>
+      <details open>
+        <summary>Who is Padmakar Garg?</summary>
+        <p>Padmakar Garg is a Senior Android Developer with 8+ years of experience in Kotlin, Java, Jetpack Compose and Kotlin Multiplatform. He works at Sveltetech Technology on real-time messaging, WebRTC calling and end-to-end encrypted communication.</p>
+      </details>
+      <details>
+        <summary>What does Padmakar Garg specialise in?</summary>
+        <p>Android app development, mobile application security, Android system design, Kotlin Multiplatform and CI/CD automation.</p>
+      </details>
+      <details>
+        <summary>What open-source projects has he published?</summary>
+        <p>MTProtoCrypto, screen-analytics-android and AppProtectGuard. All are on <a href="https://github.com/gargpadmakar" rel="noopener">GitHub</a>.</p>
+      </details>
+      <details>
+        <summary>Where can I read his articles?</summary>
+        <p>On <a href="https://medium.com/@worldpadmakar007" rel="noopener">Medium</a>, <a href="https://dev.to/gargpadmakar" rel="noopener">dev.to</a> and on this blog.</p>
+      </details>
+    </section>
+
+  </div>
 </main>
 
-<footer>
+<footer class="sans">
   <div class="wrap">
-    <span>© 2026 Padmakar Garg. All rights reserved.</span>
-    <span><a href="../">gargpadmakar.github.io</a></span>
+    <span>© 2026 Padmakar Garg</span>
+    <div class="links">
+      <a href="https://gargpadmakar.github.io/">Portfolio</a>
+      <a href="https://linkedin.com/in/padmakar-garg" rel="me noopener">LinkedIn</a>
+      <a href="https://github.com/gargpadmakar" rel="me noopener">GitHub</a>
+      <a href="https://medium.com/@worldpadmakar007" rel="me noopener">Medium</a>
+      <a href="https://dev.to/gargpadmakar" rel="me noopener">dev.to</a>
+    </div>
   </div>
 </footer>
 

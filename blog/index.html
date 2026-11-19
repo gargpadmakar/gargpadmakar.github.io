@@ -9,8 +9,8 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://gargpadmakar.github.io/blog/">
   <link rel="icon" href="https://gargpadmakar.github.io/img/favicon/favicon.ico" sizes="any">
-  <meta name="theme-color" content="#f5f2ec" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#141b25">
+  <meta name="color-scheme" content="dark">
 
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Padmakar Garg">
@@ -90,99 +90,138 @@
   }
   </script>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg:#f5f2ec; --ink:#171512; --mute:#6b665d; --rule:#d9d3c7;
-      --card:#fbf9f5; --accent:#9a3f1d; --accent-ink:#fff;
-    }
-    @media (prefers-color-scheme: dark){
-      :root{
-        --bg:#121110; --ink:#ece8df; --mute:#9d978a; --rule:#2c2925;
-        --card:#181614; --accent:#e08a5b; --accent-ink:#121110;
-      }
+      color-scheme:dark;
+      --bg:#141b25; --band:#19222e; --card:#1a2330; --ink:#fff; --mute:#94a0b2; --dim:#566275;
+      --line:rgba(255,255,255,.09); --coral:#f26b57; --coral-ink:#141b25;
+      --font:"Montserrat",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
     }
     *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{
-      background:var(--bg); color:var(--ink);
-      font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;
-      font-size:18px; line-height:1.7; -webkit-font-smoothing:antialiased;
-    }
+    html{scroll-behavior:smooth;scroll-padding-top:84px}
+    body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.75;-webkit-font-smoothing:antialiased}
     a{color:inherit}
-    .sans{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-    .wrap{max-width:1040px;margin:0 auto;padding:0 28px}
+    :focus-visible{outline:2px solid var(--coral);outline-offset:3px;border-radius:3px}
+    .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 
-    header.top{border-bottom:1px solid var(--rule)}
-    header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:72px}
-    .mark{font-size:1.15rem;font-weight:700;letter-spacing:.01em;text-decoration:none}
-    nav.sans{display:flex;gap:26px;font-size:.88rem;letter-spacing:.04em;text-transform:uppercase}
-    nav a{text-decoration:none;color:var(--mute)}
-    nav a:hover{color:var(--ink)}
+    header.top{position:sticky;top:0;z-index:20;background:rgba(20,27,37,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+    header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:76px}
+    .mark{font-weight:700;font-size:1rem;text-decoration:none}
+    nav.desk{display:flex;gap:36px;font-size:.82rem;font-weight:500}
+    nav.desk a,.menu a{text-decoration:none;transition:color .2s}
+    nav.desk a:hover,.menu a:hover{color:var(--coral)}
+    .menu{display:none;position:relative}
+    .menu summary{list-style:none;cursor:pointer;width:34px;height:26px;display:flex;flex-direction:column;justify-content:center;align-items:flex-end;gap:6px}
+    .menu summary::-webkit-details-marker{display:none}
+    .menu summary i{display:block;height:2px;background:#fff;width:26px}.menu summary i+i{width:18px}
+    .menu div{position:absolute;right:0;top:44px;min-width:180px;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px 20px;display:flex;flex-direction:column}
+    .menu div a{padding:9px 0;font-size:.9rem;font-weight:500}
 
-    .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:56px;align-items:center;padding:84px 0 72px}
-    .kicker{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
-    h1{font-size:clamp(2.3rem,5vw,3.7rem);line-height:1.08;font-weight:700;letter-spacing:-.015em}
-    .lede{margin-top:26px;color:var(--mute);max-width:34em}
-    .lede strong{color:var(--ink);font-weight:600}
+    .hero{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding:72px 0 88px;position:relative}
+    h1{font-weight:400;line-height:1.2}
+    h1 .hi{display:block;font-size:2.7rem;font-weight:700}
+    h1 .hi b{color:var(--coral)}
+    h1 .im{display:block;font-size:1.7rem;margin-top:18px;padding-left:3.4rem;position:relative}
+    h1 .im::before{content:"";position:absolute;left:-28px;top:50%;height:2px;width:calc(3.4rem + 14px);background:var(--coral)}
+    h1 .role{display:block;font-size:2.5rem;font-weight:700;margin-top:14px;line-height:1.15}
+    .lede{margin-top:26px;color:var(--mute);max-width:30em;font-size:.95rem}
+    .lede strong{color:#fff;font-weight:600}
     .actions{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
-    .btn{font-size:.9rem;letter-spacing:.03em;padding:12px 22px;border:1px solid var(--ink);text-decoration:none}
-    .btn.fill{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
-    .btn:hover{opacity:.85}
+    .btn{font-size:.82rem;font-weight:600;padding:13px 24px;border:2px solid var(--coral);border-radius:3px;text-decoration:none;transition:background .2s,color .2s}
+    .btn.fill{background:var(--coral);color:var(--coral-ink)}
+    .btn.fill:hover{background:#ff8571;border-color:#ff8571}
+    .btn:not(.fill):hover{background:rgba(242,107,87,.12)}
 
-    .portrait{position:relative;aspect-ratio:4/5;background:var(--card);border:1px solid var(--rule);overflow:hidden}
-    .portrait .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
-                  font-size:4rem;color:var(--mute);letter-spacing:.06em}
-    .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
-    figcaption{font-size:.78rem;color:var(--mute);margin-top:10px;letter-spacing:.03em}
+    .visual{position:relative;display:flex;justify-content:center}
+    .ring{position:relative;width:min(100%,400px);aspect-ratio:1}
+    .ring::before{content:"";position:absolute;inset:-22%;background:radial-gradient(circle,rgba(242,107,87,.24),transparent 62%);pointer-events:none}
+    .ring-line{position:absolute;inset:0;border-radius:50%;background:linear-gradient(165deg,#f98a74,#e0503a 62%,rgba(224,80,58,.25));
+      -webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 24px),#000 calc(100% - 23px));mask:radial-gradient(farthest-side,transparent calc(100% - 24px),#000 calc(100% - 23px))}
+    .photo{position:absolute;inset:44px;border-radius:50%;overflow:hidden;background:var(--card);box-shadow:0 20px 60px -10px rgba(0,0,0,.6)}
+    .photo .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:4rem;font-weight:700;color:var(--dim)}
+    .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
+    .br{position:absolute;width:64px;opacity:.4}
+    .br.l{left:-6%;top:6%}.br.r{right:-4%;bottom:8%}
+    .visual figcaption{position:absolute;left:50%;transform:translateX(-50%);bottom:-34px;font-size:.78rem;color:var(--dim);white-space:nowrap}
 
-    section{padding:64px 0;border-top:1px solid var(--rule)}
-    .label{font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-bottom:34px}
-    h2{font-size:clamp(1.6rem,3vw,2.2rem);line-height:1.2;font-weight:700;letter-spacing:-.01em;margin-bottom:22px}
+    .stack{background:var(--band)}
+    .stack ul{list-style:none;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 28px;padding:30px 0;font-size:.98rem;font-weight:500;color:var(--dim)}
+    .stack li{transition:color .2s}.stack li:hover{color:var(--mute)}
 
-    .who{display:grid;grid-template-columns:1fr 1fr;gap:56px}
-    .who p+p{margin-top:1em}
-    dl{display:grid;grid-template-columns:auto 1fr;gap:14px 24px;font-size:.95rem}
-    dt{color:var(--mute)}
-    dd{color:var(--ink)}
-    dl a{color:var(--accent)}
+    section{padding:104px 0 24px}
+    .center{text-align:center}
+    h2{font-size:clamp(1.9rem,3.4vw,2.4rem);font-weight:700;line-height:1.2}
+    .center h2::after{content:"";display:block;width:2px;height:58px;background:var(--coral);margin:26px auto 0}
+    .sec-body{margin-top:52px}
 
-    ol.posts{list-style:none}
-    ol.posts li{border-bottom:1px solid var(--rule)}
-    ol.posts a{display:grid;grid-template-columns:56px 1fr auto;gap:18px;align-items:baseline;
-               padding:24px 0;text-decoration:none}
-    ol.posts a:hover h3{color:var(--accent)}
-    .n{color:var(--mute);font-size:.9rem}
-    ol.posts h3{font-size:1.25rem;line-height:1.35;font-weight:600;transition:color .2s}
-    ol.posts p{color:var(--mute);font-size:.95rem;margin-top:4px;line-height:1.55}
-    .src{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+    .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:start}
+    .svc{list-style:none;padding-top:14px}
+    .svc li{position:relative;display:flex;align-items:center;gap:22px;padding:16px 0 16px 30px;border-left:2px solid var(--coral);margin-bottom:34px;font-weight:600;font-size:.98rem}
+    .svc li:not(:last-child)::after{content:"";position:absolute;left:-6px;bottom:-22px;width:10px;height:10px;border-radius:50%;background:var(--coral)}
+    .svc svg{flex:none;width:34px;height:34px;stroke:#fff;fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+    .about p{color:var(--mute);font-size:.9rem;line-height:1.85;margin-top:22px}
+    .about p+p{margin-top:14px}
+    .stats{display:flex;gap:56px;margin-top:40px;flex-wrap:wrap}
+    .stats strong{display:block;font-size:1.9rem;font-weight:700;line-height:1.1}
+    .stats strong em{font-style:normal;color:var(--coral)}
+    .stats span{display:block;margin-top:8px;font-size:.78rem;color:var(--mute);line-height:1.5;max-width:9em}
+    .links{margin-top:34px;display:flex;gap:10px;flex-wrap:wrap}
+    .links a{font-size:.8rem;font-weight:600;text-decoration:none;border:1px solid var(--line);border-radius:999px;padding:7px 18px;color:var(--mute);transition:color .2s,border-color .2s}
+    .links a:hover{color:var(--coral);border-color:var(--coral)}
 
-    .proj{display:grid;grid-template-columns:repeat(2,1fr);gap:0;border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-    .proj article{padding:28px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-    .proj h3{font-size:1.15rem;margin-bottom:6px}
-    .proj p{color:var(--mute);font-size:.95rem;line-height:1.6}
-    .proj .stack{margin-top:12px;font-size:.78rem;letter-spacing:.06em;color:var(--accent);text-transform:uppercase}
+    ol.posts{list-style:none;max-width:860px;margin:0 auto;border-top:1px solid var(--line)}
+    ol.posts li{border-bottom:1px solid var(--line)}
+    ol.posts a{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;padding:26px 16px;text-decoration:none;transition:background .2s}
+    ol.posts a:hover{background:var(--card)}
+    ol.posts a:hover h3{color:var(--coral)}
+    ol.posts h3{font-size:1.08rem;font-weight:600;line-height:1.45;transition:color .2s}
+    ol.posts p{color:var(--mute);font-size:.86rem;margin-top:4px;line-height:1.6}
+    .src{font-size:.72rem;font-weight:600;color:var(--coral);border:1px solid var(--coral);border-radius:3px;padding:3px 11px;white-space:nowrap}
 
-    details{border-bottom:1px solid var(--rule);padding:20px 0}
-    summary{cursor:pointer;font-size:1.12rem;font-weight:600;list-style:none}
+    .proj{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+    .proj article{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--coral);border-radius:4px;padding:30px;transition:transform .25s,border-color .25s}
+    .proj article:hover{border-color:var(--coral)}
+    .proj h3{font-size:1.2rem;font-weight:700;margin-bottom:10px}
+    .proj h3 a{text-decoration:none}.proj h3 a:hover{color:var(--coral)}
+    .proj p{color:var(--mute);font-size:.88rem;line-height:1.75}
+    .proj .tags{margin-top:18px;font-size:.76rem;font-weight:600;color:var(--coral)}
+
+    .faq{max-width:820px;margin:0 auto}
+    details{border-bottom:1px solid var(--line);padding:22px 0}
+    details:first-of-type{border-top:1px solid var(--line)}
+    summary{cursor:pointer;font-weight:600;font-size:1.02rem;list-style:none;display:flex;justify-content:space-between;gap:20px}
     summary::-webkit-details-marker{display:none}
-    summary::after{content:"+";float:right;color:var(--mute)}
-    details[open] summary::after{content:"–"}
-    details p{margin-top:12px;color:var(--mute);font-size:.98rem}
+    summary::after{content:"+";color:var(--coral);font-size:1.4rem;line-height:1.2;transition:transform .25s}
+    details[open] summary::after{transform:rotate(45deg)}
+    details p{margin-top:12px;color:var(--mute);font-size:.92rem}
+    details a{color:var(--coral)}
 
-    footer{border-top:1px solid var(--rule);padding:38px 0 56px;font-size:.88rem;color:var(--mute)}
-    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
-    footer a{text-decoration:none;color:var(--ink)}
-    footer .links{display:flex;gap:20px;flex-wrap:wrap}
+    footer{margin-top:96px;background:var(--band);padding:40px 0 52px;font-size:.84rem;color:var(--mute)}
+    footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    footer a{text-decoration:none;transition:color .2s}footer a:hover{color:var(--coral)}
+    footer .fl{display:flex;gap:24px;flex-wrap:wrap}
 
-    @media(max-width:820px){
-      .hero{grid-template-columns:1fr;gap:36px;padding:52px 0 48px}
-      .portrait{max-width:320px}
-      .who{grid-template-columns:1fr;gap:36px}
+    @media (prefers-reduced-motion:no-preference){
+      .hero>div>*,.ring{opacity:0;transform:translateY(14px);animation:in .8s cubic-bezier(.2,.7,.2,1) forwards}
+      h1{animation-delay:.05s}.lede{animation-delay:.15s}.actions{animation-delay:.25s}.ring{animation-delay:.2s}
+      @keyframes in{to{opacity:1;transform:none}}
+    }
+    @media(max-width:860px){
+      nav.desk{display:none}.menu{display:block}
+      .hero{grid-template-columns:1fr;text-align:center;padding:40px 0 64px;gap:56px}
+      h1 .hi{font-size:2.1rem}h1 .im{font-size:1.4rem;padding-left:0;margin-top:12px}h1 .im::before{display:none}h1 .role{font-size:1.9rem}
+      .lede{margin-inline:auto}.actions{justify-content:center}
+      .stack ul{justify-content:center;gap:10px 26px;font-size:.88rem}
+      section{padding:76px 0 12px}
+      .about{grid-template-columns:1fr;gap:44px}
+      .about>div:last-child{text-align:center}.stats{justify-content:center;gap:36px}.stats span{margin-inline:auto}.links{justify-content:center}
       .proj{grid-template-columns:1fr}
-      ol.posts a{grid-template-columns:36px 1fr}
-      .src{grid-column:2}
-      nav.sans{display:none}
-      body{font-size:17px}
+      ol.posts a{grid-template-columns:1fr;gap:10px}.src{justify-self:start}
+      .br{width:46px}
     }
   </style>
 </head>
@@ -191,159 +230,171 @@
 <header class="top">
   <div class="wrap">
     <a class="mark" href="https://gargpadmakar.github.io/">Padmakar Garg</a>
-    <nav class="sans" aria-label="Primary">
-      <a href="#who">About</a>
-      <a href="#writing">Writing</a>
-      <a href="#work">Work</a>
-      <a href="#faq">FAQ</a>
+    <nav class="desk" aria-label="Primary">
+      <a href="#who">About</a><a href="#writing">Writing</a><a href="#work">Work</a><a href="#faq">FAQ</a>
     </nav>
+    <details class="menu">
+      <summary aria-label="Menu"><i></i><i></i></summary>
+      <div><a href="#who">About</a><a href="#writing">Writing</a><a href="#work">Work</a><a href="#faq">FAQ</a></div>
+    </details>
   </div>
 </header>
 
 <main>
   <div class="wrap">
-
     <div class="hero">
       <div>
-        <p class="kicker sans">Notes on Android engineering</p>
-        <h1>Padmakar Garg writes about Android, security and the code behind both.</h1>
+        <h1>
+          <span class="hi">Hello<b>.</b></span>
+          <span class="im">I’m Padmakar Garg</span>
+          <span class="role">Senior Android Developer</span>
+        </h1>
         <p class="lede">
           <strong>Padmakar Garg</strong> is a Senior Android Developer with more than eight years of experience.
-          He builds secure, real-time mobile software in Kotlin and Jetpack Compose, and writes about
+          He builds secure, real-time mobile software in Kotlin, Jetpack Compose and Kotlin Multiplatform, and writes about
           architecture, cryptography and release automation.
         </p>
-        <div class="actions sans">
+        <div class="actions">
           <a class="btn fill" href="#writing">Read the writing</a>
           <a class="btn" href="https://gargpadmakar.github.io/">Portfolio</a>
         </div>
       </div>
-      <figure>
-        <div class="portrait">
-          <div class="ph sans" aria-hidden="true">PG</div>
-          <img src="https://gargpadmakar.github.io/img/myprofile.png" alt="Padmakar Garg, Senior Android Developer" width="480" height="600" onerror="this.remove()">
+      <figure class="visual">
+        <svg class="br l" viewBox="0 0 64 100" fill="none" stroke="#f26b57" stroke-width="3" aria-hidden="true"><path d="M56 6 8 50l48 44"/></svg>
+        <svg class="br r" viewBox="0 0 64 100" fill="none" stroke="#f26b57" stroke-width="3" aria-hidden="true"><path d="M8 6l48 44L8 94"/></svg>
+        <div class="ring">
+          <div class="ring-line"></div>
+          <div class="photo">
+            <div class="ph" aria-hidden="true">PG</div>
+            <img src="https://gargpadmakar.github.io/img/myprofile.png" alt="Padmakar Garg, Senior Android Developer" width="480" height="600" onerror="this.remove()">
+          </div>
         </div>
-        <figcaption class="sans">Padmakar Garg, Senior Android Developer</figcaption>
       </figure>
     </div>
+  </div>
 
+  <div class="stack">
+    <div class="wrap">
+      <ul aria-label="Core technologies">
+        <li>Kotlin</li><li>Java</li><li>Jetpack Compose</li><li>Kotlin Multiplatform</li><li>WebRTC</li><li>Cryptography</li><li>CI/CD</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="wrap">
     <section id="who">
-      <p class="label sans">About</p>
-      <div class="who">
+      <div class="about">
+        <ul class="svc" aria-label="What Padmakar Garg does">
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="3" width="14" height="26" rx="3"/><path d="M14 25h4"/></svg>Android App Development</li>
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-4.5 11.5-11 14C9.500 26.500 5 22 5 15V7l11-4z"/><path d="M11.500 15.500l3 3 6-6"/></svg>Mobile Security</li>
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 4l13 7-13 7L3 11l13-7z"/><path d="M3 17l13 7 13-7"/></svg>Kotlin Multiplatform</li>
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M27 16a11 11 0 1 1-3.200-7.800"/><path d="M27 5v6h-6"/></svg>CI/CD Automation</li>
+        </ul>
         <div>
-          <h2>Who is Padmakar Garg?</h2>
+          <h2>About me</h2>
           <p>Padmakar Garg is an Android developer who has spent eight-plus years shipping production apps, from e-commerce and CRM to news, astrology and secure messaging.</p>
           <p>Since August 2022 he has been a Senior Android Developer at Sveltetech Technology, working on real-time messaging, WebRTC voice and video calling, and end-to-end encrypted communication.</p>
-          <p>Outside client work he publishes open-source Android libraries and writes on Medium and dev.to about system design, mobile security and CI/CD.</p>
-        </div>
-        <dl class="sans">
-          <dt>Role</dt><dd>Senior Android Developer</dd>
-          <dt>Experience</dt><dd>8+ years</dd>
-          <dt>Focus</dt><dd>Kotlin, Jetpack Compose, KMP, mobile security</dd>
-          <dt>Education</dt><dd>B.Tech, Information Technology (GBTU)</dd>
-          <dt>Elsewhere</dt>
-          <dd>
-            <a href="https://linkedin.com/in/padmakar-garg" rel="me noopener">LinkedIn</a> ·
-            <a href="https://github.com/gargpadmakar" rel="me noopener">GitHub</a> ·
-            <a href="https://medium.com/@worldpadmakar007" rel="me noopener">Medium</a> ·
+          <p>Outside client work he publishes open-source Android libraries and writes on Medium and dev.to about system design, mobile security and CI/CD. He holds a B.Tech in Information Technology (GBTU).</p>
+          <div class="stats">
+            <div><strong>8<em>+</em></strong><span>Years of experience</span></div>
+            <div><strong>4</strong><span>Open-source and selected projects</span></div>
+            <div><strong>6</strong><span>Featured articles</span></div>
+          </div>
+          <nav class="links" aria-label="Elsewhere">
+            <a href="https://linkedin.com/in/padmakar-garg" rel="me noopener">LinkedIn</a>
+            <a href="https://github.com/gargpadmakar" rel="me noopener">GitHub</a>
+            <a href="https://medium.com/@worldpadmakar007" rel="me noopener">Medium</a>
             <a href="https://dev.to/gargpadmakar" rel="me noopener">dev.to</a>
-          </dd>
-        </dl>
+          </nav>
+        </div>
       </div>
     </section>
 
-    <section id="writing">
-      <p class="label sans">Writing</p>
+    <section id="writing" class="center">
       <h2>Selected articles</h2>
       <!-- Replace each href below with the direct link to that article. -->
-      <ol class="posts">
+      <ol class="posts sec-body" style="text-align:left">
         <li><a href="https://dev.to/gargpadmakar" rel="noopener">
-          <span class="n sans">01</span>
           <div><h3>Post-Quantum Cryptography Explained: Why Today's Encryption Needs an Upgrade</h3>
           <p>What quantum computing changes for the encryption inside Android apps, and how to prepare.</p></div>
-          <span class="src sans">dev.to</span></a></li>
+          <span class="src">dev.to</span></a></li>
         <li><a href="https://medium.com/@worldpadmakar007" rel="noopener">
-          <span class="n sans">02</span>
           <div><h3>Automating Android CI/CD with Jenkins: Build, Sign and Deploy to Google Play</h3>
           <p>A pipeline from commit to Play Store release.</p></div>
-          <span class="src sans">Medium</span></a></li>
+          <span class="src">Medium</span></a></li>
         <li><a href="https://medium.com/@worldpadmakar007" rel="noopener">
-          <span class="n sans">03</span>
           <div><h3>Android 16 Developer Guide: Key Features, APIs and Updates</h3>
           <p>What changed in Android 16 and what it means for your app.</p></div>
-          <span class="src sans">Medium</span></a></li>
+          <span class="src">Medium</span></a></li>
         <li><a href="https://dev.to/gargpadmakar" rel="noopener">
-          <span class="n sans">04</span>
           <div><h3>Android System Design: A Practical Guide for Senior Android Engineers</h3>
           <p>Designing scalable, maintainable apps beyond the basics.</p></div>
-          <span class="src sans">dev.to</span></a></li>
+          <span class="src">dev.to</span></a></li>
         <li><a href="https://dev.to/gargpadmakar" rel="noopener">
-          <span class="n sans">05</span>
           <div><h3>OSINT Learning Roadmap for Android Developers: Tools, Techniques and Practices</h3>
           <p>Using open-source intelligence thinking to build safer apps.</p></div>
-          <span class="src sans">dev.to</span></a></li>
+          <span class="src">dev.to</span></a></li>
         <li><a href="https://medium.com/@worldpadmakar007" rel="noopener">
-          <span class="n sans">06</span>
           <div><h3>Git and GitHub Complete Handbook: A Step-by-Step Guide</h3>
           <p>Version control from the first commit to team workflows.</p></div>
-          <span class="src sans">Medium</span></a></li>
+          <span class="src">Medium</span></a></li>
       </ol>
     </section>
 
-    <section id="work">
-      <p class="label sans">Work</p>
+    <section id="work" class="center">
       <h2>Open source and selected projects</h2>
-      <div class="proj">
+      <div class="proj sec-body" style="text-align:left">
         <article>
           <h3><a href="https://github.com/gargpadmakar/MTProtoCrypto" rel="noopener">MTProtoCrypto</a></h3>
           <p>Kotlin cryptography SDK for Android implementing MTProto 2.0 primitives, AES-IGE, key derivation, Diffie-Hellman key exchange and media encryption.</p>
-          <p class="stack sans">Kotlin · Compose · Clean Architecture</p>
+          <p class="tags">Kotlin · Compose · Clean Architecture</p>
         </article>
         <article>
           <h3><a href="https://github.com/gargpadmakar/screen-analytics-android" rel="noopener">screen-analytics-android</a></h3>
           <p>Offline-first screen analytics SDK for Android, with Compose and XML samples and no boilerplate.</p>
-          <p class="stack sans">Kotlin · Compose · Navigation</p>
+          <p class="tags">Kotlin · Compose · Navigation</p>
         </article>
         <article>
           <h3>SvelteShield EDR</h3>
           <p>Enterprise Android endpoint detection and response: root, emulator and hooking (Frida, Xposed) detection, loopback-VPN traffic inspection, malicious IP, domain and APK blocking, and policy-driven enforcement.</p>
-          <p class="stack sans">Java · C/C++ (NDK) · JNI · OkHttp</p>
+          <p class="tags">Java · C/C++ (NDK) · JNI · OkHttp</p>
         </article>
         <article>
           <h3><a href="https://github.com/gargpadmakar" rel="noopener">AppProtectGuard</a></h3>
           <p>Open-source Android security project built around practical application protection and secure development.</p>
-          <p class="stack sans">Android · Security</p>
+          <p class="tags">Android · Security</p>
         </article>
       </div>
     </section>
 
-    <section id="faq">
-      <p class="label sans">FAQ</p>
+    <section id="faq" class="center">
       <h2>Questions people ask</h2>
-      <details open>
-        <summary>Who is Padmakar Garg?</summary>
-        <p>Padmakar Garg is a Senior Android Developer with 8+ years of experience in Kotlin, Java, Jetpack Compose and Kotlin Multiplatform. He works at Sveltetech Technology on real-time messaging, WebRTC calling and end-to-end encrypted communication.</p>
-      </details>
-      <details>
-        <summary>What does Padmakar Garg specialise in?</summary>
-        <p>Android app development, mobile application security, Android system design, Kotlin Multiplatform and CI/CD automation.</p>
-      </details>
-      <details>
-        <summary>What open-source projects has he published?</summary>
-        <p>MTProtoCrypto, screen-analytics-android and AppProtectGuard. All are on <a href="https://github.com/gargpadmakar" rel="noopener">GitHub</a>.</p>
-      </details>
-      <details>
-        <summary>Where can I read his articles?</summary>
-        <p>On <a href="https://medium.com/@worldpadmakar007" rel="noopener">Medium</a>, <a href="https://dev.to/gargpadmakar" rel="noopener">dev.to</a> and on this blog.</p>
-      </details>
+      <div class="faq sec-body" style="text-align:left">
+        <details open>
+          <summary>Who is Padmakar Garg?</summary>
+          <p>Padmakar Garg is a Senior Android Developer with 8+ years of experience in Kotlin, Java, Jetpack Compose and Kotlin Multiplatform. He works at Sveltetech Technology on real-time messaging, WebRTC calling and end-to-end encrypted communication.</p>
+        </details>
+        <details>
+          <summary>What does Padmakar Garg specialise in?</summary>
+          <p>Android app development, mobile application security, Android system design, Kotlin Multiplatform and CI/CD automation.</p>
+        </details>
+        <details>
+          <summary>What open-source projects has he published?</summary>
+          <p>MTProtoCrypto, screen-analytics-android and AppProtectGuard. All are on <a href="https://github.com/gargpadmakar" rel="noopener">GitHub</a>.</p>
+        </details>
+        <details>
+          <summary>Where can I read his articles?</summary>
+          <p>On <a href="https://medium.com/@worldpadmakar007" rel="noopener">Medium</a>, <a href="https://dev.to/gargpadmakar" rel="noopener">dev.to</a> and on this blog.</p>
+        </details>
+      </div>
     </section>
-
   </div>
 </main>
 
-<footer class="sans">
+<footer>
   <div class="wrap">
     <span>© 2026 Padmakar Garg</span>
-    <div class="links">
+    <div class="fl">
       <a href="https://gargpadmakar.github.io/">Portfolio</a>
       <a href="https://linkedin.com/in/padmakar-garg" rel="me noopener">LinkedIn</a>
       <a href="https://github.com/gargpadmakar" rel="me noopener">GitHub</a>

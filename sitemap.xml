@@ -1,9 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+User-agent: *
+Allow: /
 
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    <url>
-        <loc>https://gargpadmakar.github.io/</loc>
-    </url>
-
-</urlset>
+Sitemap: https://gargpadmakar.github.io/sitemap.xml

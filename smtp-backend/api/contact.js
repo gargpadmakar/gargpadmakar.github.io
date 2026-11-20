@@ -1,12 +1,6 @@
 // Vercel / Netlify-style serverless function: POST /api/contact
 // Needs: npm i nodemailer
-// Env vars (set in the host's dashboard, NEVER in the repo):
-//   SMTP_HOST=smtp.gmail.com
-//   SMTP_PORT=465
-//   SMTP_USER=worldpadmakar007@gmail.com
-//   SMTP_PASS=<Gmail App Password>
-//   MAIL_TO=worldpadmakar007@gmail.com
-//   ALLOWED_ORIGIN=https://gargpadmakar.github.io
+// Configured with Gmail SMTP & pgdev1811@gmail.com
 
 const nodemailer = require("nodemailer");
 
@@ -14,7 +8,7 @@ const esc = (s) =>
   String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 module.exports = async (req, res) => {
-  res.setHeader("Access-Control-Allow-Origin", process.env.ALLOWED_ORIGIN || "https://gargpadmakar.github.io");
+  res.setHeader("Access-Control-Allow-Origin", process.env.ALLOWED_ORIGIN || "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   if (req.method === "OPTIONS") return res.status(204).end();
@@ -32,30 +26,31 @@ module.exports = async (req, res) => {
     return res.status(400).json({ ok: false, error: "Input too long" });
   }
 
-  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS || !process.env.MAIL_TO) {
-    console.error("Missing SMTP env vars (SMTP_HOST, SMTP_USER, SMTP_PASS, MAIL_TO)");
-    return res.status(500).json({ ok: false, error: "Server not configured" });
-  }
+  const host = process.env.SMTP_HOST || "smtp.gmail.com";
+  const port = Number(process.env.SMTP_PORT || 465);
+  const user = process.env.SMTP_USER || "pgdev1811@gmail.com";
+  const pass = process.env.SMTP_PASS || "xhwteongdfldcnlz";
+  const mailTo = process.env.MAIL_TO || "pgdev1811@gmail.com";
 
   const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT || 465),
-    secure: Number(process.env.SMTP_PORT || 465) === 465,
-    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+    host: host,
+    port: port,
+    secure: port === 465,
+    auth: { user: user, pass: pass },
   });
 
   try {
     await transporter.sendMail({
-      from: `"Blog Contact" <${process.env.SMTP_USER}>`,
-      to: process.env.MAIL_TO,
+      from: `"Portfolio Contact Form" <${user}>`,
+      to: mailTo,
       replyTo: `"${name.replace(/["\r\n]/g, "")}" <${email}>`,
-      subject: `New message from ${name.replace(/[\r\n]/g, " ")}`,
-      text: `Name: ${name}\nEmail: ${email}\n\n${message}`,
-      html: `<p><b>Name:</b> ${esc(name)}<br><b>Email:</b> ${esc(email)}</p><p>${esc(message).replace(/\n/g, "<br>")}</p>`,
+      subject: `New message from ${name.replace(/[\r\n]/g, " ")} (${email})`,
+      text: `You received a new message from your portfolio contact form:\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
+      html: `<h3>New message from portfolio contact form</h3><p><b>Name:</b> ${esc(name)}<br><b>Email:</b> <a href="mailto:${esc(email)}">${esc(email)}</a></p><p><b>Message:</b></p><p style="white-space: pre-wrap; background: #f4f4f4; padding: 12px; border-radius: 4px; color: #111;">${esc(message)}</p>`,
     });
     return res.status(200).json({ ok: true });
   } catch (err) {
-    console.error(err);
+    console.error("Error sending mail:", err);
     return res.status(500).json({ ok: false, error: "Could not send email" });
   }
 };

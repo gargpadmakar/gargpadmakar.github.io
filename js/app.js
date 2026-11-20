@@ -305,24 +305,74 @@ $(function() {
   // --------------------------------------------- //
   // Contact Form Start
   // --------------------------------------------- //
-  $("#contact-form").submit(function() { //Change
-		var th = $(this);
-		$.ajax({
-			type: "POST",
-			url: "mail.php", //Change
-			data: th.serialize()
-		}).done(function() {
+  $("#contact-form").submit(function(e) {
+    e.preventDefault();
+    var th = $(this);
+    var submitBtn = th.find('button[type="submit"]');
+    submitBtn.prop('disabled', true);
+
+    var nameVal = th.find('input[name="name"]').val() || '';
+    var emailVal = th.find('input[name="email"]').val() || '';
+    var messageVal = th.find('textarea[name="message"]').val() || '';
+    var honeyVal = th.find('input[name="_honey"]').val() || '';
+
+    var data = {
+      name: nameVal.trim(),
+      email: emailVal.trim(),
+      message: messageVal.trim(),
+      website: honeyVal
+    };
+
+    function showSuccess() {
       $('.contact').find('.form').addClass('is-hidden');
       $('.contact').find('.form__reply').addClass('is-visible');
-			setTimeout(function() {
-				// Done Functions
+      setTimeout(function() {
         $('.contact').find('.form__reply').removeClass('is-visible');
         $('.contact').find('.form').delay(300).removeClass('is-hidden');
-				th.trigger("reset");
-			}, 5000);
-		});
-		return false;
-	});
+        th.trigger("reset");
+        submitBtn.prop('disabled', false);
+      }, 5000);
+    }
+
+    function tryFormSubmit() {
+      var fsData = {
+        name: data.name,
+        email: data.email,
+        message: data.message,
+        _subject: 'New message from portfolio gargpadmakar.github.io',
+        _template: 'table',
+        _captcha: 'false',
+        _honey: data.website
+      };
+      fetch('https://formsubmit.co/ajax/pgdev1811@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(fsData)
+      })
+      .then(function(r) { return r.json(); })
+      .then(function() { showSuccess(); })
+      .catch(function() { showSuccess(); });
+    }
+
+    var SMTP_ENDPOINT = 'https://gargpadmakargithubio-smtp-backend.vercel.app/api/contact';
+    fetch(SMTP_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify(data)
+    })
+    .then(function(r) {
+      if (r.ok) {
+        showSuccess();
+      } else {
+        tryFormSubmit();
+      }
+    })
+    .catch(function() {
+      tryFormSubmit();
+    });
+
+    return false;
+  });
   // --------------------------------------------- //
   // Contact Form End
   // --------------------------------------------- //

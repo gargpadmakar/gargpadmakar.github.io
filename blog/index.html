@@ -865,21 +865,30 @@
     e.preventDefault();
     if(!cf.checkValidity()){cf.reportValidity();return}
     var btn=cf.querySelector('button[type=submit]');btn.disabled=true;fs.className='fstatus';fs.textContent='Sending…';
-    var f=cf.elements,data={name:f.name.value.trim(),email:f.email.value.trim(),message:f.message.value.trim(),_subject:'New message from gargpadmakar.github.io',_template:'table',_captcha:'false',_honey:f._honey.value};
+    var f=cf.elements,data={name:f.name.value.trim(),email:f.email.value.trim(),message:f.message.value.trim(),website:f._honey.value};
+    function succeed(){fs.className='fstatus ok';fs.textContent='Thanks! Your message has been sent.';cf.reset();btn.disabled=false}
     function fail(why){
       try{console.error('Contact form failed:',why)}catch(x){}
       var body=encodeURIComponent(data.message+'\n\n— '+data.name+' ('+data.email+')');
       fs.className='fstatus err';fs.innerHTML='Could not send right now. <a href="mailto:pgdev1811@gmail.com?subject=Message%20from%20gargpadmakar.github.io&body='+body+'">Email me directly</a> instead.';btn.disabled=false}
-    // SMTP backend (smtp-backend/api/contact.js). Leave SMTP_ENDPOINT empty to fall back to FormSubmit.
+    function tryFormSubmit(){
+      var fsData={name:data.name,email:data.email,message:data.message,_subject:'New message from gargpadmakar.github.io',_template:'table',_captcha:'false',_honey:data.website};
+      fetch('https://formsubmit.co/ajax/pgdev1811@gmail.com',{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(fsData)})
+        .then(function(r){return r.json()})
+        .then(function(x){if(x&&(x.success===true||x.success==='true'||x.ok===true)){succeed()}else{fail('FormSubmit error')}})
+        .catch(function(err){fail(err&&err.message?err.message:err)});
+    }
+    // SMTP backend (smtp-backend/api/contact.js)
     var SMTP_ENDPOINT='https://gargpadmakargithubio-smtp-backend.vercel.app/api/contact';
-    var url=SMTP_ENDPOINT||'https://formsubmit.co/ajax/pgdev1811@gmail.com';
-    if(SMTP_ENDPOINT){data={name:data.name,email:data.email,message:data.message,website:data._honey}}
-    fetch(url,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
-      .then(function(r){return r.text().then(function(tx){var d;try{d=JSON.parse(tx)}catch(x){}return {ok:r.ok,status:r.status,d:d,tx:tx}})})
-      .then(function(x){
-        if(x.d&&(x.d.ok===true||x.d.success===true||x.d.success==='true')){fs.className='fstatus ok';fs.textContent='Thanks! Your message has been sent.';cf.reset();btn.disabled=false}
-        else{fail('HTTP '+x.status+' · '+(x.d&&x.d.message?x.d.message:x.tx.slice(0,200)))}})
-      .catch(function(err){fail(err&&err.message?err.message:err)});
+    if(SMTP_ENDPOINT){
+      fetch(SMTP_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Accept':'application/json'},body:JSON.stringify(data)})
+        .then(function(r){return r.text().then(function(tx){var d;try{d=JSON.parse(tx)}catch(x){}return {ok:r.ok,status:r.status,d:d,tx:tx}})})
+        .then(function(x){
+          if(x.ok&&(x.d&&(x.d.ok===true||x.d.success===true||x.d.success==='true'))){succeed()}
+          else{tryFormSubmit()}
+        })
+        .catch(function(){tryFormSubmit()});
+    }else{tryFormSubmit()}
   })}
   // --- scroll progress + active nav ---
   var bar=document.getElementById('progress'),tick=false;

@@ -130,8 +130,12 @@
     <header id="header" class="header d-flex justify-content-end">
 
       <!-- Header Controls Start -->
-      <div class="header__controls d-flex justify-content-end">
+      <div class="header__controls d-flex justify-content-end align-items-center">
         <button id="color-switcher" class="color-switcher header__switcher btn" type="button" role="switch" aria-label="light/dark mode" aria-checked="true"></button>
+          <!-- Blog Link Button -->
+          <a id="blog-link" class="header__trigger btn" href="/blog/" style="margin-right: 8px;">
+            <span class="trigger__caption">Blog</span>
+          </a>
           <!-- Download CV Button -->
           <a id="download-cv" class="header__trigger btn" href="img/ResumePadmakar.pdf" target="_blank">
             <span class="trigger__caption">Download CV</span>
@@ -224,7 +228,7 @@
           </div>
           
           <div class="avatar__btnholder">
-            <a class="btn btn-default btn-fullwidth btn-hover btn-hover-accent" href="mailto:worldpadmakar007@gmail.com?subject=Let's%20Work%20Together!" target="_blank">
+            <a class="btn btn-default btn-fullwidth btn-hover btn-hover-accent" href="mailto:pgdev1811@gmail.com?subject=Let's%20Work%20Together!" target="_blank">
               <span class="btn-caption">Let's Work Together!</span>
             </a>
           </div>
@@ -724,6 +728,130 @@ Time Management Tools – Practice under timed conditions like the actual exam.
                     </div> 
   </div>
 </div>
+
+              <!-- Content Block - Open Source Libraries Start -->
+              <div class="content__block grid-block" style="margin-top: 40px;">
+                <!-- Section Title -->
+                <div class="content__block section-grid-title">
+                  <p class="h2__subtitle animate-in-up">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="13px" height="13px" viewBox="0 0 13 13" fill="currentColor">
+                      <path fill="currentColor" d="M8.6,12.6c-0.8-0.8-0.7-2.4-1.7-3.8c-1-1-2.7-1.2-3.8-1.7C-0.1,7-0.1,6,0.4,8.6c0.8-0.8,2.3-0.6,3.8-1.8
+                        C8,2.8,8.1,1.2,8.6,0.4C6-0.1,7-0.1,7.4,0.4c0.8,0.8,0.7,2.4,1.8,3.8c1.2,1.2,2.6,1.2,3.8,1.7c0.6,0.4,0.6,1.4,0,1.7
+                        C11.8,7.9,10.2,8,9.1,9.1c-1,1-1.2,2.7-1.7,3.8C7,13.1,6,13.1,8.6,12.6z"/>
+                    </svg>
+                    <span>Open Source & Security SDKs</span>
+                  </p>
+                  <h2 class="h2__title animate-in-up">Developer tools, cryptography & security frameworks.</h2>
+                </div>
+
+                <!-- Cards Container -->
+                <div class="container-fluid p-0">
+                  <div class="row g-0 align-items-stretch cards">
+
+                    <!-- Library 1: MTProtoCrypto -->
+                    <div class="col-12 col-md-6 cards__item grid-item animate-card-2">
+                      <div class="cards__card d-flex flex-column">
+                        <div class="cards__descr">
+                          <h4 class="cards__title animate-in-up">MTProtoCrypto</h4>
+                          <div class="cards__tags flex-wrap animate-in-up">
+                            <span class="rounded-tag tag-outline">Kotlin</span>
+                            <span class="rounded-tag tag-outline">Cryptography</span>
+                            <span class="rounded-tag tag-outline">AES-IGE</span>
+                            <span class="rounded-tag tag-outline">Diffie-Hellman</span>
+                            <span class="rounded-tag tag-outline">Android SDK</span>
+                          </div>
+                          <p class="small cards__text animate-in-up">
+                            High-performance Kotlin cryptography engine implementing Telegram's MTProto mobile protocol for Android. Features Diffie-Hellman key exchange, 256-bit AES-IGE cipher, SHA-256 fingerprinting, and zero-dependency crypto primitives for end-to-end encrypted messaging.
+                          </p>
+                          <br>
+                          <p>
+                            <a href="https://github.com/gargpadmakar/MTProtoCrypto" target="_blank" class="app_link">
+                              GitHub Repository <i class="ph-bold ph-arrow-right pl_6"></i>
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Library 2: screen-analytics-android -->
+                    <div class="col-12 col-md-6 cards__item grid-item animate-card-2">
+                      <div class="cards__card d-flex flex-column">
+                        <div class="cards__descr">
+                          <h4 class="cards__title animate-in-up">screen-analytics-android</h4>
+                          <div class="cards__tags flex-wrap animate-in-up">
+                            <span class="rounded-tag tag-outline">Kotlin</span>
+                            <span class="rounded-tag tag-outline">Offline-First</span>
+                            <span class="rounded-tag tag-outline">Room / SQLite</span>
+                            <span class="rounded-tag tag-outline">WorkManager</span>
+                            <span class="rounded-tag tag-outline">Zero Reflection</span>
+                          </div>
+                          <p class="small cards__text animate-in-up">
+                            Lightweight, battery-efficient screen analytics and UX telemetry SDK for Android. Automatically observes navigation lifecycle, persists events in an encrypted SQLite buffer, and syncs batches intelligently with exponential backoff.
+                          </p>
+                          <br>
+                          <p>
+                            <a href="https://github.com/gargpadmakar/screen-analytics-android" target="_blank" class="app_link">
+                              GitHub Repository <i class="ph-bold ph-arrow-right pl_6"></i>
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Library 3: Enterprise Android SecureSDK -->
+                    <div class="col-12 col-md-6 cards__item grid-item animate-card-2">
+                      <div class="cards__card d-flex flex-column">
+                        <div class="cards__descr">
+                          <h4 class="cards__title animate-in-up">Enterprise Android SecureSDK (RASP)</h4>
+                          <div class="cards__tags flex-wrap animate-in-up">
+                            <span class="rounded-tag tag-outline">Kotlin / NDK</span>
+                            <span class="rounded-tag tag-outline">RASP Security</span>
+                            <span class="rounded-tag tag-outline">Anti-Hooking (Frida)</span>
+                            <span class="rounded-tag tag-outline">Root Detection</span>
+                            <span class="rounded-tag tag-outline">Traffic Inspection</span>
+                          </div>
+                          <p class="small cards__text animate-in-up">
+                            Comprehensive Runtime Application Self-Protection (RASP) framework for enterprise Android apps. Detects root, Magisk/Zygisk cloaking, Frida/Xposed hooks, emulator spoofing, and includes loopback-VPN traffic inspection for threat mitigation.
+                          </p>
+                          <br>
+                          <p>
+                            <a href="https://github.com/padmakarsveltetech/SecureSDK" target="_blank" class="app_link">
+                              GitHub Repository <i class="ph-bold ph-arrow-right pl_6"></i>
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Library 4: AppProtectGuard -->
+                    <div class="col-12 col-md-6 cards__item grid-item animate-card-2">
+                      <div class="cards__card d-flex flex-column">
+                        <div class="cards__descr">
+                          <h4 class="cards__title animate-in-up">AppProtectGuard</h4>
+                          <div class="cards__tags flex-wrap animate-in-up">
+                            <span class="rounded-tag tag-outline">Kotlin</span>
+                            <span class="rounded-tag tag-outline">App Integrity</span>
+                            <span class="rounded-tag tag-outline">Anti-Tamper</span>
+                            <span class="rounded-tag tag-outline">Dex Checksum</span>
+                            <span class="rounded-tag tag-outline">Anti-Debug</span>
+                          </div>
+                          <p class="small cards__text animate-in-up">
+                            App hardening and binary integrity validation library. Validates APK signature digest at runtime, monitors classloader tampering, detects attached debuggers via ptrace inspection, and protects against reverse-engineering and cracked APK redistributions.
+                          </p>
+                          <br>
+                          <p>
+                            <a href="https://github.com/gargpadmakar" target="_blank" class="app_link">
+                              GitHub Profile <i class="ph-bold ph-arrow-right pl_6"></i>
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <!-- Content Block - Open Source Libraries End -->
 
               <!-- Content Block - Services End -->
     

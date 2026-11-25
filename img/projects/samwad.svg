@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_samwad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a131f" />
+      <stop offset="100%" stop-color="#122538" />
+    </linearGradient>
+    <linearGradient id="glow_samwad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="blur_samwad"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg_samwad)" />
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <circle cx="400" cy="175" r="130" fill="#3b82f6" opacity="0.12" filter="url(#blur_samwad)" />
+  <!-- Secure Calling & Chat Bubble Visual -->
+  <g transform="translate(400, 160)" stroke="url(#glow_samwad)" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M-40 -20 C-40 -40, 40 -40, 40 -20 C40 0, 10 15, -15 22 L-30 28 L-25 15 C-35 8, -40 -5, -40 -20 Z" fill="rgba(59,130,246,0.06)" />
+    <!-- Lock inside bubble -->
+    <rect x="-10" y="-12" width="20" height="16" rx="3" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2" />
+    <path d="M-6 -12 V -17 C-6 -21, 6 -21, 6 -17 V -12" stroke="#10b981" stroke-width="2" />
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="250" y="38" width="300" height="28" rx="14" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.3)" />
+    <text x="400" y="56" fill="#60a5fa" font-size="12" font-weight="600" letter-spacing="1.5">SECURE ENCRYPTED MESSAGING</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">Samwad - Secure Communication</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">LiveKit VoIP • AES/ECDH E2EE • Real-Time Socket.IO Chat</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#93c5fd">
+    <rect x="180" y="355" width="130" height="24" rx="6" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" />
+    <text x="245" y="371" text-anchor="middle">LiveKit WebRTC</text>
+    <rect x="330" y="355" width="140" height="24" rx="6" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" />
+    <text x="400" y="371" text-anchor="middle">E2EE (AES/ECDH)</text>
+    <rect x="490" y="355" width="130" height="24" rx="6" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.2)" />
+    <text x="555" y="371" text-anchor="middle">Socket.IO</text>
+  </g>
+</svg>

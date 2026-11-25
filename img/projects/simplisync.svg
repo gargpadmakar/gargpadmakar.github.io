@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_crm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07141f" />
+      <stop offset="100%" stop-color="#0e2a3a" />
+    </linearGradient>
+    <linearGradient id="glow_crm" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <filter id="blur_crm"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg_crm)" />
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <circle cx="400" cy="175" r="130" fill="#0ea5e9" opacity="0.12" filter="url(#blur_crm)" />
+  <!-- CRM / Analytics Sync Visual -->
+  <g transform="translate(400, 160)" stroke="url(#glow_crm)" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="-65" y="-50" width="130" height="100" rx="12" fill="rgba(14,165,233,0.06)" />
+    <line x1="-40" y1="25" x2="-40" y2="0" stroke="#38bdf8" stroke-width="6" />
+    <line x1="-15" y1="25" x2="-15" y2="-20" stroke="#38bdf8" stroke-width="6" />
+    <line x1="10" y1="25" x2="10" y2="-10" stroke="#38bdf8" stroke-width="6" />
+    <line x1="35" y1="25" x2="35" y2="-30" stroke="#38bdf8" stroke-width="6" />
+    <circle cx="35" cy="-30" r="5" fill="#38bdf8" />
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="260" y="38" width="280" height="28" rx="14" fill="rgba(14,165,233,0.12)" stroke="rgba(14,165,233,0.3)" />
+    <text x="400" y="56" fill="#38bdf8" font-size="12" font-weight="600" letter-spacing="1.5">LEAD MANAGEMENT CRM</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">Simplisync CRM</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">Real-Time Lead Tracking • Call Analytics • Socket.IO Sync</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#7dd3fc">
+    <rect x="200" y="355" width="115" height="24" rx="6" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.2)" />
+    <text x="257" y="371" text-anchor="middle">Socket.IO</text>
+    <rect x="330" y="355" width="140" height="24" rx="6" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.2)" />
+    <text x="400" y="371" text-anchor="middle">Call Telemetry</text>
+    <rect x="485" y="355" width="115" height="24" rx="6" fill="rgba(14,165,233,0.08)" stroke="rgba(14,165,233,0.2)" />
+    <text x="542" y="371" text-anchor="middle">Room DB</text>
+  </g>
+</svg>

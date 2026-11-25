@@ -1,13 +1,14 @@
 
-/* Syne font */
-@import url("https://fonts.googleapis.com/css2?family=Syne:wght@400..800&amp;display=swap");
+/* Inter & JetBrains Mono fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap");
 .image-background {
   background-image: url(../img/backgrounds/1920x1080-main-bg.webp);
 }
 :root {
   --_size: 1.6rem;
-  --_font-default: "Syne", sans-serif;
-  --_font-accent: "Syne", sans-serif;
+  --_font-default: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --_font-accent: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --_font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
   --_radius-s: 1.5rem;
   --_radius-m: 2.2rem;
   --_radius-l: 3rem;

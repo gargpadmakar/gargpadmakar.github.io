@@ -318,11 +318,21 @@
     .links a{font-size:.82rem;font-weight:500;text-decoration:none;border:1px solid var(--line2);border-radius:999px;padding:7px 16px;color:var(--mute);transition:color .2s,border-color .2s,background .2s}
     .links a:hover{color:var(--ink);border-color:var(--blue);background:var(--glow)}
 
+    /* key skills block in about */
+    .skills-block{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+    .skills-block h4{font-size:.85rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);margin-bottom:12px}
+    .skill-tags{display:flex;flex-wrap:wrap;gap:8px}
+    .skill-tags span{font:500 .75rem/1.2 var(--mono);color:var(--ink);background:var(--card2);border:1px solid var(--line2);border-radius:8px;padding:8px 12px;transition:border-color .2s,color .2s}
+    .skill-tags span:hover{border-color:var(--blue2);color:var(--blue2)}
+    .proj-badge-row{margin-bottom:10px}
+    .badge-enterprise{font:600 .68rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:6px;padding:4px 8px;display:inline-block}
+
     /* projects */
     .proj{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
     .proj article{padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card2),var(--card));transition:border-color .25s,transform .25s,box-shadow .25s}
     .proj article:hover{border-color:rgba(59,130,246,.5);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
     .proj article{grid-column:auto}
+    .proj article.wide{grid-column:span 2}
     .proj-banner{width:100%;aspect-ratio:16/9;overflow:hidden;background:#070b14;border-bottom:1px solid var(--line);position:relative}
     .proj-banner img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
     .proj article:hover .proj-banner img{transform:scale(1.03)}
@@ -953,6 +963,23 @@
           <p>Padmakar Garg is a Senior Android Developer &amp; Mobile Security Engineer who has spent eight-plus years shipping production apps, with 120+ published on Google Play, from e-commerce and CRM to news, astrology and secure encrypted messaging.</p>
           <p>Since August 2022 he has been a Senior Android Developer &amp; Mobile Security Engineer at Sveltetech Technology, working on real-time messaging, WebRTC voice and video calling, and end-to-end encrypted communication. His engineering focus includes Android Endpoint Detection & Response (EDR), loopback-VPN traffic inspection, and advanced mobile application security (RASP, anti-tamper, and reverse-engineering defenses).</p>
           <p>Outside client work he publishes open-source Android libraries and writes on Medium and dev.to about system design, mobile security and CI/CD. His work also covers Java and Kotlin app development, Jetpack Compose, code obfuscation, and mobile device management (MDM) with Microsoft Intune.</p>
+          <div class="skills-block rv">
+            <h4>Key Skills &amp; Security Expertise</h4>
+            <div class="skill-tags">
+              <span>Android EDR (Endpoint Detection &amp; Response)</span>
+              <span>VpnService &amp; Loopback Traffic Inspection</span>
+              <span>Packet Filtering &amp; DNS/IP Threat Blocking</span>
+              <span>RASP (Runtime Application Protection)</span>
+              <span>Frida, Xposed &amp; Magisk/Zygisk Detection</span>
+              <span>C/C++ (NDK) &amp; JNI Security</span>
+              <span>Kotlin &amp; Java</span>
+              <span>Jetpack Compose</span>
+              <span>Kotlin Multiplatform (KMP)</span>
+              <span>LiveKit WebRTC</span>
+              <span>E2EE Cryptography (AES-GCM, ECDH)</span>
+              <span>WorkManager &amp; Offline-First</span>
+            </div>
+          </div>
           <div class="stats">
             <div class="stat"><strong>8<em>+</em></strong><span>Years of experience</span></div>
             <div class="stat"><strong>120<em>+</em></strong><span>Apps published on Google Play</span></div>
@@ -991,6 +1018,15 @@
       <div class="head rv"><span class="kicker">Open source &amp; security</span><h2>Open source and featured projects</h2></div>
       <div class="filter pf" role="group" aria-label="Filter projects"><button type="button" class="on" data-pf="all">All</button><button type="button" data-pf="security">Security</button><button type="button" data-pf="sdk">SDKs &amp; libraries</button></div>
       <div class="proj rv">
+        <article class="wide" data-cat="security">
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/edr-engine.svg" alt="Enterprise Android EDR &amp; Threat Protection Engine" loading="lazy"></div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise">Enterprise Security Project</span></div>
+            <h3>Enterprise Android EDR &amp; Threat Protection Engine</h3>
+            <p>Production Android Endpoint Detection &amp; Response (EDR) solution architected and developed by Padmakar Garg. Engineered multi-layer threat detection in C/C++ (NDK) and Java: detecting rooted devices, Magisk/Zygisk cloaking, Frida and Xposed hooks, and emulator virtualization. Implemented loopback-VPN network traffic inspection using Android VpnService to monitor egress traffic, perform DNS/IP filtering, block malicious domains and unauthorized APKs, and execute dynamic policy-driven security enforcement.</p>
+            <p class="tags"><span>Android Security</span><span>EDR</span><span>Loopback VPN</span><span>Packet Filtering</span><span>C/C++ (NDK)</span><span>JNI</span><span>Anti-Frida</span></p>
+          </div>
+        </article>
         <article data-cat="security sdk">
           <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/mtproto.svg" alt="MTProtoCrypto" loading="lazy"></div>
           <div class="proj-body">

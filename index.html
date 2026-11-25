@@ -183,6 +183,59 @@
       background: rgba(14, 165, 233, 0.08);
       border: 1px dashed rgba(2, 132, 199, 0.4);
     }
+    /* App Highlights & Growth Metrics */
+    .app-downloads-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 2;
+      background: rgba(16, 185, 129, 0.92);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 4px 11px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      letter-spacing: 0.02em;
+    }
+    .app-growth-chip {
+      background: rgba(16, 185, 129, 0.12);
+      color: #10b981;
+      border: 1px solid rgba(16, 185, 129, 0.32);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .rounded-tag.tag-downloads {
+      background: rgba(16, 185, 129, 0.15) !important;
+      color: #10b981 !important;
+      border: 1px solid rgba(16, 185, 129, 0.4) !important;
+      font-weight: 700 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: 4px !important;
+    }
+    [color-scheme=light] .app-growth-chip,
+    body.light-theme .app-growth-chip {
+      background: rgba(16, 185, 129, 0.12);
+      color: #047857;
+      border-color: rgba(5, 150, 105, 0.35);
+    }
+    [color-scheme=light] .rounded-tag.tag-downloads,
+    body.light-theme .rounded-tag.tag-downloads {
+      background: rgba(16, 185, 129, 0.14) !important;
+      color: #047857 !important;
+      border-color: rgba(5, 150, 105, 0.4) !important;
+    }
   </style>
 </head>
 
@@ -794,18 +847,28 @@ Passionate about innovation and robust system design, I transform complex requir
                     <div class="col-12 col-md-6 cards__item grid-item animate-card-2">
                       <div class="cards__card d-flex flex-column">
                         <div class="cards__descr">
-                          <div class="cards__image animate-in-up" style="border-radius:12px;overflow:hidden;margin-bottom:16px;aspect-ratio:16/9;background:#070b14;"><img src="https://play-lh.googleusercontent.com/HrJE43apzL9DPUngA97krbQaMuk-LQEcplk0Dl7d8XKyQZNkbwu-SaX34lVTp0h5fXIJQ5QY5m7Aqxfi1gsl=w800-h450" alt="Super Astrologer : Talk Now" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/superastrologer.svg'"></div>
-                          <h4 class="cards__title animate-in-up">Super Astrologer : Talk Now</h4>
+                          <div class="cards__image animate-in-up" style="border-radius:12px;overflow:hidden;margin-bottom:16px;aspect-ratio:16/9;background:#070b14;position:relative;">
+                            <span class="app-downloads-badge">
+                              <i class="ph-bold ph-download-simple"></i> 10K+ Downloads
+                            </span>
+                            <img src="https://play-lh.googleusercontent.com/HrJE43apzL9DPUngA97krbQaMuk-LQEcplk0Dl7d8XKyQZNkbwu-SaX34lVTp0h5fXIJQ5QY5m7Aqxfi1gsl=w800-h450" alt="Super Astrologer : Talk Now" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/superastrologer.svg'">
+                          </div>
+                          <div class="d-flex align-items-center justify-content-between flex-wrap" style="gap:8px;margin-bottom:8px;">
+                            <h4 class="cards__title animate-in-up" style="margin-bottom:0;">Super Astrologer : Talk Now</h4>
+                            <span class="app-growth-chip">
+                              <i class="ph-bold ph-chart-line-up"></i> 10K+ Downloads
+                            </span>
+                          </div>
                           <div class="cards__tags d-flex flex-wrap animate-in-up">
+                            <span class="rounded-tag tag-downloads"><i class="ph-bold ph-download-simple"></i> 10,000+ Downloads</span>
                             <span class="rounded-tag tag-outline">Java</span>
                             <span class="rounded-tag tag-outline">MVC</span>
                             <span class="rounded-tag tag-outline">XML</span>
                             <span class="rounded-tag tag-outline">Retrofit</span>
                             <span class="rounded-tag tag-outline">Cash Free Payment</span>
                             <span class="rounded-tag tag-outline">Firebase Push Notification</span>
-
                           </div>
-                          <p class="small cards__text animate-in-up">I integrated Exotel for seamless voice call functionality in astrology consultations, and implemented push notifications and reminders for astrology tips, updates, and consultations.
+                          <p class="small cards__text animate-in-up">Scaled to <strong>10,000+ downloads</strong> on Google Play Store. Integrated Exotel for seamless voice call functionality in astrology consultations, and implemented push notifications and reminders for astrology tips, updates, and consultations.
                           </p>
                           <br>
                           <p>   <a href="https://play.google.com/store/apps/details?id=com.superastrologer" target="_blank" class="app_link">App Link <i class="ph-bold ph-arrow-right pl_6"></i> </a></p>

@@ -592,6 +592,15 @@
       background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:playBadgeShimmer 3s ease-in-out infinite}
     @keyframes playBadgeShimmer{0%{left:-100%}30%,100%{left:100%}}
 
+    /* 10K+ Downloads highlight badge */
+    .downloads-badge{position:absolute;top:12px;left:12px;z-index:3;display:inline-flex;align-items:center;gap:5px;
+      font:700 .68rem/1 var(--mono);color:#10b981;background:rgba(8,12,22,.86);backdrop-filter:blur(8px);
+      border:1px solid rgba(16,185,129,.45);border-radius:999px;padding:5px 10px;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+    .downloads-badge svg{stroke:#10b981}
+    :root[data-theme="light"] .downloads-badge{background:rgba(255,255,255,.94);border-color:rgba(16,185,129,.55);
+      color:#047857;box-shadow:0 4px 12px rgba(16,185,129,.16)}
+    :root[data-theme="light"] .downloads-badge svg{stroke:#047857}
+
     /* Card filter entrance animation */
     .proj article.pop-in{animation:playCardIn .35s cubic-bezier(.16,1,.3,1) forwards}
     @keyframes playCardIn{0%{opacity:0;transform:translateY(16px) scale(.97)}100%{opacity:1;transform:translateY(0) scale(1)}}
@@ -1556,6 +1565,10 @@
         <!-- Play Store App 4: Super Astrologer -->
         <article data-cat="playstore">
           <div class="proj-banner">
+            <span class="downloads-badge">
+              <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              10K+ Downloads
+            </span>
             <span class="playstore-badge">
   <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
     <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
@@ -1567,10 +1580,16 @@
             <img src="https://gargpadmakar.github.io/img/projects/superastrologer.svg" alt="Super Astrologer" loading="lazy">
           </div>
           <div class="proj-body">
-            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
+            <div class="proj-badge-row">
+              <span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span>
+              <span class="badge-enterprise" style="color:#10b981;background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.35);font-weight:700;">
+                <svg viewBox="0 0 24 24" width="11" height="11" fill="none" stroke="currentColor" stroke-width="2.5" style="display:inline-block;vertical-align:-1px;margin-right:3px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                10,000+ Downloads
+              </span>
+            </div>
             <h3><a href="https://play.google.com/store/apps/details?id=com.superastrologer" target="_blank" rel="noopener">Super Astrologer</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
-            <p>Astrology consultation app engineered with Agora RTC voice and video calling, real-time consultation sessions, and timely automated push notifications.</p>
-            <p class="tags"><span>Kotlin</span><span>Agora RTC</span><span>VoIP Voice/Video</span><span>Push Alerts</span></p>
+            <p>Scaled to <strong>10,000+ active downloads</strong> on Google Play. Astrology consultation app engineered with Agora RTC voice and video calling, real-time consultation sessions, and timely automated push notifications.</p>
+            <p class="tags"><span style="color:#10b981;background:rgba(16,185,129,.12);border-color:rgba(16,185,129,.3);font-weight:600;">10K+ Installs</span><span>Kotlin</span><span>Agora RTC</span><span>VoIP Voice/Video</span><span>Push Alerts</span></p>
           </div>
         </article>
 

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg_cellid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081220" />
+      <stop offset="100%" stop-color="#0f223a" />
+    </linearGradient>
+    <linearGradient id="glow_cellid" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <filter id="blur_cellid"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg_cellid)" />
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <circle cx="400" cy="175" r="130" fill="#0284c7" opacity="0.12" filter="url(#blur_cellid)" />
+  <!-- Telecom Tower & Location / Map Visual -->
+  <g transform="translate(400, 160)" stroke="url(#glow_cellid)" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Tower -->
+    <line x1="-15" y1="35" x2="0" y2="-35" stroke-width="2.5" />
+    <line x1="15" y1="35" x2="0" y2="-35" stroke-width="2.5" />
+    <line x1="-12" y1="15" x2="12" y2="15" stroke-width="2" />
+    <line x1="-7" y1="-8" x2="7" y2="-8" stroke-width="2" />
+    <line x1="-12" y1="15" x2="7" y2="-8" stroke-width="1.5" />
+    <line x1="12" y1="15" x2="-7" y2="-8" stroke-width="1.5" />
+    <circle cx="0" cy="-35" r="3" fill="#38bdf8" />
+    <!-- Signal Waves -->
+    <path d="M-18 -40 A 25 25 0 0 1 18 -40" stroke-width="2" stroke-dasharray="2 4" />
+    <path d="M-28 -48 A 38 38 0 0 1 28 -48" stroke-width="1.8" />
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="260" y="38" width="280" height="28" rx="14" fill="rgba(2,132,199,0.12)" stroke="rgba(2,132,199,0.3)" />
+    <text x="400" y="56" fill="#38bdf8" font-size="12" font-weight="600" letter-spacing="1.5">TELECOM INFRASTRUCTURE</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">Cell ID : Tower Locator</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">Google Maps Geolocation • Razorpay Monetization • Telecom Signal Data</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#e0f2fe">
+    <rect x="200" y="355" width="115" height="24" rx="6" fill="rgba(2,132,199,0.08)" stroke="rgba(2,132,199,0.2)" />
+    <text x="257" y="371" text-anchor="middle">Google Maps</text>
+    <rect x="330" y="355" width="140" height="24" rx="6" fill="rgba(2,132,199,0.08)" stroke="rgba(2,132,199,0.2)" />
+    <text x="400" y="371" text-anchor="middle">Razorpay Gateway</text>
+    <rect x="485" y="355" width="115" height="24" rx="6" fill="rgba(2,132,199,0.08)" stroke="rgba(2,132,199,0.2)" />
+    <text x="542" y="371" text-anchor="middle">Kotlin</text>
+  </g>
+</svg>

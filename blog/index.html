@@ -372,6 +372,32 @@
     .rc-skill-btn::before{content:"";width:6px;height:6px;border-radius:50%;background:#64748b;transition:background .2s,box-shadow .2s}
     .rc-skill-btn:hover::before,.rc-skill-btn.active::before{background:#ef4444;box-shadow:0 0 8px #ef4444}
 
+        /* Google Play tab button with animated glow */
+    .filter button.tab-playstore{display:inline-flex;align-items:center;gap:7px;font-weight:600;
+      color:#e2e8f0;background:linear-gradient(135deg,rgba(66,133,244,.12),rgba(52,168,83,.12));
+      border:1px solid rgba(66,133,244,.35);transition:all .25s ease}
+    .filter button.tab-playstore:hover{border-color:#34a853;box-shadow:0 0 16px rgba(52,168,83,.35);color:#fff}
+    .filter button.tab-playstore.on{background:linear-gradient(135deg,#0284c7,#059669);border-color:#38bdf8;
+      color:#fff;box-shadow:0 0 20px rgba(14,165,233,.45)}
+    .filter button.tab-playstore .play-icon{flex-shrink:0;animation:playIconPulse 2.4s ease-in-out infinite}
+    @keyframes playIconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+
+    /* Google Play shimmering badge on card banners */
+    .playstore-badge{position:absolute;top:12px;right:12px;z-index:3;display:inline-flex;align-items:center;gap:5px;
+      font:600 .68rem/1 var(--mono);color:#fff;background:rgba(8,12,22,.82);backdrop-filter:blur(8px);
+      border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:5px 11px;box-shadow:0 4px 14px rgba(0,0,0,.35);
+      overflow:hidden}
+    .playstore-badge::after{content:"";position:absolute;top:0;left:-100%;width:100%;height:100%;
+      background:linear-gradient(90deg,transparent,rgba(255,255,255,.45),transparent);animation:playBadgeShimmer 3s ease-in-out infinite}
+    @keyframes playBadgeShimmer{0%{left:-100%}30%,100%{left:100%}}
+
+    /* Card filter entrance animation */
+    .proj article.pop-in{animation:playCardIn .35s cubic-bezier(.16,1,.3,1) forwards}
+    @keyframes playCardIn{0%{opacity:0;transform:translateY(16px) scale(.97)}100%{opacity:1;transform:translateY(0) scale(1)}}
+
+    /* Card hover elevation */
+    .proj article[data-cat*="playstore"]:hover{border-color:rgba(52,168,83,.45);box-shadow:0 14px 34px rgba(16,185,129,.18)}
+
     /* projects */
     .proj{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
     .proj article{padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card2),var(--card));transition:border-color .25s,transform .25s,box-shadow .25s}
@@ -1124,8 +1150,19 @@
 
     <section id="work">
       <div class="head rv"><span class="kicker">Open source &amp; security</span><h2>Open source and featured projects</h2></div>
-      <div class="filter pf" role="group" aria-label="Filter projects"><button type="button" class="on" data-pf="all">All</button><button type="button" data-pf="security">Security</button><button type="button" data-pf="sdk">SDKs &amp; libraries</button></div>
+      <div class="filter pf" role="group" aria-label="Filter projects">
+        <button type="button" class="on" data-pf="all">All</button>
+        <button type="button" data-pf="playstore" class="tab-playstore"><svg class="play-icon" viewBox="0 0 512 512" width="14" height="14" aria-hidden="true">
+  <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+  <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+  <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+  <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+</svg> Play Store Apps</button>
+        <button type="button" data-pf="security">Security</button>
+        <button type="button" data-pf="sdk">SDKs &amp; libraries</button>
+      </div>
       <div class="proj rv">
+        <!-- Enterprise EDR Engine Card -->
         <article class="wide" data-cat="security">
           <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/edr-engine.svg" alt="Enterprise Android EDR &amp; Threat Protection Engine" loading="lazy"></div>
           <div class="proj-body">
@@ -1135,42 +1172,213 @@
             <p class="tags"><span>Android Security</span><span>EDR</span><span>Loopback VPN</span><span>Packet Filtering</span><span>C/C++ (NDK)</span><span>JNI</span><span>Anti-Frida</span></p>
           </div>
         </article>
-        <article data-cat="security">
-          <div class="proj-banner"><img src="https://play-lh.googleusercontent.com/w5GORNXOCNl-QtB2km4uztxa1LRa4X7W8FFqV-62gdiHZUEw5SUI2Yb_cQSazF0XRRNmkNxJjvfNQ3_0Jn2DywE=w1052-h592" alt="Vaves - Communication Application" loading="lazy" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/vaves.svg'"></div>
+
+        <!-- Play Store App 1: Vaves -->
+        <article data-cat="playstore">
+          <div class="proj-banner">
+            <span class="playstore-badge">
+  <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+    <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+    <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+    <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+  </svg> Google Play
+</span>
+            <img src="https://gargpadmakar.github.io/img/projects/vaves.svg" alt="Vaves - Communication App" loading="lazy" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/vaves.svg'">
+          </div>
           <div class="proj-body">
-            <div class="proj-badge-row"><span class="badge-enterprise">Play Store App</span></div>
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
             <h3><a href="https://play.google.com/store/apps/details?id=com.sveltetech.vaves&amp;hl=en_IN" target="_blank" rel="noopener">Vaves - Communication App</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
-            <p>Production real-time communication platform built with Kotlin and Jetpack Compose. Features low-latency VoIP voice/video calling using LiveKit WebRTC, instant encrypted messaging with Socket.IO, and background push notifications.</p>
-            <p class="tags"><span>Kotlin</span><span>Compose</span><span>LiveKit WebRTC</span><span>Socket.IO</span><span>VoIP</span></p>
+            <p>Production real-time communication platform built with Kotlin and Jetpack Compose. Features low-latency VoIP audio/video calling with LiveKit WebRTC, instant encrypted messaging with Socket.IO, and background push notifications.</p>
+            <p class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>LiveKit WebRTC</span><span>Socket.IO</span><span>VoIP Calling</span></p>
           </div>
         </article>
+
+        <!-- Play Store App 2: Samwad -->
+        <article data-cat="playstore">
+          <div class="proj-banner">
+            <span class="playstore-badge">
+  <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+    <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+    <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+    <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+  </svg> Google Play
+</span>
+            <img src="https://gargpadmakar.github.io/img/projects/samwad.svg" alt="Samwad - Secure Communication" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
+            <h3><a href="https://play.google.com/store/apps/details?id=com.dalmiatalk" target="_blank" rel="noopener">Samwad - Secure Communication</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Enterprise encrypted communication suite with high-concurrency group messaging, WebRTC calling, end-to-end encryption, and persistent offline message queuing.</p>
+            <p class="tags"><span>Kotlin</span><span>LiveKit WebRTC</span><span>E2EE Cryptography</span><span>Room</span><span>Clean Architecture</span></p>
+          </div>
+        </article>
+
+        <!-- Play Store App 3: Ritam -->
+        <article data-cat="playstore">
+          <div class="proj-banner">
+            <span class="playstore-badge">
+  <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+    <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+    <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+    <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+  </svg> Google Play
+</span>
+            <img src="https://gargpadmakar.github.io/img/projects/ritam.svg" alt="Ritam : News &amp; Content Platform" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
+            <h3><a href="https://play.google.com/store/apps/details?id=org.ritamdigital.ritam&amp;hl=en_IN" target="_blank" rel="noopener">Ritam : News &amp; Content Platform</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>High-traffic digital media and news platform featuring personalized content feeds, short video updates, and asynchronous data streaming with Coroutines &amp; Flow.</p>
+            <p class="tags"><span>Kotlin</span><span>Coroutines &amp; Flow</span><span>Personalized Feeds</span><span>Video Streaming</span></p>
+          </div>
+        </article>
+
+        <!-- Play Store App 4: Super Astrologer -->
+        <article data-cat="playstore">
+          <div class="proj-banner">
+            <span class="playstore-badge">
+  <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+    <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+    <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+    <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+  </svg> Google Play
+</span>
+            <img src="https://gargpadmakar.github.io/img/projects/superastrologer.svg" alt="Super Astrologer" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
+            <h3><a href="https://play.google.com/store/apps/details?id=com.superastrologer" target="_blank" rel="noopener">Super Astrologer</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Astrology consultation app engineered with Agora RTC voice and video calling, real-time consultation sessions, and timely automated push notifications.</p>
+            <p class="tags"><span>Kotlin</span><span>Agora RTC</span><span>VoIP Voice/Video</span><span>Push Alerts</span></p>
+          </div>
+        </article>
+
+        <!-- Play Store App 5: SimpliSync -->
+        <article data-cat="playstore">
+          <div class="proj-banner">
+            <span class="playstore-badge">
+  <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+    <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+    <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+    <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+  </svg> Google Play
+</span>
+            <img src="https://gargpadmakar.github.io/img/projects/simplisync.svg" alt="SimpliSync - Lead CRM &amp; Telephony Sync" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
+            <h3><a href="https://play.google.com/store/apps/details?id=com.simplysync" target="_blank" rel="noopener">SimpliSync - Lead CRM &amp; Telephony Sync</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Lead management and telephony tracking application for tracking call logs, duration, and status, with resilient real-time background sync to enterprise CRM backends.</p>
+            <p class="tags"><span>Kotlin</span><span>Telephony APIs</span><span>Background Sync</span><span>CRM Sync</span></p>
+          </div>
+        </article>
+
+        <!-- Play Store App 6: FikFis -->
+        <article data-cat="playstore">
+          <div class="proj-banner">
+            <span class="playstore-badge">
+  <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+    <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+    <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+    <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+  </svg> Google Play
+</span>
+            <img src="https://gargpadmakar.github.io/img/projects/fikfis.svg" alt="FikFis : Smart Shopping" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
+            <h3><a href="https://play.google.com/store/apps/details?id=com.fikfis" target="_blank" rel="noopener">FikFis : Smart Shopping</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Modern mobile commerce app with optimized catalog navigation, secure Stripe payment gateway integration, and localized push notification campaigns.</p>
+            <p class="tags"><span>Kotlin</span><span>Stripe Gateway</span><span>FCM Push</span><span>E-Commerce</span></p>
+          </div>
+        </article>
+
+        <!-- Play Store App 7: Edly -->
+        <article data-cat="playstore">
+          <div class="proj-banner">
+            <span class="playstore-badge">
+  <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+    <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+    <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+    <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+  </svg> Google Play
+</span>
+            <img src="https://gargpadmakar.github.io/img/projects/edly.svg" alt="Edly : Adaptive Exam Preparation" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
+            <h3><a href="https://play.google.com/store/apps/details?id=com.app.edlytech" target="_blank" rel="noopener">Edly : Adaptive Exam Preparation</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>EdTech test preparation platform with adaptive learning recommendations, real-time mock test simulations, timed exam tools, and detailed student progress analytics.</p>
+            <p class="tags"><span>Kotlin</span><span>Adaptive Learning</span><span>Exam Simulations</span><span>Student Analytics</span></p>
+          </div>
+        </article>
+
+        <!-- Play Store App 8: Cell ID -->
+        <article data-cat="playstore">
+          <div class="proj-banner">
+            <span class="playstore-badge">
+  <svg viewBox="0 0 512 512" width="11" height="11" aria-hidden="true">
+    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1z" fill="#ea4335"/>
+    <path d="M47 360c-1.6-4.7-2.6-9.7-2.6-15V167c0-5.3 1-10.3 2.6-15L257 302 47 360z" fill="#4285f4"/>
+    <path d="M325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z" fill="#34a853"/>
+    <path d="M456.4 229.2l-71 40.8-60.1-60.1 60.1-60.1 71 40.8c14.4 8.3 23.6 23.6 23.6 40.8s-9.2 32.5-23.6 40.8z" fill="#fbbc04"/>
+  </svg> Google Play
+</span>
+            <img src="https://gargpadmakar.github.io/img/projects/cellid.svg" alt="Cell ID : Tower Locator" loading="lazy">
+          </div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#34a853;background:rgba(52,168,83,.1);border-color:rgba(52,168,83,.25);">Google Play Store</span></div>
+            <h3><a href="https://play.google.com/store/apps/details?id=com.cellid" target="_blank" rel="noopener">Cell ID : Tower Locator</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Telecom infrastructure tower discovery tool integrated with Google Maps SDK for geolocating cell sites, with Razorpay payment processing for premium diagnostics.</p>
+            <p class="tags"><span>Kotlin</span><span>Google Maps SDK</span><span>Razorpay</span><span>Telecom Data</span></p>
+          </div>
+        </article>
+
+        <!-- Open Source SDK 1: MTProtoCrypto -->
         <article data-cat="security sdk">
           <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/mtproto.svg" alt="MTProtoCrypto" loading="lazy"></div>
           <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#38bdf8;background:rgba(56,189,248,.1);border-color:rgba(56,189,248,.25);">Open Source Library</span></div>
             <h3><a href="https://github.com/gargpadmakar/MTProtoCrypto" target="_blank" rel="noopener">MTProtoCrypto</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
             <p>Kotlin cryptography SDK for Android implementing Telegram's MTProto 2.0 primitives, AES-IGE, key derivation, Diffie-Hellman key exchange and media encryption.</p>
             <p class="tags"><span>Kotlin</span><span>Compose</span><span>Clean Architecture</span><span>Cryptography</span></p>
           </div>
         </article>
-        <article data-cat="security">
+
+        <!-- Open Source SDK 2: AppSecureGuard -->
+        <article data-cat="security sdk">
           <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/appprotect.svg" alt="AppSecureGuard" loading="lazy"></div>
           <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#ef4444;background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);">Open Source Library</span></div>
             <h3><a href="https://github.com/gargpadmakar/AppSecureGuard" target="_blank" rel="noopener">AppSecureGuard</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
             <p>Android mobile security and application protection library: detects rooted devices, emulators, active debuggers, hooking frameworks (Frida, Xposed), VPNs, and tampering.</p>
             <p class="tags"><span>Kotlin</span><span>Mobile Security</span><span>Anti-Root</span><span>Anti-Debug</span></p>
           </div>
         </article>
+
+        <!-- Open Source SDK 3: OfflineFirstKit -->
         <article data-cat="sdk">
           <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/offlinefirst.svg" alt="OfflineFirstKit" loading="lazy"></div>
           <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#10b981;background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.25);">Open Source Library</span></div>
             <h3><a href="https://github.com/gargpadmakar/OfflineFirstKit" target="_blank" rel="noopener">OfflineFirstKit</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
             <p>Offline-first synchronization SDK for Android: a persistent Room-backed operation queue with WorkManager background sync, exponential backoff with jitter, and auto-sync on reconnect.</p>
             <p class="tags"><span>Kotlin</span><span>Room</span><span>WorkManager</span><span>Coroutines</span></p>
           </div>
         </article>
+
+        <!-- Open Source SDK 4: screen-analytics-android -->
         <article data-cat="sdk">
           <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/screen-analytics.svg" alt="screen-analytics-android" loading="lazy"></div>
           <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#0ea5e9;background:rgba(14,165,233,.1);border-color:rgba(14,165,233,.25);">Open Source SDK</span></div>
             <h3><a href="https://github.com/gargpadmakar/screen-analytics-android" target="_blank" rel="noopener">screen-analytics-android</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
             <p>Offline-first screen analytics and UX telemetry SDK for Android, with Jetpack Compose and XML navigation lifecycle observation and zero reflection.</p>
             <p class="tags"><span>Kotlin</span><span>Compose</span><span>Navigation</span><span>Room / SQLite</span></p>
@@ -1815,7 +2023,15 @@
   var pfb=document.querySelectorAll('[data-pf]'),pfa=document.querySelectorAll('.proj article');
   pfb.forEach(function(b){b.addEventListener('click',function(){
     pfb.forEach(function(x){x.classList.toggle('on',x===b)});
-    pfa.forEach(function(a){a.hidden=b.dataset.pf!=='all'&&(' '+a.dataset.cat+' ').indexOf(' '+b.dataset.pf+' ')<0});
+    pfa.forEach(function(a){
+      var m=b.dataset.pf==='all'||(' '+a.dataset.cat+' ').indexOf(' '+b.dataset.pf+' ')>=0;
+      a.hidden=!m;
+      if(m){
+        a.classList.remove('pop-in');
+        void a.offsetWidth;
+        a.classList.add('pop-in');
+      }
+    });
   })});
   // --- toast + copy ---
   var toast=document.getElementById('toast'),tt;

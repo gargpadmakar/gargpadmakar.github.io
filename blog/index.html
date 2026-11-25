@@ -219,6 +219,14 @@
     .feature .flag{display:inline-block;font:500 .7rem/1 var(--mono);color:var(--blue-ink);background:var(--blue2);border-radius:6px;padding:5px 9px;margin-bottom:18px;text-transform:uppercase;letter-spacing:.06em}
     .feature h3{font-size:clamp(1.35rem,2.6vw,1.85rem);font-weight:700;line-height:1.25;letter-spacing:-.03em;max-width:30em}
     .feature p{color:var(--mute);margin-top:12px;font-size:.98rem;max-width:42em}
+    .feature-img{width:100%;max-height:280px;border-radius:14px;overflow:hidden;margin:16px 0;border:1px solid var(--line2);background:var(--card)}
+    .feature-img img{width:100%;height:100%;max-height:280px;object-fit:cover;display:block;transition:transform .3s}
+    .feature a:hover .feature-img img{transform:scale(1.02)}
+    .post-main{display:flex;align-items:center;gap:20px;flex:1;min-width:0}
+    .post-thumb{width:130px;height:82px;border-radius:10px;overflow:hidden;flex-shrink:0;border:1px solid var(--line2);background:var(--card2)}
+    .post-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .25s}
+    ol.posts a:hover .post-thumb img{transform:scale(1.04)}
+    .post-text{flex:1;min-width:0}
     .meta{display:flex;flex-wrap:wrap;align-items:center;gap:4px 14px;font-size:.76rem;color:var(--dim);margin-bottom:6px;font-family:var(--mono)}
     .feature .meta{margin:20px 0 0}
     .topic{color:var(--blue2);font-weight:500}
@@ -421,6 +429,8 @@
       .stats{grid-template-columns:1fr 1fr 1fr;gap:8px}
       .stat{padding:16px 14px}.stat strong{font-size:1.5rem}
       ol.posts a{grid-template-columns:1fr;gap:12px;padding:20px}.src{justify-self:start}
+      .post-main{flex-direction:column;align-items:flex-start;gap:14px}
+      .post-thumb{width:100%;height:160px}
       .feature a{padding:26px}
     }
     @media(max-width:520px){
@@ -512,6 +522,7 @@
       <div class="feature rv">
         <a href="https://dev.to/gargpadmakar/how-end-to-end-encryption-works-in-an-android-chat-app-ecdh-aes-gcm-in-kotlin-4g72" target="_blank" rel="noopener">
           <span class="flag">Latest</span>
+          <div class="feature-img"><img src="https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.us-east-2.amazonaws.com%2Fuploads%2Farticles%2Fim81zngsbmdxe82jgpoz.png" alt="How End-to-End Encryption Works in an Android Chat App" loading="lazy" onerror="this.parentElement.remove()"></div>
           <h3>How End-to-End Encryption Works in an Android Chat App (ECDH + AES-GCM in Kotlin)</h3>
           <p>A clear, practical explanation of end-to-end encryption in Android chat apps. Learn how ECDH key exchange and AES-GCM work together, with Kotlin code, and the mistakes that quietly break E2EE.</p>
           <div class="meta"><span class="topic">Security</span><span>dev.to</span><span>5 min read</span></div>
@@ -811,8 +822,8 @@
 
     var DEVTO_USER = 'gargpadmakar';
     var MEDIUM_USER = 'worldpadmakar007';
-    var CACHE_KEY = 'pg_blog_articles_cache_v4';
-    var CACHE_TIME_KEY = 'pg_blog_articles_time_v4';
+    var CACHE_KEY = 'pg_blog_articles_cache_v5';
+    var CACHE_TIME_KEY = 'pg_blog_articles_time_v5';
     var TTL = 10 * 60 * 1000; // 10 minutes cache
     var PAGE_SIZE = 8;
 
@@ -866,7 +877,25 @@
         a.target = '_blank';
         a.rel = 'noopener';
 
-        var wrap = document.createElement('div');
+        var postMain = document.createElement('div');
+        postMain.className = 'post-main';
+
+        // Render thumbnail ONLY if image exists
+        if (item.image) {
+          var thumb = document.createElement('div');
+          thumb.className = 'post-thumb';
+          var img = document.createElement('img');
+          img.src = item.image;
+          img.alt = item.title;
+          img.loading = 'lazy';
+          img.onerror = function() { thumb.remove(); };
+          thumb.appendChild(img);
+          postMain.appendChild(thumb);
+        }
+
+        var postText = document.createElement('div');
+        postText.className = 'post-text';
+
         var metaDiv = document.createElement('div');
         metaDiv.className = 'meta';
         metaDiv.innerHTML = '<span class="topic">' + item.topic + '</span>' + (item.readingTime ? '<span>' + item.readingTime + ' min read</span>' : '');
@@ -877,15 +906,17 @@
         var descEl = document.createElement('p');
         descEl.textContent = item.description || '';
 
-        wrap.appendChild(metaDiv);
-        wrap.appendChild(titleEl);
-        if (item.description) wrap.appendChild(descEl);
+        postText.appendChild(metaDiv);
+        postText.appendChild(titleEl);
+        if (item.description) postText.appendChild(descEl);
+
+        postMain.appendChild(postText);
 
         var srcSpan = document.createElement('span');
         srcSpan.className = 'src';
         srcSpan.textContent = item.source;
 
-        a.appendChild(wrap);
+        a.appendChild(postMain);
         a.appendChild(srcSpan);
         li.appendChild(a);
         postsOl.appendChild(li);
@@ -973,9 +1004,36 @@
       if (featA && top) {
         featA.href = top.url;
         featA.target = '_blank';
+        var flag = featA.querySelector('.flag');
         var h3 = featA.querySelector('h3');
         var p = featA.querySelector('p');
         var meta = featA.querySelector('.meta');
+
+        // Cover image for featured post
+        var featImg = featA.querySelector('.feature-img');
+        if (top.image) {
+          if (!featImg) {
+            featImg = document.createElement('div');
+            featImg.className = 'feature-img';
+            var imEl = document.createElement('img');
+            imEl.loading = 'lazy';
+            featImg.appendChild(imEl);
+            if (flag) {
+              flag.insertAdjacentElement('afterend', featImg);
+            } else {
+              featA.insertBefore(featImg, featA.firstChild);
+            }
+          }
+          var imTag = featImg.querySelector('img');
+          if (imTag) {
+            imTag.src = top.image;
+            imTag.alt = top.title;
+            imTag.onerror = function(){ featImg.remove(); };
+          }
+        } else if (featImg) {
+          featImg.remove();
+        }
+
         if (h3) h3.textContent = top.title;
         if (p) p.textContent = top.description || top.title;
         if (meta) {
@@ -1003,7 +1061,8 @@
           date: 0,
           readingTime: 7,
           source: src ? src.textContent : 'dev.to',
-          topic: li.dataset.topic || 'Android'
+          topic: li.dataset.topic || 'Android',
+          image: null
         };
       });
       renderPage();
@@ -1031,7 +1090,8 @@
             date: new Date(d.published_at || d.published_timestamp).getTime(),
             readingTime: d.reading_time_minutes || 5,
             source: 'dev.to',
-            topic: mapTopic(d.tag_list || [], d.title)
+            topic: mapTopic(d.tag_list || [], d.title),
+            image: d.cover_image || d.social_image || null
           };
         });
       })
@@ -1044,6 +1104,13 @@
         return res.items.map(function(m){
           var snippet = (m.description || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
           if (snippet.length > 170) snippet = snippet.slice(0, 170) + '…';
+          var mImg = (m.thumbnail && typeof m.thumbnail === 'string' && m.thumbnail.indexOf('stat?event=post') === -1) ? m.thumbnail : null;
+          if (!mImg && m.description) {
+            var imgMatch = m.description.match(/<img[^>]+src=["']([^"']+)["']/i);
+            if (imgMatch && imgMatch[1] && imgMatch[1].indexOf('stat?event=post') === -1) {
+              mImg = imgMatch[1];
+            }
+          }
           return {
             title: m.title,
             description: snippet,
@@ -1051,7 +1118,8 @@
             date: new Date(m.pubDate).getTime(),
             readingTime: 6,
             source: 'Medium',
-            topic: mapTopic(m.categories || [], m.title)
+            topic: mapTopic(m.categories || [], m.title),
+            image: mImg
           };
         });
       })

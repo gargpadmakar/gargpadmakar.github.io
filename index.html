@@ -120,6 +120,69 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <!-- Custom Browser Color End -->
   <style>
+    /* Publication Cards & Callout Responsive / Theme Styles */
+    .cards__image.pub-cover {
+      aspect-ratio: 2.38 / 1;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 16px;
+      background: #060a12;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .cards__image.pub-cover img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+    .cards__card:hover .cards__image.pub-cover img {
+      transform: scale(1.03);
+    }
+    .pub-cta-box {
+      margin-top: 36px;
+      padding: 28px 20px;
+      background: rgba(14, 165, 233, 0.06);
+      border: 1px dashed rgba(56, 189, 248, 0.35);
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    .pub-cta-heading {
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--t-bright, #f8fafc);
+      transition: color 0.3s ease;
+    }
+    .pub-cta-desc {
+      margin-bottom: 18px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      color: var(--t-muted, #94a3b8);
+      transition: color 0.3s ease;
+    }
+    /* Light Theme Overrides */
+    [color-scheme=light] .cards__image.pub-cover {
+      background: #090d16;
+      border-color: rgba(0, 0, 0, 0.08);
+    }
+    [color-scheme=light] .pub-cta-heading,
+    body.light-theme .pub-cta-heading {
+      color: #0f172a !important;
+    }
+    [color-scheme=light] .pub-cta-desc,
+    body.light-theme .pub-cta-desc {
+      color: #334155 !important;
+    }
+    [color-scheme=light] .pub-cta-box,
+    body.light-theme .pub-cta-box {
+      background: rgba(14, 165, 233, 0.08);
+      border: 1px dashed rgba(2, 132, 199, 0.4);
+    }
   </style>
 </head>
 
@@ -1116,8 +1179,8 @@ Time Management Tools – Practice under timed conditions like the actual exam.
                 <div class="col-12 col-md-4 cards__item grid-item animate-card-2">
                   <div class="cards__card d-flex flex-column">
                     <div class="cards__descr">
-                      <div class="cards__image animate-in-up" style="border-radius:12px;overflow:hidden;margin-bottom:16px;aspect-ratio:16/9;background:#070b14;">
-                        <img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/to1gb51dsmue6odhq3o0.png" alt="Securing Kotlin Multiplatform Apps" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/mtproto.svg'">
+                      <div class="cards__image pub-cover animate-in-up">
+                        <img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/to1gb51dsmue6odhq3o0.png" alt="Securing Kotlin Multiplatform Apps" loading="lazy" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/mtproto.svg'">
                       </div>
                       <h4 class="cards__title animate-in-up">Securing Kotlin Multiplatform Apps</h4>
                       <div class="cards__tags flex-wrap animate-in-up">
@@ -1141,8 +1204,8 @@ Time Management Tools – Practice under timed conditions like the actual exam.
                 <div class="col-12 col-md-4 cards__item grid-item animate-card-2">
                   <div class="cards__card d-flex flex-column">
                     <div class="cards__descr">
-                      <div class="cards__image animate-in-up" style="border-radius:12px;overflow:hidden;margin-bottom:16px;aspect-ratio:16/9;background:#070b14;">
-                        <img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/im81zngsbmdxe82jgpoz.png" alt="End-to-End Encryption in Android" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/vaves.svg'">
+                      <div class="cards__image pub-cover animate-in-up">
+                        <img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/im81zngsbmdxe82jgpoz.png" alt="End-to-End Encryption in Android" loading="lazy" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/vaves.svg'">
                       </div>
                       <h4 class="cards__title animate-in-up">End-to-End Encryption (ECDH + AES-GCM)</h4>
                       <div class="cards__tags flex-wrap animate-in-up">
@@ -1166,8 +1229,8 @@ Time Management Tools – Practice under timed conditions like the actual exam.
                 <div class="col-12 col-md-4 cards__item grid-item animate-card-2">
                   <div class="cards__card d-flex flex-column">
                     <div class="cards__descr">
-                      <div class="cards__image animate-in-up" style="border-radius:12px;overflow:hidden;margin-bottom:16px;aspect-ratio:16/9;background:#070b14;">
-                        <img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/0ewrdwwpr669eqln7wcq.png" alt="Detect Root, Frida & Xposed" loading="lazy" style="width:100%;height:100%;object-fit:cover;" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/appprotect.svg'">
+                      <div class="cards__image pub-cover animate-in-up">
+                        <img src="https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/0ewrdwwpr669eqln7wcq.png" alt="Detect Root, Frida & Xposed" loading="lazy" onerror="this.onerror=null;this.src='https://gargpadmakar.github.io/img/projects/appprotect.svg'">
                       </div>
                       <h4 class="cards__title animate-in-up">Detect Root, Frida &amp; Xposed (RASP)</h4>
                       <div class="cards__tags flex-wrap animate-in-up">
@@ -1190,9 +1253,9 @@ Time Management Tools – Practice under timed conditions like the actual exam.
             </div>
 
             <!-- Big CTA to read all 34+ articles on the blog -->
-            <div class="text-center animate-in-up" style="margin-top: 36px; padding: 28px 20px; background: rgba(14, 165, 233, 0.05); border: 1px dashed rgba(56, 189, 248, 0.3); border-radius: 16px;">
-              <h5 style="color: #fff; font-weight: 700; margin-bottom: 8px;">Explore All 34+ Technical Publications</h5>
-              <p class="small text-muted" style="margin-bottom: 18px; max-width: 600px; margin-left: auto; margin-right: auto;">Read full tutorials, system design breakdowns, and open-source architectural patterns on my dedicated publication portal.</p>
+            <div class="text-center animate-in-up pub-cta-box">
+              <h5 class="pub-cta-heading">Explore All 34+ Technical Publications</h5>
+              <p class="small pub-cta-desc">Read full tutorials, system design breakdowns, and open-source architectural patterns on my dedicated publication portal.</p>
               <a href="https://gargpadmakar.github.io/blog/" class="btn" style="background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; border: 1px solid #38bdf8; border-radius: 999px; padding: 12px 28px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 0 20px rgba(14, 165, 233, 0.35);">
                 <span>Read All 34 Articles on My Blog</span>
                 <i class="ph-bold ph-arrow-right"></i>

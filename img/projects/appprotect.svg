@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#120c18" />
+      <stop offset="100%" stop-color="#1f142a" />
+    </linearGradient>
+    <linearGradient id="glow6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <filter id="blur6"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg6)" />
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <circle cx="400" cy="180" r="140" fill="#8b5cf6" opacity="0.12" filter="url(#blur6)" />
+  <!-- Binary Integrity / Keyhole Shield -->
+  <g transform="translate(400, 165)">
+    <polygon points="0,-60 48,-32 48,25 0,55 -48,25 -48,-32" fill="rgba(139,92,246,0.12)" stroke="url(#glow6)" stroke-width="3" />
+    <circle cx="0" cy="-6" r="12" fill="url(#glow6)" />
+    <polygon points="-5,0 5,0 8,24 -8,24" fill="url(#glow6)" />
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="250" y="38" width="300" height="28" rx="14" fill="rgba(139,92,246,0.12)" stroke="rgba(139,92,246,0.3)" />
+    <text x="400" y="56" fill="#c084fc" font-size="12" font-weight="600" letter-spacing="1.5">APP INTEGRITY &amp; HARDENING</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">AppProtectGuard</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">DEX Checksum • Anti-Tamper • Ptrace Debugger Detection</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#f472b6">
+    <rect x="200" y="355" width="120" height="24" rx="6" fill="rgba(236,72,153,0.08)" stroke="rgba(236,72,153,0.2)" />
+    <text x="260" y="371" text-anchor="middle">Anti-Tamper</text>
+    <rect x="340" y="355" width="120" height="24" rx="6" fill="rgba(236,72,153,0.08)" stroke="rgba(236,72,153,0.2)" />
+    <text x="400" y="371" text-anchor="middle">Dex Checksum</text>
+    <rect x="480" y="355" width="120" height="24" rx="6" fill="rgba(236,72,153,0.08)" stroke="rgba(236,72,153,0.2)" />
+    <text x="540" y="371" text-anchor="middle">Anti-Debug</text>
+  </g>
+</svg>

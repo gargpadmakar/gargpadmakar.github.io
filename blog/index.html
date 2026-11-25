@@ -319,15 +319,23 @@
     .links a:hover{color:var(--ink);border-color:var(--blue);background:var(--glow)}
 
     /* projects */
-    .proj{display:grid;gap:14px}
-    .proj article{padding:28px;display:flex;flex-direction:column}
-    .proj h3{font-size:1.2rem;font-weight:600;letter-spacing:-.02em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-    .proj h3 a{text-decoration:none}
+    .proj{display:grid;gap:18px;grid-template-columns:repeat(6,1fr)}
+    .proj article{padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card2),var(--card));transition:border-color .25s,transform .25s,box-shadow .25s}
+    .proj article:hover{border-color:rgba(59,130,246,.5);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.25)}
+    .proj article{grid-column:span 2}
+    .proj article.wide{grid-column:span 4}
+    .proj article.half{grid-column:span 3}
+    .proj-banner{width:100%;aspect-ratio:16/9;overflow:hidden;background:#070b14;border-bottom:1px solid var(--line);position:relative}
+    .proj-banner img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .35s ease}
+    .proj article:hover .proj-banner img{transform:scale(1.03)}
+    .proj-body{padding:24px 22px;display:flex;flex-direction:column;flex:1}
+    .proj h3{font-size:1.15rem;font-weight:600;letter-spacing:-.02em;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+    .proj h3 a{text-decoration:none;color:var(--ink);transition:color .2s}
     .proj h3 a::after{content:"";position:absolute;inset:0}
     .proj h3 a:hover{color:var(--blue2)}
     .proj h3 .ext{width:14px;height:14px;stroke:var(--dim);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
-    .proj p{color:var(--mute);font-size:.9rem;line-height:1.7}
-    .proj .tags{margin-top:auto;padding-top:20px;display:flex;flex-wrap:wrap;gap:6px}
+    .proj p{color:var(--mute);font-size:.9rem;line-height:1.68}
+    .proj .tags{margin-top:auto;padding-top:18px;display:flex;flex-wrap:wrap;gap:6px}
     .proj .tags span{font:500 .72rem/1 var(--mono);color:var(--blue2);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:6px;padding:6px 9px}
 
         /* faq */
@@ -452,9 +460,12 @@
       .exp .tablist button{flex:0 0 auto;min-width:210px}
       ol.flow{flex-direction:column;gap:22px}
       ol.flow li+li::before{left:50%;top:-17px;transform:translateX(-50%) rotate(135deg) scale(.7)}
-      .proj{grid-template-columns:repeat(2,1fr)}
-      .proj article,.proj article.half{grid-column:auto}
-      .proj article.wide{grid-column:span 2}
+      .proj{grid-template-columns:1fr;gap:16px}
+      .proj article,.proj article.wide,.proj article.half{grid-column:auto}
+      .proj-banner{aspect-ratio:16/8.5}
+      .proj-body{padding:20px 18px}
+      .filter.pf{flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
+      .filter.pf button{flex-shrink:0}
     }
     @media(max-width:760px){.cmdk-btn kbd,.cmdk-btn .lbl{display:none}.cmdk-btn{width:40px;padding:0;justify-content:center}}
     @media(max-width:520px){.proj article.wide{grid-column:auto}.panel{padding:22px}}
@@ -983,34 +994,52 @@
       <div class="filter pf" role="group" aria-label="Filter projects"><button type="button" class="on" data-pf="all">All</button><button type="button" data-pf="security">Security</button><button type="button" data-pf="sdk">SDKs &amp; libraries</button></div>
       <div class="proj rv">
         <article class="wide" data-cat="security">
-          <h3><a href="https://github.com/padmakarsveltetech/SecureSDK" rel="noopener">Enterprise Android SecureSDK</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
-          <p>Runtime application self-protection (RASP) ecosystem for Android: an SDK with root and emulator detection, Frida and hook detection, anti-tamper checks, biometric and behavioural signals, and device risk scoring. A Spring Boot backend and React dashboard deliver remote security policies over the air and receive AES-GCM encrypted threat telemetry.</p>
-          <p class="tags"><span>Kotlin</span><span>C++ (NDK)</span><span>Spring Boot</span><span>React</span></p>
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/securesdk.svg" alt="Enterprise Android SecureSDK" loading="lazy"></div>
+          <div class="proj-body">
+            <h3><a href="https://github.com/padmakarsveltetech/SecureSDK" target="_blank" rel="noopener">Enterprise Android SecureSDK</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Runtime application self-protection (RASP) ecosystem for Android: an SDK with root and emulator detection, Frida and hook detection, anti-tamper checks, biometric and behavioural signals, and device risk scoring. A Spring Boot backend and React dashboard deliver remote security policies over the air and receive AES-GCM encrypted threat telemetry.</p>
+            <p class="tags"><span>Kotlin</span><span>C++ (NDK)</span><span>Spring Boot</span><span>React</span></p>
+          </div>
         </article>
         <article data-cat="security sdk">
-          <h3><a href="https://github.com/gargpadmakar/MTProtoCrypto" rel="noopener">MTProtoCrypto</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
-          <p>Kotlin cryptography SDK for Android implementing MTProto 2.0 primitives, AES-IGE, key derivation, Diffie-Hellman key exchange and media encryption.</p>
-          <p class="tags"><span>Kotlin</span><span>Compose</span><span>Clean Architecture</span></p>
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/mtproto.svg" alt="MTProtoCrypto" loading="lazy"></div>
+          <div class="proj-body">
+            <h3><a href="https://github.com/gargpadmakar/MTProtoCrypto" target="_blank" rel="noopener">MTProtoCrypto</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Kotlin cryptography SDK for Android implementing MTProto 2.0 primitives, AES-IGE, key derivation, Diffie-Hellman key exchange and media encryption.</p>
+            <p class="tags"><span>Kotlin</span><span>Compose</span><span>Clean Architecture</span></p>
+          </div>
         </article>
         <article class="wide" data-cat="security">
-          <h3>SvelteShield EDR</h3>
-          <p>Enterprise Android endpoint detection and response: root, emulator and hooking (Frida, Xposed) detection, loopback-VPN traffic inspection, malicious IP, domain and APK blocking, and policy-driven enforcement.</p>
-          <p class="tags"><span>Java</span><span>C/C++ (NDK)</span><span>JNI</span><span>OkHttp</span></p>
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/svelteshield.svg" alt="SvelteShield EDR" loading="lazy"></div>
+          <div class="proj-body">
+            <h3>SvelteShield EDR</h3>
+            <p>Enterprise Android endpoint detection and response: root, emulator and hooking (Frida, Xposed) detection, loopback-VPN traffic inspection, malicious IP, domain and APK blocking, and policy-driven enforcement.</p>
+            <p class="tags"><span>Java</span><span>C/C++ (NDK)</span><span>JNI</span><span>OkHttp</span></p>
+          </div>
         </article>
         <article data-cat="sdk">
-          <h3><a href="https://github.com/gargpadmakar/screen-analytics-android" rel="noopener">screen-analytics-android</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
-          <p>Offline-first screen analytics SDK for Android, with Compose and XML samples and no boilerplate.</p>
-          <p class="tags"><span>Kotlin</span><span>Compose</span><span>Navigation</span></p>
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/screen-analytics.svg" alt="screen-analytics-android" loading="lazy"></div>
+          <div class="proj-body">
+            <h3><a href="https://github.com/gargpadmakar/screen-analytics-android" target="_blank" rel="noopener">screen-analytics-android</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Offline-first screen analytics SDK for Android, with Compose and XML samples and no boilerplate.</p>
+            <p class="tags"><span>Kotlin</span><span>Compose</span><span>Navigation</span></p>
+          </div>
         </article>
         <article class="half" data-cat="sdk">
-          <h3><a href="https://github.com/gargpadmakar/OfflineFirstKit" rel="noopener">OfflineFirstKit</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
-          <p>Offline-first synchronization SDK for Android: a persistent Room-backed operation queue with WorkManager background sync, exponential backoff with jitter, Retry-After handling and debounced auto-sync on reconnect.</p>
-          <p class="tags"><span>Kotlin</span><span>Room</span><span>WorkManager</span><span>Coroutines</span></p>
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/offlinefirst.svg" alt="OfflineFirstKit" loading="lazy"></div>
+          <div class="proj-body">
+            <h3><a href="https://github.com/gargpadmakar/OfflineFirstKit" target="_blank" rel="noopener">OfflineFirstKit</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Offline-first synchronization SDK for Android: a persistent Room-backed operation queue with WorkManager background sync, exponential backoff with jitter, Retry-After handling and debounced auto-sync on reconnect.</p>
+            <p class="tags"><span>Kotlin</span><span>Room</span><span>WorkManager</span><span>Coroutines</span></p>
+          </div>
         </article>
         <article class="half" data-cat="security">
-          <h3><a href="https://github.com/gargpadmakar" rel="noopener">AppProtectGuard</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
-          <p>Open-source Android security project built around practical application protection and secure development.</p>
-          <p class="tags"><span>Android</span><span>Security</span></p>
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/appprotect.svg" alt="AppProtectGuard" loading="lazy"></div>
+          <div class="proj-body">
+            <h3><a href="https://github.com/gargpadmakar" target="_blank" rel="noopener">AppProtectGuard</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Open-source Android security project built around practical application protection and secure development.</p>
+            <p class="tags"><span>Android</span><span>Security</span></p>
+          </div>
         </article>
       </div>
     </section>

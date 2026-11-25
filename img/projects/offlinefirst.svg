@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#081014" />
+      <stop offset="100%" stop-color="#0f2128" />
+    </linearGradient>
+    <linearGradient id="glow5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#14b8a6" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <filter id="blur5"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg5)" />
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <circle cx="400" cy="180" r="140" fill="#14b8a6" opacity="0.12" filter="url(#blur5)" />
+  <!-- Sync Loop Graphic -->
+  <g transform="translate(400, 165)" stroke="url(#glow5)" fill="none" stroke-width="2.5">
+    <path d="M-45 -25 A 50 50 0 0 1 45 -25" stroke-linecap="round" />
+    <polygon points="42,-32 52,-22 38,-18" fill="#14b8a6" />
+    <path d="M45 25 A 50 50 0 0 1 -45 25" stroke-linecap="round" />
+    <polygon points="-42,32 -52,22 -38,18" fill="#10b981" />
+    <!-- Center Database Icon -->
+    <ellipse cx="0" cy="-14" rx="26" ry="9" fill="rgba(20,184,166,0.15)" />
+    <path d="M-26 -14 V14 C-26 19 26 19 26 14 V-14" />
+    <path d="M-26 0 C-26 5 26 5 26 0" />
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="250" y="38" width="300" height="28" rx="14" fill="rgba(20,184,166,0.12)" stroke="rgba(20,184,166,0.3)" />
+    <text x="400" y="56" fill="#2dd4bf" font-size="12" font-weight="600" letter-spacing="1.5">OFFLINE SYNCHRONIZATION</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">OfflineFirstKit</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">Persistent Operation Queue • WorkManager • Jittered Retry</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#5eead4">
+    <rect x="195" y="355" width="125" height="24" rx="6" fill="rgba(20,184,166,0.08)" stroke="rgba(20,184,166,0.2)" />
+    <text x="257" y="371" text-anchor="middle">WorkManager</text>
+    <rect x="338" y="355" width="125" height="24" rx="6" fill="rgba(20,184,166,0.08)" stroke="rgba(20,184,166,0.2)" />
+    <text x="400" y="371" text-anchor="middle">Room SQLite</text>
+    <rect x="480" y="355" width="125" height="24" rx="6" fill="rgba(20,184,166,0.08)" stroke="rgba(20,184,166,0.2)" />
+    <text x="542" y="371" text-anchor="middle">Debounced Sync</text>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080e18" />
+      <stop offset="100%" stop-color="#111c30" />
+    </linearGradient>
+    <linearGradient id="glow4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="100%" stop-color="#3b82f6" />
+    </linearGradient>
+    <filter id="blur4"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg4)" />
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <circle cx="400" cy="180" r="140" fill="#06b6d4" opacity="0.12" filter="url(#blur4)" />
+  <!-- Telemetry Bar Graph + Flow -->
+  <g transform="translate(400, 165)">
+    <rect x="-80" y="-40" width="160" height="85" rx="8" fill="rgba(6,182,212,0.08)" stroke="url(#glow4)" stroke-width="2" />
+    <rect x="-55" y="5" width="16" height="30" rx="3" fill="#3b82f6" opacity="0.6" />
+    <rect x="-30" y="-15" width="16" height="50" rx="3" fill="#06b6d4" opacity="0.8" />
+    <rect x="-5" y="-30" width="16" height="65" rx="3" fill="#38bdf8" />
+    <rect x="20" y="-5" width="16" height="40" rx="3" fill="#06b6d4" opacity="0.8" />
+    <rect x="45" y="12" width="16" height="23" rx="3" fill="#3b82f6" opacity="0.6" />
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="250" y="38" width="300" height="28" rx="14" fill="rgba(6,182,212,0.12)" stroke="rgba(6,182,212,0.3)" />
+    <text x="400" y="56" fill="#38bdf8" font-size="12" font-weight="600" letter-spacing="1.5">UX &amp; TELEMETRY SDK</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">screen-analytics-android</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">Offline-First • Lifecycle Observation • Zero Reflection</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#7dd3fc">
+    <rect x="200" y="355" width="120" height="24" rx="6" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.2)" />
+    <text x="260" y="371" text-anchor="middle">Compose &amp; XML</text>
+    <rect x="340" y="355" width="120" height="24" rx="6" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.2)" />
+    <text x="400" y="371" text-anchor="middle">Room SQLite</text>
+    <rect x="480" y="355" width="120" height="24" rx="6" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.2)" />
+    <text x="540" y="371" text-anchor="middle">Zero Overhead</text>
+  </g>
+</svg>

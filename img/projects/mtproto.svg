@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a0c16" />
+      <stop offset="100%" stop-color="#141829" />
+    </linearGradient>
+    <linearGradient id="glow2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#3b82f6" />
+      <stop offset="100%" stop-color="#8b5cf6" />
+    </linearGradient>
+    <filter id="blur2"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg2)" />
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <circle cx="400" cy="180" r="140" fill="#3b82f6" opacity="0.12" filter="url(#blur2)" />
+  <!-- Cryptographic Key Exchange Graphics -->
+  <g transform="translate(400, 165)" stroke="url(#glow2)" fill="none" stroke-width="2.5">
+    <circle cx="-90" cy="0" r="32" stroke-dasharray="4 4" />
+    <circle cx="90" cy="0" r="32" stroke-dasharray="4 4" />
+    <path d="M-55 0 L55 0" stroke-width="3" stroke-linecap="round" />
+    <polygon points="52,-5 62,0 52,5" fill="#8b5cf6" />
+    <polygon points="-52,-5 -62,0 -52,5" fill="#3b82f6" />
+    <!-- Center Key Hexagon -->
+    <polygon points="0,-45 38,-22 38,22 0,45 -38,22 -38,-22" fill="rgba(59,130,246,0.12)" stroke="url(#glow2)" stroke-width="3" />
+    <path d="M-8 -10 L8 10 M8 -10 L-8 10" stroke="#60a5fa" stroke-width="3" stroke-linecap="round" />
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="260" y="38" width="280" height="28" rx="14" fill="rgba(59,130,246,0.12)" stroke="rgba(59,130,246,0.3)" />
+    <text x="400" y="56" fill="#60a5fa" font-size="12" font-weight="600" letter-spacing="1.5">CRYPTOGRAPHY SDK</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">MTProtoCrypto</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">Telegram MTProto 2.0 • Diffie-Hellman Key Exchange • AES-256-IGE</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#a78bfa">
+    <rect x="210" y="355" width="115" height="24" rx="6" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" />
+    <text x="267" y="371" text-anchor="middle">Pure Kotlin</text>
+    <rect x="345" y="355" width="110" height="24" rx="6" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" />
+    <text x="400" y="371" text-anchor="middle">AES-IGE</text>
+    <rect x="475" y="355" width="115" height="24" rx="6" fill="rgba(139,92,246,0.08)" stroke="rgba(139,92,246,0.2)" />
+    <text x="532" y="371" text-anchor="middle">DH 2048-bit</text>
+  </g>
+</svg>

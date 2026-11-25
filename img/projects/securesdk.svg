@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c18" />
+      <stop offset="100%" stop-color="#0e172a" />
+    </linearGradient>
+    <linearGradient id="glow1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <filter id="blur1"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg1)" />
+  <!-- subtle grid pattern -->
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <!-- Glow spot -->
+  <circle cx="400" cy="180" r="140" fill="#10b981" opacity="0.12" filter="url(#blur1)" />
+  <!-- Shield Icon -->
+  <g transform="translate(400, 165)">
+    <path d="M0 -65 L55 -35 V15 C55 55 0 85 0 85 C0 85 -55 55 -55 15 V-35 Z" fill="rgba(16,185,129,0.1)" stroke="url(#glow1)" stroke-width="3.5" />
+    <!-- Lock inside shield -->
+    <rect x="-16" y="-8" width="32" height="26" rx="4" fill="url(#glow1)" />
+    <path d="M-10 -8 V-18 C-10 -25 10 -25 10 -18 V-8" fill="none" stroke="url(#glow1)" stroke-width="3" stroke-linecap="round" />
+  </g>
+  <!-- Badges & Text -->
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="250" y="38" width="300" height="28" rx="14" fill="rgba(16,185,129,0.12)" stroke="rgba(16,185,129,0.3)" />
+    <text x="400" y="56" fill="#34d399" font-size="12" font-weight="600" letter-spacing="1.5">ENTERPRISE RASP SECURITY</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">Enterprise Android SecureSDK</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">Anti-Frida Hooking • Root &amp; Zygisk Detection • Policy Telemetry</text>
+  </g>
+  <!-- Pill chips -->
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#06b6d4">
+    <rect x="180" y="355" width="130" height="24" rx="6" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.2)" />
+    <text x="245" y="371" text-anchor="middle">Kotlin / NDK</text>
+    <rect x="335" y="355" width="130" height="24" rx="6" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.2)" />
+    <text x="400" y="371" text-anchor="middle">Spring Boot API</text>
+    <rect x="490" y="355" width="130" height="24" rx="6" fill="rgba(6,182,212,0.08)" stroke="rgba(6,182,212,0.2)" />
+    <text x="555" y="371" text-anchor="middle">React Dashboard</text>
+  </g>
+</svg>

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0c0c16" />
+      <stop offset="100%" stop-color="#181524" />
+    </linearGradient>
+    <linearGradient id="glow3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#ef4444" />
+    </linearGradient>
+    <filter id="blur3"><feGaussianBlur stdDeviation="30" /></filter>
+  </defs>
+  <rect width="800" height="420" fill="url(#bg3)" />
+  <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+    <line x1="0" y1="70" x2="800" y2="70" /><line x1="0" y1="140" x2="800" y2="140" /><line x1="0" y1="210" x2="800" y2="210" /><line x1="0" y1="280" x2="800" y2="280" /><line x1="0" y1="350" x2="800" y2="350" />
+    <line x1="160" y1="0" x2="160" y2="420" /><line x1="320" y1="0" x2="320" y2="420" /><line x1="480" y1="0" x2="480" y2="420" /><line x1="640" y1="0" x2="640" y2="420" />
+  </g>
+  <circle cx="400" cy="180" r="140" fill="#f59e0b" opacity="0.12" filter="url(#blur3)" />
+  <!-- Radar / EDR Visual -->
+  <g transform="translate(400, 165)" stroke="url(#glow3)" fill="none" stroke-width="2">
+    <circle cx="0" cy="0" r="65" stroke-dasharray="3 3" />
+    <circle cx="0" cy="0" r="42" stroke-dasharray="6 3" />
+    <circle cx="0" cy="0" r="18" fill="rgba(245,158,11,0.2)" stroke-width="3" />
+    <line x1="-75" y1="0" x2="75" y2="0" stroke="rgba(245,158,11,0.4)" />
+    <line x1="0" y1="-75" x2="0" y2="75" stroke="rgba(245,158,11,0.4)" />
+    <circle cx="28" cy="-28" r="5" fill="#ef4444" stroke="#fecaca" stroke-width="1.5" />
+    <circle cx="-35" cy="15" r="4" fill="#f59e0b" />
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" text-anchor="middle">
+    <rect x="250" y="38" width="300" height="28" rx="14" fill="rgba(245,158,11,0.12)" stroke="rgba(245,158,11,0.3)" />
+    <text x="400" y="56" fill="#fbbf24" font-size="12" font-weight="600" letter-spacing="1.5">ENDPOINT DETECTION &amp; RESPONSE</text>
+    <text x="400" y="295" fill="#f8fafc" font-size="22" font-weight="700" letter-spacing="-0.5">SvelteShield EDR</text>
+    <text x="400" y="325" fill="#94a3b8" font-size="13" font-weight="500">Android EDR • Loopback-VPN Traffic Inspection • Threat Mitigation</text>
+  </g>
+  <g font-family="'JetBrains Mono', monospace" font-size="11" fill="#fca5a5">
+    <rect x="190" y="355" width="125" height="24" rx="6" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.2)" />
+    <text x="252" y="371" text-anchor="middle">Loopback VPN</text>
+    <rect x="335" y="355" width="130" height="24" rx="6" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.2)" />
+    <text x="400" y="371" text-anchor="middle">Packet Filtering</text>
+    <rect x="485" y="355" width="125" height="24" rx="6" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.2)" />
+    <text x="547" y="371" text-anchor="middle">NDK Hook Guard</text>
+  </g>
+</svg>

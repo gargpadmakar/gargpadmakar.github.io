@@ -1901,6 +1901,9 @@
       }
     }
 
+    var allRawArticles = [];
+    var featuredArticle = null;
+
     function renderPage() {
       var filtered = activeTopic === 'All'
         ? allListArticles
@@ -1914,6 +1917,13 @@
       var startIdx = (curPage - 1) * PAGE_SIZE;
       var endIdx = Math.min(startIdx + PAGE_SIZE, total);
       var pageItems = filtered.slice(startIdx, endIdx);
+
+      // Dynamic total count including all published articles
+      var displayTotal = activeTopic === 'All'
+        ? (allRawArticles && allRawArticles.length ? allRawArticles.length : allListArticles.length + 1)
+        : (filtered.length + (featuredArticle && featuredArticle.topic === activeTopic ? 1 : 0));
+      var displayEnd = (curPage === totalPages) ? displayTotal : Math.min(curPage * PAGE_SIZE, displayTotal);
+      var displayStart = Math.min(startIdx + 1, displayEnd);
 
       postsOl.innerHTML = '';
       pageItems.forEach(function(item) {
@@ -1973,7 +1983,7 @@
       if (pgContainer) {
         if (total > PAGE_SIZE) {
           pgContainer.style.display = 'flex';
-          if (pgInfo) pgInfo.textContent = 'Showing ' + (startIdx + 1) + '–' + endIdx + ' of ' + total + ' articles';
+          if (pgInfo) pgInfo.textContent = 'Showing ' + displayStart + '–' + displayEnd + ' of ' + displayTotal + ' articles';
           if (pgPrev) {
             pgPrev.style.display = 'inline-flex';
             pgPrev.disabled = (curPage === 1);
@@ -2044,6 +2054,7 @@
 
     function setArticles(articles) {
       if (!articles || !articles.length) return;
+      allRawArticles = articles;
 
       // 1. Featured card (pin "One Codebase, Two Attack Surfaces" or fallback to newest)
       var featIdx = -1;
@@ -2054,6 +2065,7 @@
         }
       }
       var top = featIdx !== -1 ? articles[featIdx] : articles[0];
+      featuredArticle = top;
       if (featA && top) {
         featA.href = top.url;
         featA.target = '_blank';

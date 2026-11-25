@@ -327,235 +327,244 @@
     .proj-badge-row{margin-bottom:10px}
     .badge-enterprise{font:600 .68rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:6px;padding:4px 8px;display:inline-block}
 
-            /* ===================================================
-       MOBILE SECURITY KEY SKILLS - CYBER DEFENSE CONSOLE
+                /* ===================================================
+       CYBER SECURITY CIRCULAR RADAR HUD (NO RED)
        =================================================== */
-    .sec-skills-console {
+    .rc-hud-container {
       position: relative;
       border-radius: 24px;
-      padding: 38px 28px;
+      padding: 42px 24px;
       margin: 36px 0;
       overflow: hidden;
-      background: linear-gradient(180deg, rgba(15, 23, 42, 0.95) 0%, rgba(9, 14, 26, 0.98) 100%);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      background: radial-gradient(circle at 50% 42%, #091a2e 0%, #06111f 48%, #030712 100%);
+      border: 1px solid rgba(56, 189, 248, 0.35);
+      box-shadow: 0 24px 64px rgba(0, 0, 0, 0.6), inset 0 0 100px rgba(56, 189, 248, 0.08);
     }
-    .sec-skills-backdrop {
+    .rc-hud-backdrop {
       position: absolute;
       inset: 0;
-      opacity: .07;
+      opacity: .12;
       pointer-events: none;
-      background-image: radial-gradient(#38bdf8 1px, transparent 1px), radial-gradient(#38bdf8 1px, #070b14 1px);
+      background-image: radial-gradient(#38bdf8 1px, transparent 1px), radial-gradient(#38bdf8 1px, #030712 1px);
       background-size: 32px 32px;
       background-position: 0 0, 16px 16px;
     }
-    .sec-console-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-      padding-bottom: 20px;
-      margin-bottom: 24px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      position: relative;
-      z-index: 2;
-    }
-    .sec-status-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font: 600 .7rem/1 var(--mono);
-      letter-spacing: .08em;
-      color: #38bdf8;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      padding: 6px 14px;
-      border-radius: 999px;
-    }
-    .sec-status-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 10px #10b981;
-      animation: secLedPulse 2s infinite ease-in-out;
-    }
-    @keyframes secLedPulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: .4; transform: scale(.85); }
-    }
-    .sec-telemetry {
-      font: 500 .68rem/1 var(--mono);
-      letter-spacing: .08em;
-      color: var(--mute);
-    }
-    .sec-skills-header {
+    .rc-hud-header {
       text-align: center;
       position: relative;
       z-index: 2;
       margin-bottom: 28px;
-      max-width: 720px;
-      margin-left: auto;
-      margin-right: auto;
     }
-    .sec-badge {
+    .rc-hud-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font: 600 .72rem/1 var(--mono);
+      font: 600 .7rem/1 var(--mono, monospace);
       text-transform: uppercase;
-      letter-spacing: .14em;
+      letter-spacing: .16em;
       color: #38bdf8;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.28);
+      background: rgba(56, 189, 248, 0.12);
+      border: 1px solid rgba(56, 189, 248, 0.32);
       padding: 6px 16px;
       border-radius: 999px;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
-    .sec-skills-header h3 {
-      font-size: clamp(1.4rem, 3vw, 2rem);
+    .rc-hud-heading {
+      font-size: clamp(1.35rem, 2.8vw, 1.85rem);
       font-weight: 700;
       letter-spacing: -.03em;
       color: #fff;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 20px rgba(56, 189, 248, 0.2);
-    }
-    .sec-skills-header p {
-      font-size: .88rem;
-      line-height: 1.55;
-      color: var(--dim);
+      text-shadow: 0 4px 18px rgba(56, 189, 248, 0.35);
       margin: 0;
     }
-
-    /* Filter domain buttons */
-    .sec-domain-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 8px;
-      margin-bottom: 28px;
+    .rc-hud-radar {
       position: relative;
-      z-index: 2;
-    }
-    .sec-domain-btn {
-      font: 600 .74rem/1 var(--mono);
-      letter-spacing: .04em;
-      color: var(--mute);
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 999px;
-      padding: 8px 16px;
-      cursor: pointer;
-      transition: all .2s ease;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .sec-domain-btn:hover {
-      color: #fff;
-      border-color: rgba(56, 189, 248, 0.4);
-      background: rgba(56, 189, 248, 0.08);
-      transform: translateY(-1px);
-    }
-    .sec-domain-btn.active {
-      color: #fff;
-      background: linear-gradient(135deg, #0284c7, #2563eb);
-      border-color: #38bdf8;
-      box-shadow: 0 0 16px rgba(14, 165, 233, 0.4);
-    }
-
-    /* Skills Grid */
-    .sec-skills-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 16px;
-      position: relative;
-      z-index: 2;
-    }
-    .sec-card {
-      background: rgba(11, 18, 34, 0.75);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 16px;
-      padding: 20px 22px;
+      width: min(360px, 90vw);
+      height: min(360px, 90vw);
+      margin: 0 auto 32px;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
-      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-      backdrop-filter: blur(10px);
-    }
-    .sec-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(56, 189, 248, 0.45);
-      box-shadow: 0 12px 30px rgba(56, 189, 248, 0.12);
-      background: rgba(15, 23, 42, 0.9);
-    }
-    .sec-card.pop-in {
-      animation: secCardIn .32s cubic-bezier(.16, 1, .3, 1) forwards;
-    }
-    @keyframes secCardIn {
-      0% { opacity: 0; transform: translateY(12px) scale(.98); }
-      100% { opacity: 1; transform: translateY(0) scale(1); }
-    }
-    .sec-card-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 8px;
-    }
-    .sec-card-icon {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: rgba(56, 189, 248, 0.1);
-      border: 1px solid rgba(56, 189, 248, 0.25);
-      color: #38bdf8;
-      flex-shrink: 0;
+      z-index: 2;
     }
-    .sec-card-cat {
-      font: 600 .66rem/1 var(--mono);
-      letter-spacing: .08em;
+    .rc-ring {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .rc-ring-outer {
+      inset: 0;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      box-shadow: 0 0 35px rgba(56, 189, 248, 0.12);
+    }
+    .rc-ring-dashed {
+      inset: 22px;
+      border: 1.5px dashed rgba(56, 189, 248, 0.45);
+      border-radius: 50%;
+      animation: rcRadarSpin 24s linear infinite;
+    }
+    @keyframes rcRadarSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .rc-notch {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: #38bdf8;
+      box-shadow: 0 0 8px #38bdf8;
+      border-radius: 1px;
+    }
+    .rc-notch-top { top: -4px; left: calc(50% - 4px); }
+    .rc-notch-right { right: -4px; top: calc(50% - 4px); }
+    .rc-notch-bottom { bottom: -4px; left: calc(50% - 4px); }
+    .rc-notch-left { left: -4px; top: calc(50% - 4px); }
+
+    .rc-orbit-runner {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      animation: rcOrbitRotate 14s linear infinite;
+    }
+    @keyframes rcOrbitRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    .rc-runner-dot {
+      position: absolute;
+      top: -14px;
+      left: calc(50% - 14px);
+      width: 28px;
+      height: 28px;
+      background: linear-gradient(135deg, #0284c7, #38bdf8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 0 16px #38bdf8, 0 0 32px rgba(14, 165, 233, 0.6);
+      transform: rotate(0deg);
+      animation: rcRunnerPulse 2s ease-in-out infinite;
+    }
+    @keyframes rcRunnerPulse {
+      0%, 100% { transform: scale(1); box-shadow: 0 0 14px #38bdf8; }
+      50% { transform: scale(1.15); box-shadow: 0 0 24px #38bdf8, 0 0 40px rgba(14, 165, 233, 0.8); }
+    }
+    .rc-runner-dot svg {
+      width: 14px;
+      height: 14px;
+    }
+    .rc-ring-inner {
+      inset: 58px;
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      background: radial-gradient(circle, rgba(14, 165, 233, 0.12) 0%, rgba(3, 7, 18, 0.7) 70%);
+      box-shadow: inset 0 0 25px rgba(56, 189, 248, 0.15);
+    }
+    .rc-core {
+      position: relative;
+      z-index: 3;
+      max-width: 220px;
+      text-align: center;
+      padding: 0 10px;
+    }
+    .rc-kicker {
+      display: block;
+      font: 700 .62rem/1 var(--mono, monospace);
+      letter-spacing: .16em;
       text-transform: uppercase;
       color: #38bdf8;
-      background: rgba(56, 189, 248, 0.08);
-      border: 1px solid rgba(56, 189, 248, 0.2);
-      padding: 4px 10px;
-      border-radius: 999px;
+      margin-bottom: 10px;
     }
-    .sec-card h4 {
-      font-size: .98rem;
+    .rc-title {
+      font-size: 1.05rem;
       font-weight: 700;
-      color: #f8fafc;
-      letter-spacing: -.01em;
-      margin: 0;
+      line-height: 1.3;
+      color: #fff;
+      margin: 0 0 8px;
+      letter-spacing: -.02em;
+      transition: opacity .25s ease, transform .25s ease;
     }
-    .sec-card p {
-      font-size: .82rem;
-      line-height: 1.5;
-      color: var(--dim);
-      margin: 0;
-      flex-grow: 1;
-    }
-    .sec-card-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-top: 4px;
-    }
-    .sec-card-tags span {
-      font: 500 .68rem/1 var(--mono);
+    .rc-desc {
+      font-size: .72rem;
+      line-height: 1.45;
       color: #94a3b8;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 6px;
-      padding: 4px 8px;
+      margin: 0 0 10px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      transition: opacity .25s ease;
     }
-    .sec-card:hover .sec-card-tags span {
-      color: #cbd5e1;
-      border-color: rgba(56, 189, 248, 0.2);
+    .rc-counter {
+      font: 600 .68rem/1 var(--mono, monospace);
+      color: #38bdf8;
+      letter-spacing: .06em;
+    }
+    .rc-counter span {
+      color: #fff;
+      font-weight: 700;
+    }
+
+    /* 8 Pure Security Skill Pills (Grid) */
+    .rc-skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      position: relative;
+      z-index: 2;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    @media (max-width: 640px) {
+      .rc-skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    .rc-skill-btn {
+      font: inherit;
+      font-size: .8rem;
+      font-weight: 600;
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 999px;
+      padding: 10px 18px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all .22s ease;
+      text-align: left;
+      backdrop-filter: blur(6px);
+    }
+    .rc-skill-btn::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #475569;
+      transition: background .2s, box-shadow .2s;
+      flex-shrink: 0;
+    }
+    .rc-skill-btn:hover {
+      color: #fff;
+      border-color: rgba(56, 189, 248, 0.5);
+      background: rgba(56, 189, 248, 0.1);
+      box-shadow: 0 0 14px rgba(56, 189, 248, 0.2);
+    }
+    .rc-skill-btn:hover::before {
+      background: #38bdf8;
+      box-shadow: 0 0 8px #38bdf8;
+    }
+    .rc-skill-btn.active {
+      color: #fff;
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.25), rgba(37, 99, 235, 0.25));
+      border-color: #38bdf8;
+      box-shadow: 0 0 18px rgba(56, 189, 248, 0.32);
+    }
+    .rc-skill-btn.active::before {
+      background: #38bdf8;
+      box-shadow: 0 0 10px #38bdf8, 0 0 18px #0ea5e9;
     }
 
     /* Google Play tab button with animated glow */
@@ -1220,222 +1229,77 @@
           <p>Padmakar Garg is a Senior Android Developer &amp; Mobile Security Engineer who has spent eight-plus years shipping production apps, with 120+ published on Google Play, from e-commerce and CRM to news, astrology and secure encrypted messaging.</p>
           <p>Since August 2022 he has been a Senior Android Developer &amp; Mobile Security Engineer at Sveltetech Technology, working on real-time messaging, WebRTC voice and video calling, and end-to-end encrypted communication. His engineering focus includes Android Endpoint Detection & Response (EDR), loopback-VPN traffic inspection, and advanced mobile application security (RASP, anti-tamper, and reverse-engineering defenses).</p>
           <p>Outside client work he publishes open-source Android libraries and writes on Medium and dev.to about system design, mobile security and CI/CD. His work also covers Java and Kotlin app development, Jetpack Compose, code obfuscation, and mobile device management (MDM) with Microsoft Intune.</p>
-          <div class="sec-skills-console rv" id="secSkillsConsole">
-      <div class="sec-skills-backdrop" aria-hidden="true"></div>
-
-      <!-- Top Console Status Bar -->
-      <div class="sec-console-bar">
-        <div class="sec-status-pill">
-          <span class="sec-status-dot"></span>
-          <span>SYSTEM DEFENSE // ACTIVE THREAT MITIGATION</span>
-        </div>
-        <div class="sec-telemetry">
-          <span>PADMAKAR GARG • SECURITY ARCHITECTURE MATRIX</span>
-        </div>
-      </div>
-
-      <!-- Header -->
-      <div class="sec-skills-header">
-        <span class="sec-badge">
+          <div class="rc-hud-container rv" id="rcHudSkills">
+      <div class="rc-hud-backdrop" aria-hidden="true"></div>
+      
+      <div class="rc-hud-header">
+        <span class="rc-hud-badge">
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
           </svg>
-          CYBER DEFENSE &amp; CORE ARCHITECTURE
+          CYBER DEFENSE &amp; APPLICATION PROTECTION
         </span>
-        <h3>Mobile Security Key Skills</h3>
-        <p>Production-grade Android endpoint defense, kernel &amp; NDK hardening, RASP runtime protection, packet inspection, and resilient cryptographic architecture.</p>
+        <h3 class="rc-hud-heading">Mobile Security Key Skills</h3>
       </div>
 
-      <!-- Domain Filter Tabs -->
-      <div class="sec-domain-tabs" role="group" aria-label="Filter security skills">
-        <button type="button" class="sec-domain-btn active" data-sdomain="all">All Skills (12)</button>
-        <button type="button" class="sec-domain-btn" data-sdomain="edr">Endpoint &amp; EDR</button>
-        <button type="button" class="sec-domain-btn" data-sdomain="rasp">RASP &amp; Anti-Tamper</button>
-        <button type="button" class="sec-domain-btn" data-sdomain="crypto">Cryptography &amp; Comms</button>
-        <button type="button" class="sec-domain-btn" data-sdomain="core">Architecture &amp; Core</button>
+      <div class="rc-hud-radar" aria-live="polite">
+        <!-- Outer Glowing Ring -->
+        <div class="rc-ring rc-ring-outer" aria-hidden="true"></div>
+        
+        <!-- Dashed Orbital Tracking Ring with Cardinal Notches -->
+        <div class="rc-ring rc-ring-dashed" aria-hidden="true">
+          <span class="rc-notch rc-notch-top"></span>
+          <span class="rc-notch rc-notch-right"></span>
+          <span class="rc-notch rc-notch-bottom"></span>
+          <span class="rc-notch rc-notch-left"></span>
+          <!-- Orbiting Satellite Indicator (Cyan Cyber Theme) -->
+          <div class="rc-orbit-runner">
+            <div class="rc-runner-dot">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inner Target Ring -->
+        <div class="rc-ring rc-ring-inner" aria-hidden="true"></div>
+        
+        <!-- Center Focus Core -->
+        <div class="rc-core">
+          <span class="rc-kicker">ACTIVE DEFENSE VECTOR</span>
+          <h4 class="rc-title" id="rcActiveTitle">Android EDR (Endpoint Detection &amp; Response)</h4>
+          <p class="rc-desc" id="rcActiveDesc">Comprehensive endpoint detection &amp; response, threat event telemetry, anomaly scoring, and dynamic policy enforcement.</p>
+          <div class="rc-counter"><span id="rcActiveIdx">01</span> / 08 &bull; <span id="rcActiveTag">EDR • Mobile Security</span></div>
+        </div>
       </div>
 
-      <!-- Skills Grid -->
-      <div class="sec-skills-grid">
-        <!-- 1: Android EDR -->
-        <div class="sec-card" data-domain="edr">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
-            </div>
-            <span class="sec-card-cat">Endpoint EDR</span>
-          </div>
-          <h4>Android EDR (Endpoint Detection &amp; Response)</h4>
-          <p>Comprehensive endpoint telemetry, heuristic anomaly scoring, dynamic policy-driven remediation, and real-time security event telemetry.</p>
-          <div class="sec-card-tags">
-            <span>EDR Telemetry</span><span>Threat Response</span><span>Dynamic Policy</span><span>Device Health</span>
-          </div>
-        </div>
-
-        <!-- 2: VpnService & Loopback Traffic -->
-        <div class="sec-card" data-domain="edr">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-            </div>
-            <span class="sec-card-cat">Packet Inspection</span>
-          </div>
-          <h4>VpnService &amp; Loopback Traffic Inspection</h4>
-          <p>Loopback-VPN egress monitoring, tun interface packet capture, and local IP/TCP packet inspection using Android's native VpnService without external proxies.</p>
-          <div class="sec-card-tags">
-            <span>VpnService</span><span>Tun Interface</span><span>Packet Capture</span><span>Loopback VPN</span>
-          </div>
-        </div>
-
-        <!-- 3: Packet Filtering & Threat Blocking -->
-        <div class="sec-card" data-domain="edr">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
-            </div>
-            <span class="sec-card-cat">Threat Blocking</span>
-          </div>
-          <h4>Packet Filtering &amp; DNS/IP Threat Blocking</h4>
-          <p>Real-time DNS query filtering, malicious IP blacklist enforcement, rogue APK connection termination, and egress policy rule enforcement.</p>
-          <div class="sec-card-tags">
-            <span>DNS Filter</span><span>IP Blacklist</span><span>Domain Blocker</span><span>Connection Drop</span>
-          </div>
-        </div>
-
-        <!-- 4: RASP (Runtime Protection) -->
-        <div class="sec-card" data-domain="rasp">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-            </div>
-            <span class="sec-card-cat">Runtime Security</span>
-          </div>
-          <h4>RASP (Runtime Application Protection)</h4>
-          <p>In-app self-protection against memory tampering, unauthorized method hooking, debugger attachment, emulator virtualization, and DEX code modification.</p>
-          <div class="sec-card-tags">
-            <span>RASP</span><span>Anti-Tamper</span><span>Anti-Debug</span><span>Memory Integrity</span>
-          </div>
-        </div>
-
-        <!-- 5: Frida & Hook Detection -->
-        <div class="sec-card" data-domain="rasp">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-            </div>
-            <span class="sec-card-cat">Anti-Reversing</span>
-          </div>
-          <h4>Frida, Xposed &amp; Magisk/Zygisk Detection</h4>
-          <p>Advanced root detection, Magisk/Zygisk cloaking defense, Frida gadget &amp; named-pipe detection, and Xposed framework hook mitigation.</p>
-          <div class="sec-card-tags">
-            <span>Anti-Frida</span><span>Zygisk Detection</span><span>Root Defense</span><span>Hook Mitigation</span>
-          </div>
-        </div>
-
-        <!-- 6: C/C++ (NDK) & JNI -->
-        <div class="sec-card" data-domain="rasp">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-            </div>
-            <span class="sec-card-cat">Native Hardening</span>
-          </div>
-          <h4>C/C++ (NDK) &amp; JNI Security</h4>
-          <p>Hardened native binaries in C/C++, direct Linux syscalls to bypass Java-layer hooks, JNI environment verification, and symbol obfuscation.</p>
-          <div class="sec-card-tags">
-            <span>Android NDK</span><span>C/C++</span><span>Direct Syscalls</span><span>JNI Verification</span>
-          </div>
-        </div>
-
-        <!-- 7: E2EE Cryptography -->
-        <div class="sec-card" data-domain="crypto">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-1.5 1.5L4 19l-2 2 2-2 13.5-13.5M16 5l3 3M19 8l-3-3"/></svg>
-            </div>
-            <span class="sec-card-cat">Cryptography</span>
-          </div>
-          <h4>E2EE Cryptography (AES-GCM, ECDH)</h4>
-          <p>End-to-end encrypted messaging, ephemeral ECDH (X25519) key exchange, authenticated AES-256-GCM, and Telegram MTProto 2.0 primitives.</p>
-          <div class="sec-card-tags">
-            <span>AES-256-GCM</span><span>ECDH Key Exchange</span><span>MTProto 2.0</span><span>Keystore</span>
-          </div>
-        </div>
-
-        <!-- 8: LiveKit WebRTC -->
-        <div class="sec-card" data-domain="crypto">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
-            </div>
-            <span class="sec-card-cat">Secure Comms</span>
-          </div>
-          <h4>LiveKit WebRTC &amp; VoIP Security</h4>
-          <p>Enterprise VoIP audio and low-latency HD video calling integration via LiveKit SFU infrastructure, SRTP media encryption, and token authentication.</p>
-          <div class="sec-card-tags">
-            <span>LiveKit SFU</span><span>WebRTC</span><span>SRTP Encryption</span><span>VoIP Calling</span>
-          </div>
-        </div>
-
-        <!-- 9: Kotlin & Java -->
-        <div class="sec-card" data-domain="core">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12l2 2 4-4"/></svg>
-            </div>
-            <span class="sec-card-cat">Core Engineering</span>
-          </div>
-          <h4>Kotlin &amp; Java Core Engineering</h4>
-          <p>Production development across modern Kotlin and Java: coroutines, reactive Flow pipelines, Clean Architecture, and high-concurrency event processing.</p>
-          <div class="sec-card-tags">
-            <span>Kotlin</span><span>Java</span><span>Coroutines &amp; Flow</span><span>Clean Architecture</span>
-          </div>
-        </div>
-
-        <!-- 10: Jetpack Compose -->
-        <div class="sec-card" data-domain="core">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
-            </div>
-            <span class="sec-card-cat">UI Architecture</span>
-          </div>
-          <h4>Jetpack Compose UI &amp; Canvas</h4>
-          <p>Modern declarative Android UI development, custom Canvas renderers, 60fps fluid reactive animations, and strict unidirectional data flow (UDF).</p>
-          <div class="sec-card-tags">
-            <span>Jetpack Compose</span><span>Declarative UI</span><span>State Hoisting</span><span>Custom Canvas</span>
-          </div>
-        </div>
-
-        <!-- 11: Kotlin Multiplatform (KMP) -->
-        <div class="sec-card" data-domain="core">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/></svg>
-            </div>
-            <span class="sec-card-cat">Cross-Platform</span>
-          </div>
-          <h4>Kotlin Multiplatform (KMP)</h4>
-          <p>Shared cross-platform business logic, Ktor networking engine, unified cryptographic storage, and shared multiplatform data repositories.</p>
-          <div class="sec-card-tags">
-            <span>KMP</span><span>Ktor</span><span>Multiplatform</span><span>Shared Logic</span>
-          </div>
-        </div>
-
-        <!-- 12: WorkManager & Offline-First -->
-        <div class="sec-card" data-domain="core">
-          <div class="sec-card-top">
-            <div class="sec-card-icon">
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-            </div>
-            <span class="sec-card-cat">Resilience</span>
-          </div>
-          <h4>WorkManager &amp; Offline-First</h4>
-          <p>Persistent Room-backed request queuing, WorkManager background synchronization, network backoff with jitter, and auto-sync on reconnect.</p>
-          <div class="sec-card-tags">
-            <span>WorkManager</span><span>Room DB</span><span>Offline-First</span><span>Sync Queue</span>
-          </div>
-        </div>
+      <!-- 8 Pure Mobile Security Skill Buttons -->
+      <div class="rc-skills-grid" role="group" aria-label="Mobile Security Key Skills">
+        <button type="button" class="rc-skill-btn active" data-idx="0" aria-label="Android EDR (Endpoint Detection &amp; Response)">
+          <span>Android EDR (Endpoint Detection &amp; Response)</span>
+        </button>
+        <button type="button" class="rc-skill-btn" data-idx="1" aria-label="VpnService &amp; Loopback Traffic Inspection">
+          <span>VpnService &amp; Loopback Traffic Inspection</span>
+        </button>
+        <button type="button" class="rc-skill-btn" data-idx="2" aria-label="Packet Filtering &amp; DNS/IP Threat Blocking">
+          <span>Packet Filtering &amp; DNS/IP Threat Blocking</span>
+        </button>
+        <button type="button" class="rc-skill-btn" data-idx="3" aria-label="RASP (Runtime Application Protection)">
+          <span>RASP (Runtime Application Protection)</span>
+        </button>
+        <button type="button" class="rc-skill-btn" data-idx="4" aria-label="Frida, Xposed &amp; Magisk/Zygisk Detection">
+          <span>Frida, Xposed &amp; Magisk/Zygisk Detection</span>
+        </button>
+        <button type="button" class="rc-skill-btn" data-idx="5" aria-label="C/C++ (NDK) &amp; JNI Security">
+          <span>C/C++ (NDK) &amp; JNI Security</span>
+        </button>
+        <button type="button" class="rc-skill-btn" data-idx="6" aria-label="E2EE Cryptography (AES-GCM, ECDH)">
+          <span>E2EE Cryptography (AES-GCM, ECDH)</span>
+        </button>
+        <button type="button" class="rc-skill-btn" data-idx="7" aria-label="App Integrity &amp; Signature Verification">
+          <span>App Integrity &amp; Signature Verification</span>
+        </button>
       </div>
     </div>
           <div class="stats">
@@ -2265,28 +2129,117 @@
     }).catch(function(){});
   })();
 
-  // --- MOBILE SECURITY KEY SKILLS DOMAIN FILTER ---
+  // --- RED CHILLIES STYLE SECURITY RADAR HUD (NO RED) ---
   (function(){
-    var tabs = document.querySelectorAll('.sec-domain-btn');
-    var cards = document.querySelectorAll('.sec-card');
-    if (!tabs.length || !cards.length) return;
+    var skillsData = [
+      {
+        title: "Android EDR",
+        full: "Android EDR (Endpoint Detection & Response)",
+        desc: "Comprehensive endpoint detection & response, threat event telemetry, anomaly scoring, and dynamic policy enforcement.",
+        tags: "EDR • Mobile Security"
+      },
+      {
+        title: "VpnService & Packet Inspection",
+        full: "VpnService & Loopback Traffic Inspection",
+        desc: "Loopback-VPN egress monitoring, packet interception, and local traffic filtering using Android VpnService.",
+        tags: "VpnService • Packet Inspection"
+      },
+      {
+        title: "Packet Filtering & Threat Blocking",
+        full: "Packet Filtering & DNS/IP Threat Blocking",
+        desc: "Real-time DNS filtering, malicious IP and domain blocking, and rogue APK connection termination.",
+        tags: "DNS Filter • IP Blacklist"
+      },
+      {
+        title: "RASP Runtime Security",
+        full: "RASP (Runtime Application Protection)",
+        desc: "In-app self-protection against memory tampering, unauthorized hooking, and dynamic runtime manipulation.",
+        tags: "RASP • Anti-Tamper"
+      },
+      {
+        title: "Frida & Hook Detection",
+        full: "Frida, Xposed & Magisk/Zygisk Detection",
+        desc: "Multi-vector root detection, Magisk/Zygisk cloaking defense, Frida gadget detection, and Xposed hook mitigation.",
+        tags: "Anti-Frida • Anti-Root"
+      },
+      {
+        title: "C/C++ (NDK) & JNI Security",
+        full: "C/C++ (NDK) & JNI Security",
+        desc: "Hardened native binaries in C/C++, direct Linux syscalls, JNI environment verification, and symbol obfuscation.",
+        tags: "NDK • C/C++ • JNI"
+      },
+      {
+        title: "E2EE Cryptography",
+        full: "E2EE Cryptography (AES-GCM, ECDH)",
+        desc: "End-to-end encrypted messaging, ECDH curve25519 key exchange, authenticated AES-256-GCM, and MTProto 2.0.",
+        tags: "E2EE • AES-GCM • ECDH"
+      },
+      {
+        title: "App Integrity & Anti-Tamper",
+        full: "App Integrity & Signature Verification",
+        desc: "Runtime APK signature hashing, classes.dex checksum validation, installer verification, and anti-repackaging protection.",
+        tags: "Integrity • Anti-Repackage"
+      }
+    ];
 
-    tabs.forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        var domain = tab.dataset.sdomain;
-        tabs.forEach(function(t) { t.classList.toggle('active', t === tab); });
+    var hudEl = document.getElementById('rcHudSkills');
+    if (!hudEl) return;
+    
+    var titleEl = hudEl.querySelector('#rcActiveTitle');
+    var descEl = hudEl.querySelector('#rcActiveDesc');
+    var idxEl = hudEl.querySelector('#rcActiveIdx');
+    var tagEl = hudEl.querySelector('#rcActiveTag');
+    var btns = [].slice.call(hudEl.querySelectorAll('.rc-skill-btn'));
+    var curIdx = 0;
+    var timer = null;
+    var isHovered = false;
 
-        cards.forEach(function(card) {
-          var match = domain === 'all' || card.dataset.domain === domain;
-          card.style.display = match ? 'flex' : 'none';
-          if (match) {
-            card.classList.remove('pop-in');
-            void card.offsetWidth;
-            card.classList.add('pop-in');
-          }
-        });
+    function showSkill(idx) {
+      if (idx < 0 || idx >= skillsData.length) return;
+      curIdx = idx;
+      btns.forEach(function(b, i){ b.classList.toggle('active', i === idx); });
+      var s = skillsData[idx];
+      if (titleEl) {
+        titleEl.style.opacity = '0';
+        titleEl.style.transform = 'scale(0.96)';
+      }
+      if (descEl) descEl.style.opacity = '0';
+      
+      setTimeout(function(){
+        if (titleEl) {
+          titleEl.textContent = s.full;
+          titleEl.style.opacity = '1';
+          titleEl.style.transform = 'scale(1)';
+        }
+        if (descEl) {
+          descEl.textContent = s.desc;
+          descEl.style.opacity = '1';
+        }
+        if (idxEl) idxEl.textContent = (idx + 1 < 10 ? '0' : '') + (idx + 1);
+        if (tagEl) tagEl.textContent = s.tags;
+      }, 150);
+    }
+
+    btns.forEach(function(btn, i){
+      btn.addEventListener('mouseenter', function(){
+        isHovered = true;
+        showSkill(i);
+      });
+      btn.addEventListener('click', function(){
+        showSkill(i);
       });
     });
+
+    hudEl.addEventListener('mouseenter', function(){ isHovered = true; });
+    hudEl.addEventListener('mouseleave', function(){ isHovered = false; });
+
+    function autoAdvance() {
+      if (!isHovered) {
+        curIdx = (curIdx + 1) % skillsData.length;
+        showSkill(curIdx);
+      }
+    }
+    timer = setInterval(autoAdvance, 2800);
   })();
 
   // theme toggle

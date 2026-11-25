@@ -236,6 +236,13 @@
     .src{font:500 .72rem/1 var(--mono);color:var(--mute);border:1px solid var(--line2);border-radius:999px;padding:6px 12px;white-space:nowrap;transition:color .2s,border-color .2s}
     ol.posts a:hover .src{color:var(--blue2);border-color:var(--blue)}
     .more{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+    .blog-pg{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:24px;padding:16px 4px 8px;border-top:1px dashed var(--line)}
+    .blog-pg-info{font-size:.88rem;color:var(--mute);font-weight:500}
+    .blog-pg-controls{display:flex;align-items:center;gap:6px}
+    .pg-btn{display:inline-flex;align-items:center;justify-content:center;min-width:36px;height:36px;padding:0 12px;border:1px solid var(--line2);border-radius:8px;background:var(--card);color:var(--ink);font-size:.85rem;font-weight:600;cursor:pointer;transition:all .2s;text-decoration:none}
+    .pg-btn:hover:not(:disabled){border-color:var(--blue);background:var(--glow);color:var(--blue2)}
+    .pg-btn.active{background:var(--blue);border-color:var(--blue);color:var(--blue-ink)}
+    .pg-btn:disabled{opacity:.35;cursor:not-allowed;pointer-events:none}
 
     /* about */
     .about{display:grid;grid-template-columns:.8fr 1.2fr;gap:48px;align-items:start}
@@ -557,6 +564,14 @@
           <p>Creating an Android project as a team, branching strategy, pull requests and essential Git commands.</p></div>
           <span class="src">Medium</span></a></li>
       </ol>
+      <div class="blog-pg rv" id="blog-pg" style="display:none;">
+        <div class="blog-pg-info" id="blog-pg-info">Showing articles</div>
+        <div class="blog-pg-controls">
+          <button type="button" class="pg-btn" id="pg-prev" aria-label="Previous page">← Prev</button>
+          <div id="pg-numbers" style="display:inline-flex;gap:6px;"></div>
+          <button type="button" class="pg-btn" id="pg-next" aria-label="Next page">Next →</button>
+        </div>
+      </div>
       <div class="more"><a class="btn" href="https://dev.to/gargpadmakar" rel="noopener">More on dev.to</a><a class="btn" href="https://medium.com/@worldpadmakar007" rel="noopener">More on Medium</a></div>
     </section>
 
@@ -788,15 +803,7 @@
 
 <script>
 (function(){
-  var btns=document.querySelectorAll('.filter:not(.pf) button');
-  btns.forEach(function(b){b.addEventListener('click',function(){
-    btns.forEach(function(x){x.classList.toggle('on',x===b)});
-    document.querySelectorAll('ol.posts li').forEach(function(li){
-      li.hidden=b.dataset.f!=='All'&&li.dataset.topic!==b.dataset.f;
-    });
-  })});
-
-  // --- Live Auto-sync from Dev.to & Medium ---
+  // --- Live Auto-sync from Dev.to & Medium with Pagination ---
   (function(){
     var featA = document.querySelector('.feature a');
     var postsOl = document.querySelector('ol.posts');
@@ -804,9 +811,20 @@
 
     var DEVTO_USER = 'gargpadmakar';
     var MEDIUM_USER = 'worldpadmakar007';
-    var CACHE_KEY = 'pg_blog_articles_cache_v3';
-    var CACHE_TIME_KEY = 'pg_blog_articles_time_v3';
+    var CACHE_KEY = 'pg_blog_articles_cache_v4';
+    var CACHE_TIME_KEY = 'pg_blog_articles_time_v4';
     var TTL = 10 * 60 * 1000; // 10 minutes cache
+    var PAGE_SIZE = 8;
+
+    var curPage = 1;
+    var activeTopic = 'All';
+    var allListArticles = [];
+
+    var pgContainer = document.getElementById('blog-pg');
+    var pgInfo = document.getElementById('blog-pg-info');
+    var pgPrev = document.getElementById('pg-prev');
+    var pgNext = document.getElementById('pg-next');
+    var pgNumbers = document.getElementById('pg-numbers');
 
     function mapTopic(tags, title) {
       var s = ((Array.isArray(tags) ? tags.join(' ') : '') + ' ' + (title || '')).toLowerCase();
@@ -816,10 +834,141 @@
       return 'Android';
     }
 
-    function render(articles) {
+    function scrollToWriting() {
+      var sec = document.getElementById('writing');
+      if (sec) {
+        var top = sec.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: top, behavior: 'smooth' });
+      }
+    }
+
+    function renderPage() {
+      var filtered = activeTopic === 'All'
+        ? allListArticles
+        : allListArticles.filter(function(a){ return a.topic === activeTopic; });
+
+      var total = filtered.length;
+      var totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+      if (curPage > totalPages) curPage = totalPages;
+      if (curPage < 1) curPage = 1;
+
+      var startIdx = (curPage - 1) * PAGE_SIZE;
+      var endIdx = Math.min(startIdx + PAGE_SIZE, total);
+      var pageItems = filtered.slice(startIdx, endIdx);
+
+      postsOl.innerHTML = '';
+      pageItems.forEach(function(item) {
+        var li = document.createElement('li');
+        li.setAttribute('data-topic', item.topic);
+
+        var a = document.createElement('a');
+        a.href = item.url;
+        a.target = '_blank';
+        a.rel = 'noopener';
+
+        var wrap = document.createElement('div');
+        var metaDiv = document.createElement('div');
+        metaDiv.className = 'meta';
+        metaDiv.innerHTML = '<span class="topic">' + item.topic + '</span>' + (item.readingTime ? '<span>' + item.readingTime + ' min read</span>' : '');
+
+        var titleEl = document.createElement('h3');
+        titleEl.textContent = item.title;
+
+        var descEl = document.createElement('p');
+        descEl.textContent = item.description || '';
+
+        wrap.appendChild(metaDiv);
+        wrap.appendChild(titleEl);
+        if (item.description) wrap.appendChild(descEl);
+
+        var srcSpan = document.createElement('span');
+        srcSpan.className = 'src';
+        srcSpan.textContent = item.source;
+
+        a.appendChild(wrap);
+        a.appendChild(srcSpan);
+        li.appendChild(a);
+        postsOl.appendChild(li);
+      });
+
+      // Update Pagination Controls
+      if (pgContainer) {
+        if (total > PAGE_SIZE) {
+          pgContainer.style.display = 'flex';
+          if (pgInfo) pgInfo.textContent = 'Showing ' + (startIdx + 1) + '–' + endIdx + ' of ' + total + ' articles';
+          if (pgPrev) {
+            pgPrev.style.display = 'inline-flex';
+            pgPrev.disabled = (curPage === 1);
+          }
+          if (pgNext) {
+            pgNext.style.display = 'inline-flex';
+            pgNext.disabled = (curPage === totalPages);
+          }
+          if (pgNumbers) {
+            pgNumbers.innerHTML = '';
+            for (var p = 1; p <= totalPages; p++) {
+              var btn = document.createElement('button');
+              btn.type = 'button';
+              btn.className = 'pg-btn' + (p === curPage ? ' active' : '');
+              btn.textContent = p;
+              btn.setAttribute('aria-label', 'Page ' + p);
+              (function(pageIdx){
+                btn.addEventListener('click', function(){
+                  curPage = pageIdx;
+                  renderPage();
+                  scrollToWriting();
+                });
+              })(p);
+              pgNumbers.appendChild(btn);
+            }
+          }
+        } else {
+          if (total > 0) {
+            pgContainer.style.display = 'flex';
+            if (pgInfo) pgInfo.textContent = 'Showing ' + total + ' articles';
+            if (pgPrev) pgPrev.style.display = 'none';
+            if (pgNext) pgNext.style.display = 'none';
+            if (pgNumbers) pgNumbers.innerHTML = '';
+          } else {
+            pgContainer.style.display = 'none';
+          }
+        }
+      }
+    }
+
+    if (pgPrev) {
+      pgPrev.addEventListener('click', function(){
+        if (curPage > 1) {
+          curPage--;
+          renderPage();
+          scrollToWriting();
+        }
+      });
+    }
+
+    if (pgNext) {
+      pgNext.addEventListener('click', function(){
+        curPage++;
+        renderPage();
+        scrollToWriting();
+      });
+    }
+
+    // Filter Buttons Click Handler
+    var filterBtns = document.querySelectorAll('.filter:not(.pf) button');
+    filterBtns.forEach(function(b){
+      b.addEventListener('click', function(){
+        filterBtns.forEach(function(x){ x.classList.toggle('on', x === b); });
+        activeTopic = b.dataset.f;
+        curPage = 1;
+        renderPage();
+      });
+    });
+
+    function setArticles(articles) {
       if (!articles || !articles.length) return;
 
-      // 1. Featured card (latest article)
+      // 1. Featured card (newest article)
       var top = articles[0];
       if (featA && top) {
         featA.href = top.url;
@@ -834,65 +983,42 @@
         }
       }
 
-      // 2. Post list (all subsequent articles)
-      var rest = articles.slice(1);
-      if (rest.length) {
-        postsOl.innerHTML = '';
-        rest.forEach(function(item) {
-          var li = document.createElement('li');
-          li.setAttribute('data-topic', item.topic);
-
-          var a = document.createElement('a');
-          a.href = item.url;
-          a.target = '_blank';
-          a.rel = 'noopener';
-
-          var wrap = document.createElement('div');
-          var metaDiv = document.createElement('div');
-          metaDiv.className = 'meta';
-          metaDiv.innerHTML = '<span class="topic">' + item.topic + '</span>' + (item.readingTime ? '<span>' + item.readingTime + ' min read</span>' : '');
-
-          var titleEl = document.createElement('h3');
-          titleEl.textContent = item.title;
-
-          var descEl = document.createElement('p');
-          descEl.textContent = item.description || '';
-
-          wrap.appendChild(metaDiv);
-          wrap.appendChild(titleEl);
-          if (item.description) wrap.appendChild(descEl);
-
-          var srcSpan = document.createElement('span');
-          srcSpan.className = 'src';
-          srcSpan.textContent = item.source;
-
-          a.appendChild(wrap);
-          a.appendChild(srcSpan);
-          li.appendChild(a);
-          postsOl.appendChild(li);
-        });
-
-        // Reapply current filter if any
-        var onBtn = document.querySelector('.filter:not(.pf) button.on');
-        var activeF = onBtn ? onBtn.dataset.f : 'All';
-        if (activeF && activeF !== 'All') {
-          postsOl.querySelectorAll('li').forEach(function(li) {
-            li.hidden = li.dataset.topic !== activeF;
-          });
-        }
-      }
+      // 2. All subsequent articles go to paginated list
+      allListArticles = articles.slice(1);
+      renderPage();
     }
 
-    // Render from local cache first if fresh
+    // Extract initial static HTML articles as immediate baseline
+    var staticLis = postsOl.querySelectorAll('li');
+    if (staticLis.length) {
+      allListArticles = [].map.call(staticLis, function(li){
+        var a = li.querySelector('a');
+        var h3 = li.querySelector('h3');
+        var p = li.querySelector('p');
+        var src = li.querySelector('.src');
+        return {
+          title: h3 ? h3.textContent : '',
+          description: p ? p.textContent : '',
+          url: a ? a.href : '#',
+          date: 0,
+          readingTime: 7,
+          source: src ? src.textContent : 'dev.to',
+          topic: li.dataset.topic || 'Android'
+        };
+      });
+      renderPage();
+    }
+
+    // Load from cache first for instant fresh render
     try {
       var cData = localStorage.getItem(CACHE_KEY);
       var cTime = localStorage.getItem(CACHE_TIME_KEY);
       if (cData && cTime && (Date.now() - Number(cTime) < TTL)) {
-        render(JSON.parse(cData));
+        setArticles(JSON.parse(cData));
       }
     } catch(e) {}
 
-    // Fetch live in background from Dev.to and Medium
+    // Live fetch from Dev.to and Medium
     var fDev = fetch('https://dev.to/api/articles?username=' + DEVTO_USER)
       .then(function(r){ return r.ok ? r.json() : []; })
       .then(function(arr){
@@ -935,7 +1061,7 @@
       var merged = vals[0].concat(vals[1]);
       if (merged.length) {
         merged.sort(function(a, b){ return b.date - a.date; });
-        render(merged);
+        setArticles(merged);
         try {
           localStorage.setItem(CACHE_KEY, JSON.stringify(merged));
           localStorage.setItem(CACHE_TIME_KEY, String(Date.now()));

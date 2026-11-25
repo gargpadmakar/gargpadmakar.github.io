@@ -327,6 +327,51 @@
     .proj-badge-row{margin-bottom:10px}
     .badge-enterprise{font:600 .68rem/1 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:#f59e0b;background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,.25);border-radius:6px;padding:4px 8px;display:inline-block}
 
+        /* ===================================================
+       RED CHILLIES STYLE CIRCULAR HUD RADAR & SKILLS
+       =================================================== */
+    .rc-hud-container{position:relative;border-radius:24px;padding:46px 24px;margin:36px 0;overflow:hidden;
+      background:radial-gradient(circle at 50% 42%,#2d0a11 0%,#18060a 48%,#080910 100%);
+      border:1px solid rgba(239,68,68,.3);box-shadow:0 24px 64px rgba(0,0,0,.6),inset 0 0 100px rgba(239,68,68,.1)}
+    .rc-hud-backdrop{position:absolute;inset:0;opacity:.14;pointer-events:none;
+      background-image:radial-gradient(#ef4444 1px,transparent 1px),radial-gradient(#ef4444 1px,#080910 1px);
+      background-size:36px 36px;background-position:0 0,18px 18px}
+    .rc-hud-header{text-align:center;position:relative;z-index:2;margin-bottom:28px}
+    .rc-hud-badge{display:inline-block;font:600 .7rem/1 var(--mono);text-transform:uppercase;letter-spacing:.16em;
+      color:#f87171;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);padding:6px 14px;border-radius:999px;margin-bottom:12px}
+    .rc-hud-heading{font-size:clamp(1.35rem,2.8vw,1.85rem);font-weight:700;letter-spacing:-.03em;color:#fff;text-shadow:0 4px 18px rgba(239,68,68,.35)}
+    .rc-hud-radar{position:relative;width:min(360px,90vw);height:min(360px,90vw);margin:0 auto 32px;display:flex;align-items:center;justify-content:center}
+    .rc-ring{position:absolute;border-radius:50%;pointer-events:none}
+    .rc-ring-outer{inset:0;border:1px solid rgba(239,68,68,.18);box-shadow:0 0 35px rgba(239,68,68,.12)}
+    .rc-ring-dashed{inset:16px;border:1.5px dashed rgba(255,255,255,.32);animation:rcSpin 45s linear infinite}
+    .rc-ring-inner{inset:46px;border:1px solid rgba(239,68,68,.22)}
+    .rc-notch{position:absolute;background:#ef4444;box-shadow:0 0 10px #ef4444;border-radius:2px}
+    .rc-notch-top{top:-6px;left:calc(50% - 10px);width:20px;height:3px}
+    .rc-notch-bottom{bottom:-6px;left:calc(50% - 10px);width:20px;height:3px}
+    .rc-notch-left{left:-6px;top:calc(50% - 10px);width:3px;height:20px}
+    .rc-notch-right{right:-6px;top:calc(50% - 10px);width:3px;height:20px}
+    .rc-orbit-runner{position:absolute;inset:-14px;border-radius:50%;animation:rcOrbit 14s linear infinite;pointer-events:none}
+    .rc-runner-dot{position:absolute;top:0;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;
+      background:linear-gradient(135deg,#ef4444,#b91c1c);box-shadow:0 0 18px #ef4444,0 0 32px rgba(239,68,68,.7);
+      display:flex;align-items:center;justify-content:center;color:#fff}
+    .rc-runner-dot svg{width:15px;height:15px}
+    @keyframes rcSpin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    @keyframes rcOrbit{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    .rc-core{position:relative;z-index:2;text-align:center;padding:18px;max-width:260px}
+    .rc-kicker{display:block;font:600 .68rem/1 var(--mono);text-transform:uppercase;letter-spacing:.14em;color:#f87171;margin-bottom:8px}
+    .rc-title{font-size:clamp(1.1rem,2.8vw,1.35rem);font-weight:700;line-height:1.25;letter-spacing:-.02em;color:#fff;
+      margin-bottom:8px;text-shadow:0 2px 14px rgba(239,68,68,.4);min-height:2.6em;display:flex;align-items:center;justify-content:center;transition:opacity .25s,transform .25s}
+    .rc-desc{font-size:.78rem;line-height:1.48;color:#cbd5e1;margin-bottom:10px;min-height:3.5em;transition:opacity .25s}
+    .rc-counter{font:600 .7rem/1 var(--mono);color:#fca5a5;letter-spacing:.06em}
+    .rc-skills-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;position:relative;z-index:2;max-width:920px;margin:0 auto}
+    .rc-skill-btn{appearance:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);color:#e2e8f0;
+      border-radius:999px;padding:8px 16px;font:500 .8rem/1.3 var(--mono);cursor:pointer;transition:all .22s ease;
+      display:inline-flex;align-items:center;gap:8px}
+    .rc-skill-btn:hover,.rc-skill-btn.active{background:rgba(239,68,68,.18);border-color:#ef4444;color:#fff;
+      box-shadow:0 0 18px rgba(239,68,68,.38);transform:translateY(-2px)}
+    .rc-skill-btn::before{content:"";width:6px;height:6px;border-radius:50%;background:#64748b;transition:background .2s,box-shadow .2s}
+    .rc-skill-btn:hover::before,.rc-skill-btn.active::before{background:#ef4444;box-shadow:0 0 8px #ef4444}
+
     /* projects */
     .proj{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
     .proj article{padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card2),var(--card));transition:border-color .25s,transform .25s,box-shadow .25s}
@@ -963,23 +1008,86 @@
           <p>Padmakar Garg is a Senior Android Developer &amp; Mobile Security Engineer who has spent eight-plus years shipping production apps, with 120+ published on Google Play, from e-commerce and CRM to news, astrology and secure encrypted messaging.</p>
           <p>Since August 2022 he has been a Senior Android Developer &amp; Mobile Security Engineer at Sveltetech Technology, working on real-time messaging, WebRTC voice and video calling, and end-to-end encrypted communication. His engineering focus includes Android Endpoint Detection & Response (EDR), loopback-VPN traffic inspection, and advanced mobile application security (RASP, anti-tamper, and reverse-engineering defenses).</p>
           <p>Outside client work he publishes open-source Android libraries and writes on Medium and dev.to about system design, mobile security and CI/CD. His work also covers Java and Kotlin app development, Jetpack Compose, code obfuscation, and mobile device management (MDM) with Microsoft Intune.</p>
-          <div class="skills-block rv">
-            <h4>Key Skills &amp; Security Expertise</h4>
-            <div class="skill-tags">
-              <span>Android EDR (Endpoint Detection &amp; Response)</span>
-              <span>VpnService &amp; Loopback Traffic Inspection</span>
-              <span>Packet Filtering &amp; DNS/IP Threat Blocking</span>
-              <span>RASP (Runtime Application Protection)</span>
-              <span>Frida, Xposed &amp; Magisk/Zygisk Detection</span>
-              <span>C/C++ (NDK) &amp; JNI Security</span>
-              <span>Kotlin &amp; Java</span>
-              <span>Jetpack Compose</span>
-              <span>Kotlin Multiplatform (KMP)</span>
-              <span>LiveKit WebRTC</span>
-              <span>E2EE Cryptography (AES-GCM, ECDH)</span>
-              <span>WorkManager &amp; Offline-First</span>
+          <div class="rc-hud-container rv" id="rcHudSkills">
+      <div class="rc-hud-backdrop" aria-hidden="true"></div>
+      
+      <div class="rc-hud-header">
+        <span class="rc-hud-badge">CYBER DEFENSE &amp; CORE ARCHITECTURE</span>
+        <h3 class="rc-hud-heading">Key Skills &amp; Security Expertise</h3>
+      </div>
+
+      <div class="rc-hud-radar" aria-live="polite">
+        <!-- Outer Glowing Ring -->
+        <div class="rc-ring rc-ring-outer" aria-hidden="true"></div>
+        
+        <!-- Dashed Orbital Tracking Ring with Cardinal Notches -->
+        <div class="rc-ring rc-ring-dashed" aria-hidden="true">
+          <span class="rc-notch rc-notch-top"></span>
+          <span class="rc-notch rc-notch-right"></span>
+          <span class="rc-notch rc-notch-bottom"></span>
+          <span class="rc-notch rc-notch-left"></span>
+          <!-- Orbiting Satellite Indicator (Red Chillies style) -->
+          <div class="rc-orbit-runner">
+            <div class="rc-runner-dot">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3z"/>
+              </svg>
             </div>
           </div>
+        </div>
+
+        <!-- Inner Target Ring -->
+        <div class="rc-ring rc-ring-inner" aria-hidden="true"></div>
+        
+        <!-- Center Focus Core (Red Chillies style) -->
+        <div class="rc-core">
+          <span class="rc-kicker">ACTIVE DEFENSE VECTOR</span>
+          <h4 class="rc-title" id="rcActiveTitle">Android EDR (Endpoint Detection & Response)</h4>
+          <p class="rc-desc" id="rcActiveDesc">Comprehensive endpoint detection & response, threat event telemetry, anomaly scoring, and dynamic policy enforcement.</p>
+          <div class="rc-counter"><span id="rcActiveIdx">01</span> / 12 &bull; <span id="rcActiveTag">EDR • Mobile Security</span></div>
+        </div>
+      </div>
+
+      <!-- 12 Interactive Skill Buttons -->
+      <div class="rc-skills-grid" role="group" aria-label="Key Skills">
+        <button type="button" class="rc-skill-btn active" data-idx="0" aria-label="Android EDR (Endpoint Detection & Response)">
+      <span>Android EDR (Endpoint Detection & Response)</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="1" aria-label="VpnService & Loopback Traffic Inspection">
+      <span>VpnService & Loopback Traffic Inspection</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="2" aria-label="Packet Filtering & DNS/IP Threat Blocking">
+      <span>Packet Filtering & DNS/IP Threat Blocking</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="3" aria-label="RASP (Runtime Application Protection)">
+      <span>RASP (Runtime Application Protection)</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="4" aria-label="Frida, Xposed & Magisk/Zygisk Detection">
+      <span>Frida, Xposed & Magisk/Zygisk Detection</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="5" aria-label="C/C++ (NDK) & JNI Security">
+      <span>C/C++ (NDK) & JNI Security</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="6" aria-label="Kotlin & Java">
+      <span>Kotlin & Java</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="7" aria-label="Jetpack Compose">
+      <span>Jetpack Compose</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="8" aria-label="Kotlin Multiplatform (KMP)">
+      <span>Kotlin Multiplatform (KMP)</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="9" aria-label="LiveKit WebRTC">
+      <span>LiveKit WebRTC</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="10" aria-label="E2EE Cryptography (AES-GCM, ECDH)">
+      <span>E2EE Cryptography (AES-GCM, ECDH)</span>
+    </button>
+        <button type="button" class="rc-skill-btn " data-idx="11" aria-label="WorkManager & Offline-First">
+      <span>WorkManager & Offline-First</span>
+    </button>
+      </div>
+    </div>
           <div class="stats">
             <div class="stat"><strong>8<em>+</em></strong><span>Years of experience</span></div>
             <div class="stat"><strong>120<em>+</em></strong><span>Apps published on Google Play</span></div>
@@ -1624,6 +1732,70 @@
       }
     }).catch(function(){});
   })();
+
+  // --- RED CHILLIES STYLE SKILLS HUD INTERACTION ---
+  (function(){
+    var skillsData = [{"title":"Android EDR","full":"Android EDR (Endpoint Detection & Response)","desc":"Comprehensive endpoint detection & response, threat event telemetry, anomaly scoring, and dynamic policy enforcement.","tags":"EDR • Mobile Security"},{"title":"VpnService & Loopback Traffic","full":"VpnService & Loopback Traffic Inspection","desc":"Loopback-VPN egress monitoring, packet interception, and local traffic filtering using Android VpnService.","tags":"VpnService • Packet Inspection"},{"title":"Packet Filtering & Threat Blocking","full":"Packet Filtering & DNS/IP Threat Blocking","desc":"Real-time DNS filtering, malicious IP and domain blocking, and rogue APK connection termination.","tags":"DNS Filter • IP Blacklist"},{"title":"RASP Runtime Security","full":"RASP (Runtime Application Protection)","desc":"In-app self-protection against memory tampering, unauthorized hooking, and dynamic runtime manipulation.","tags":"RASP • Anti-Tamper"},{"title":"Frida & Hook Detection","full":"Frida, Xposed & Magisk/Zygisk Detection","desc":"Multi-vector root detection, Magisk/Zygisk cloaking defense, Frida gadget detection, and Xposed hook mitigation.","tags":"Anti-Frida • Anti-Root"},{"title":"C/C++ (NDK) & JNI Security","full":"C/C++ (NDK) & JNI Security","desc":"Hardened native binaries in C/C++, direct Linux syscalls, JNI environment verification, and symbol obfuscation.","tags":"NDK • C/C++ • JNI"},{"title":"Kotlin & Java","full":"Kotlin & Java","desc":"Production development across modern Kotlin and Java: coroutines, Flow, reactive pipelines, and clean architecture.","tags":"Kotlin • Java • Coroutines"},{"title":"Jetpack Compose","full":"Jetpack Compose","desc":"Modern declarative Android UI development, custom renderers, fluid animations, and reactive state hoisting.","tags":"Compose • Declarative UI"},{"title":"Kotlin Multiplatform (KMP)","full":"Kotlin Multiplatform (KMP)","desc":"Cross-platform shared architecture, business logic, networking with Ktor, and shared state across Android and iOS.","tags":"KMP • Ktor • Multiplatform"},{"title":"LiveKit WebRTC","full":"LiveKit WebRTC","desc":"Enterprise VoIP audio and low-latency HD video calling integration using LiveKit SFU infrastructure.","tags":"LiveKit • WebRTC • VoIP"},{"title":"E2EE Cryptography","full":"E2EE Cryptography (AES-GCM, ECDH)","desc":"End-to-end encrypted messaging, ECDH curve25519 key exchange, authenticated AES-256-GCM, and MTProto 2.0.","tags":"E2EE • AES-GCM • ECDH"},{"title":"WorkManager & Offline-First","full":"WorkManager & Offline-First","desc":"Persistent Room-backed request queuing, WorkManager background synchronization, and network backoff with jitter.","tags":"WorkManager • Room • Sync"}];
+    var hudEl = document.getElementById('rcHudSkills');
+    if (!hudEl) return;
+    
+    var titleEl = hudEl.querySelector('#rcActiveTitle');
+    var descEl = hudEl.querySelector('#rcActiveDesc');
+    var idxEl = hudEl.querySelector('#rcActiveIdx');
+    var tagEl = hudEl.querySelector('#rcActiveTag');
+    var btns = [].slice.call(hudEl.querySelectorAll('.rc-skill-btn'));
+    var curIdx = 0;
+    var timer = null;
+    var isHovered = false;
+
+    function showSkill(idx) {
+      if (idx < 0 || idx >= skillsData.length) return;
+      curIdx = idx;
+      btns.forEach(function(b, i){ b.classList.toggle('active', i === idx); });
+      var s = skillsData[idx];
+      if (titleEl) {
+        titleEl.style.opacity = '0';
+        titleEl.style.transform = 'scale(0.96)';
+      }
+      if (descEl) descEl.style.opacity = '0';
+      
+      setTimeout(function(){
+        if (titleEl) {
+          titleEl.textContent = s.full;
+          titleEl.style.opacity = '1';
+          titleEl.style.transform = 'scale(1)';
+        }
+        if (descEl) {
+          descEl.textContent = s.desc;
+          descEl.style.opacity = '1';
+        }
+        if (idxEl) idxEl.textContent = (idx + 1 < 10 ? '0' : '') + (idx + 1);
+        if (tagEl) tagEl.textContent = s.tags;
+      }, 150);
+    }
+
+    btns.forEach(function(btn, i){
+      btn.addEventListener('mouseenter', function(){
+        isHovered = true;
+        showSkill(i);
+      });
+      btn.addEventListener('click', function(){
+        showSkill(i);
+      });
+    });
+
+    hudEl.addEventListener('mouseenter', function(){ isHovered = true; });
+    hudEl.addEventListener('mouseleave', function(){ isHovered = false; });
+
+    function autoAdvance() {
+      if (!isHovered) {
+        curIdx = (curIdx + 1) % skillsData.length;
+        showSkill(curIdx);
+      }
+    }
+    timer = setInterval(autoAdvance, 2800);
+  })();
+
   // theme toggle
   var root=document.documentElement,tb=document.querySelector('.theme'),meta=document.querySelector('meta[name="theme-color"]');
   function paint(t){root.setAttribute('data-theme',t);tb.setAttribute('aria-pressed',t==='light');tb.setAttribute('aria-label',t==='light'?'Switch to dark theme':'Switch to light theme');if(meta)meta.setAttribute('content',t==='light'?'#f5f7fb':'#0a0e17')}

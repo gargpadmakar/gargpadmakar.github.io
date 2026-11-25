@@ -593,6 +593,128 @@
     /* Card hover elevation */
     .proj article[data-cat*="playstore"]:hover{border-color:rgba(52,168,83,.45);box-shadow:0 14px 34px rgba(16,185,129,.18)}
 
+    
+    /* ===================================================
+       LIGHT THEME ADAPTATIONS (RADAR HUD & PLAY STORE TAB)
+       =================================================== */
+    :root[data-theme="light"] .rc-hud-container {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid rgba(2, 132, 199, 0.28);
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08), 0 1px 3px rgba(15, 23, 42, 0.04);
+    }
+    :root[data-theme="light"] .rc-hud-backdrop {
+      opacity: .05;
+      background-image: radial-gradient(#0284c7 1px, transparent 1px), radial-gradient(#0284c7 1px, #f8fafc 1px);
+    }
+    :root[data-theme="light"] .rc-hud-badge {
+      color: #0284c7;
+      background: rgba(2, 132, 199, 0.08);
+      border-color: rgba(2, 132, 199, 0.25);
+    }
+    :root[data-theme="light"] .rc-hud-heading {
+      color: var(--ink, #0b1220);
+      text-shadow: 0 2px 14px rgba(2, 132, 199, 0.15);
+    }
+    :root[data-theme="light"] .rc-ring-outer {
+      border-color: rgba(2, 132, 199, 0.2);
+      box-shadow: 0 0 25px rgba(2, 132, 199, 0.08);
+    }
+    :root[data-theme="light"] .rc-ring-dashed {
+      border-color: rgba(2, 132, 199, 0.4);
+    }
+    :root[data-theme="light"] .rc-notch {
+      background: #0284c7;
+      box-shadow: 0 0 6px rgba(2, 132, 199, 0.5);
+    }
+    :root[data-theme="light"] .rc-ring-inner {
+      border-color: rgba(2, 132, 199, 0.2);
+      background: radial-gradient(circle, rgba(224, 242, 254, 0.7) 0%, rgba(248, 250, 252, 0.95) 70%);
+      box-shadow: inset 0 0 25px rgba(2, 132, 199, 0.08);
+    }
+    :root[data-theme="light"] .rc-kicker {
+      color: #0284c7;
+    }
+    :root[data-theme="light"] .rc-title {
+      color: var(--ink, #0b1220);
+    }
+    :root[data-theme="light"] .rc-desc {
+      color: var(--mute, #475569);
+    }
+    :root[data-theme="light"] .rc-counter {
+      color: #0284c7;
+    }
+    :root[data-theme="light"] .rc-counter span {
+      color: var(--ink, #0b1220);
+    }
+    :root[data-theme="light"] .rc-skill-btn {
+      color: #334155;
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.12);
+      box-shadow: 0 2px 5px rgba(15, 23, 42, 0.04);
+    }
+    :root[data-theme="light"] .rc-skill-btn::before {
+      background: #94a3b8;
+    }
+    :root[data-theme="light"] .rc-skill-btn:hover {
+      color: #0284c7;
+      border-color: #0284c7;
+      background: rgba(2, 132, 199, 0.06);
+      box-shadow: 0 0 12px rgba(2, 132, 199, 0.15);
+    }
+    :root[data-theme="light"] .rc-skill-btn:hover::before {
+      background: #0284c7;
+      box-shadow: 0 0 6px #0284c7;
+    }
+    :root[data-theme="light"] .rc-skill-btn.active {
+      color: #0284c7;
+      background: linear-gradient(135deg, rgba(2, 132, 199, 0.12), rgba(37, 99, 235, 0.08));
+      border-color: #0284c7;
+      box-shadow: 0 0 14px rgba(2, 132, 199, 0.2);
+    }
+    :root[data-theme="light"] .rc-skill-btn.active::before {
+      background: #0284c7;
+      box-shadow: 0 0 8px #0284c7;
+    }
+
+    /* Light Theme Support for Play Store Tab */
+    :root[data-theme="light"] .filter button.tab-playstore {
+      color: var(--ink, #0b1220);
+      background: linear-gradient(135deg, rgba(66, 133, 244, 0.08), rgba(52, 168, 83, 0.08));
+      border-color: rgba(66, 133, 244, 0.28);
+    }
+    :root[data-theme="light"] .filter button.tab-playstore:hover {
+      color: #047857;
+      border-color: #34a853;
+      box-shadow: 0 0 14px rgba(52, 168, 83, 0.25);
+    }
+    :root[data-theme="light"] .filter button.tab-playstore.on {
+      color: #ffffff;
+      background: linear-gradient(135deg, #0284c7, #059669);
+      border-color: #0284c7;
+      box-shadow: 0 0 18px rgba(14, 165, 233, 0.35);
+    }
+
+    /* Light Theme Support for Console Cards (fallback) */
+    :root[data-theme="light"] .sec-skills-console {
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-color: rgba(2, 132, 199, 0.28);
+      box-shadow: 0 20px 48px rgba(15, 23, 42, 0.08);
+    }
+    :root[data-theme="light"] .sec-skills-console h3,
+    :root[data-theme="light"] .sec-card h4 {
+      color: var(--ink, #0b1220);
+    }
+    :root[data-theme="light"] .sec-card {
+      background: #ffffff;
+      border-color: rgba(15, 23, 42, 0.1);
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+    }
+    :root[data-theme="light"] .sec-card-tags span {
+      background: rgba(15, 23, 42, 0.04);
+      color: #475569;
+      border-color: rgba(15, 23, 42, 0.08);
+    }
+
     /* projects */
     .proj{display:grid;gap:20px;grid-template-columns:repeat(2,1fr)}
     .proj article{padding:0;overflow:hidden;display:flex;flex-direction:column;border-radius:18px;border:1px solid var(--line);background:linear-gradient(180deg,var(--card2),var(--card));transition:border-color .25s,transform .25s,box-shadow .25s}

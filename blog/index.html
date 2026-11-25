@@ -878,7 +878,7 @@
           <div class="stats">
             <div class="stat"><strong>8<em>+</em></strong><span>Years of experience</span></div>
             <div class="stat"><strong>120<em>+</em></strong><span>Apps published on Google Play</span></div>
-            <div class="stat"><strong>11</strong><span>Featured articles</span></div>
+            <div class="stat"><strong id="stat-articles-count">32<em>+</em></strong><span>Featured articles</span></div>
           </div>
           <nav class="links" aria-label="Elsewhere">
             <a href="https://linkedin.com/in/padmakar-garg" rel="me noopener">LinkedIn</a>
@@ -1306,6 +1306,11 @@
       }
 
       // 2. All subsequent articles go to paginated list
+      var statCountEl = document.getElementById('stat-articles-count');
+      if (statCountEl && articles && articles.length) {
+        statCountEl.innerHTML = articles.length + '<em>+</em>';
+      }
+
       allListArticles = articles.slice(1);
       renderPage();
     }

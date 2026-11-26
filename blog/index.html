@@ -215,7 +215,7 @@
     .btn:hover svg{transform:translateX(3px)}
 
     /* hero */
-    .hero{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:center;padding:84px 0 72px}
+    .hero{display:grid;grid-template-columns:1.12fr .88fr;gap:48px;align-items:flex-end;padding:64px 0 0}
     .eyebrow{display:inline-flex;align-items:center;gap:9px;font:500 .74rem/1 var(--mono);color:var(--blue2);border:1px solid rgba(59,130,246,.35);background:rgba(59,130,246,.08);border-radius:999px;padding:7px 14px;margin-bottom:26px;letter-spacing:.02em}
     .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue2);box-shadow:0 0 0 4px rgba(96,165,250,.2)}
     h1{font-weight:400;line-height:1.08}
@@ -226,19 +226,17 @@
     .lede{margin-top:24px;color:var(--mute);max-width:34em;font-size:1.02rem}
     .lede strong{color:var(--ink);font-weight:600}
     .actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
-    .visual{position:relative;justify-self:center;width:min(100%,410px);display:flex;flex-direction:column;align-items:center}
-    .visual::before{content:"";position:absolute;top:5%;left:50%;transform:translateX(-50%);width:92%;height:82%;background:radial-gradient(circle,rgba(59,130,246,.22) 0%,rgba(37,99,235,.07) 50%,transparent 72%);filter:blur(36px);pointer-events:none;z-index:0}
-    .frame{position:relative;width:100%;aspect-ratio:1/1.18;border-radius:28px 28px 0 0;overflow:hidden;background:transparent;
-      -webkit-mask-image:linear-gradient(to bottom, #000 70%, rgba(0,0,0,.75) 84%, transparent 100%);
-      mask-image:linear-gradient(to bottom, #000 70%, rgba(0,0,0,.75) 84%, transparent 100%);
-      z-index:1}
-    .frame .ph{position:absolute;inset:0;display:grid;place-items:center;font-size:4rem;font-weight:700;color:var(--dim)}
-    .frame img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;filter:drop-shadow(0 15px 35px rgba(0,0,0,.6));transition:transform .4s ease}
+    .visual{position:relative;justify-self:center;align-self:flex-end;width:min(100%,480px);display:flex;justify-content:center}
+    .visual::before{content:"";position:absolute;top:10%;left:50%;transform:translateX(-50%);width:96%;height:85%;background:radial-gradient(circle,rgba(59,130,246,.18) 0%,rgba(37,99,235,.05) 50%,transparent 72%);filter:blur(42px);pointer-events:none;z-index:0}
+    .frame{position:relative;width:100%;display:flex;justify-content:center;align-items:flex-end;background:transparent;overflow:visible;z-index:1}
+    .frame .ph{display:none}
+    .frame img{display:block;width:100%;max-width:480px;height:auto;aspect-ratio:641/700;object-fit:contain;object-position:center bottom;mix-blend-mode:lighten;filter:contrast(1.04) brightness(1.02);transition:transform .4s ease}
     .visual:hover .frame img{transform:scale(1.02)}
-    .tagrow{position:relative;margin-top:-14px;z-index:3;display:flex;justify-content:center;flex-wrap:wrap;gap:8px;padding:0 8px}
-    .tagrow span{font:500 .72rem/1 var(--mono);color:var(--ink);background:rgba(16,23,37,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line2);border-radius:999px;padding:7px 12px;box-shadow:0 4px 14px rgba(0,0,0,.25)}
+    .tagrow{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
+    .tagrow span{font:500 .74rem/1 var(--mono);color:var(--mute);background:var(--hover);border:1px solid var(--line2);border-radius:999px;padding:7px 14px;transition:all .2s ease}
+    .tagrow span:hover{color:var(--blue2);border-color:var(--blue);background:var(--glow)}
+    :root[data-theme="light"] .frame img{mix-blend-mode:normal;border-radius:24px;box-shadow:0 20px 40px -15px rgba(15,23,42,.2)}
     :root[data-theme="light"] .visual::before{background:radial-gradient(circle,rgba(37,99,235,.15) 0%,rgba(37,99,235,.04) 50%,transparent 72%)}
-    :root[data-theme="light"] .tagrow span{background:rgba(255,255,255,.88);box-shadow:0 4px 14px rgba(15,23,42,.1)}
 
     /* sections */
     section{padding:88px 0 8px}
@@ -926,8 +924,8 @@
     }
     @media(max-width:760px){
       nav.desk{display:none}.menu{display:block}
-      .hero{grid-template-columns:1fr;gap:44px;padding:48px 0 40px}
-      .visual{width:min(100%,320px)}
+      .hero{grid-template-columns:1fr;gap:36px;padding:48px 0 0}
+      .visual{width:min(100%,340px);align-self:center;order:-1}
       section{padding:64px 0 4px}
       .stats{grid-template-columns:1fr 1fr 1fr;gap:8px}
       .stat{padding:16px 14px}.stat strong{font-size:1.5rem}
@@ -992,13 +990,12 @@
           <button class="btn" type="button" data-open-cv>View CV</button>
         </div>
         <button class="copy" type="button" data-copy="worldpadmakar007@gmail.com" aria-label="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>worldpadmakar007@gmail.com</button>
+        <div class="tagrow" aria-hidden="true"><span>Kotlin</span><span>Jetpack Compose</span><span>KMP</span><span>Mobile Security</span></div>
       </div>
       <figure class="visual">
         <div class="frame">
-          <div class="ph" aria-hidden="true">PG</div>
-          <img src="https://gargpadmakar.github.io/img/myprofile.png" alt="Padmakar Garg, Senior Android Developer &amp; Mobile Security Engineer" width="480" height="600" onerror="this.remove()">
+          <img src="https://gargpadmakar.github.io/img/myprofile.png" alt="Padmakar Garg, Senior Android Developer &amp; Mobile Security Engineer" width="480" height="524" onerror="this.remove()">
         </div>
-        <div class="tagrow" aria-hidden="true"><span>Kotlin</span><span>Jetpack Compose</span><span>KMP</span><span>Mobile Security</span></div>
       </figure>
     </div>
   </div>

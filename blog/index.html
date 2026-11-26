@@ -259,7 +259,7 @@
     /* articles */
     /* Top Recent Banner Slider */
     .feature-slider{position:relative;margin-bottom:36px}
-    .slider-container{position:relative;overflow:hidden;border-radius:20px}
+    .slider-container{position:relative;overflow:hidden;border-radius:20px;min-height:260px}
     .slider-slide{display:none;opacity:0;transition:opacity .35s ease-in-out}
     .slider-slide.active{display:block;opacity:1}
     .feature-card{display:grid;grid-template-columns:1.15fr 0.85fr;gap:36px;align-items:center;border:1px solid var(--line2);border-radius:20px;padding:32px 36px;text-decoration:none;position:relative;overflow:hidden;
@@ -267,6 +267,10 @@
     .feature-card:hover{border-color:rgba(59,130,246,.55);box-shadow:0 12px 36px rgba(0,0,0,.25)}
     .feature-card:hover h3{color:var(--blue2)}
     .feature-card:hover .feature-img img{transform:scale(1.02)}
+    .feature-card h3{font-size:clamp(1.2rem,2.2vw,1.65rem);font-weight:700;line-height:1.28;letter-spacing:-.03em;transition:color .2s;color:var(--ink)}
+    .feature-card p{color:var(--mute);margin-top:10px;font-size:.92rem;line-height:1.58}
+    .feature-card .meta{margin:18px 0 0}
+    .feature-card .flag{display:inline-block;font:500 .7rem/1 var(--mono);color:var(--blue-ink);background:var(--blue2);border-radius:6px;padding:5px 10px;text-transform:uppercase;letter-spacing:.06em}
 
     .feature-header-row{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:wrap}
     .feature-header-row .flag{margin-bottom:0}
@@ -1721,16 +1725,15 @@
 
 <script>
 (function(){
-  // --- Live Auto-sync from Dev.to & Medium with Pagination ---
+  // --- Live Auto-sync from Dev.to & Medium with Dynamic Top 5 Slider & Pagination ---
   (function(){
-    var featA = document.querySelector('.feature a');
     var postsOl = document.querySelector('ol.posts');
     if (!postsOl) return;
 
     var DEVTO_USER = 'gargpadmakar';
     var MEDIUM_USER = 'worldpadmakar007';
-    var CACHE_KEY = 'pg_blog_articles_cache_v17';
-    var CACHE_TIME_KEY = 'pg_blog_articles_time_v15';
+    var CACHE_KEY = 'pg_blog_articles_cache_v18';
+    var CACHE_TIME_KEY = 'pg_blog_articles_time_v18';
     var TTL = 2 * 60 * 1000;
     var PAGE_SIZE = 8;
 
@@ -1743,6 +1746,18 @@
     var pgPrev = document.getElementById('pg-prev');
     var pgNext = document.getElementById('pg-next');
     var pgNumbers = document.getElementById('pg-numbers');
+
+    // Slider DOM elements & state
+    var sliderContainer = document.getElementById('slider-container');
+    var sliderDotsContainer = document.getElementById('slider-dots');
+    var sliderCounter = document.getElementById('slider-counter');
+    var sliderPrevBtn = document.getElementById('slider-prev');
+    var sliderNextBtn = document.getElementById('slider-next');
+    var featureSliderEl = document.getElementById('feature-slider');
+    var currentSlide = 0;
+    var totalSlides = 5;
+    var autoSlideTimer = null;
+    var sliderControlsInitialized = false;
 
     function cleanImageUrl(url) {
       if (!url) return null;
@@ -1787,9 +1802,158 @@
       }
     }
 
-    var allRawArticles = [];
-    var featuredArticle = null;
+    // --- Dynamic Top 5 Recent Articles Slider Renderer ---
+    function renderTopSlider(articles) {
+      if (!sliderContainer || !articles || !articles.length) return;
+      var top5 = articles.slice(0, 5);
+      totalSlides = top5.length;
+      if (currentSlide >= totalSlides) currentSlide = 0;
 
+      var slidesHtml = top5.map(function(art, idx) {
+        var isActive = idx === currentSlide ? ' active' : '';
+        var numStr = '0' + (idx + 1) + '/0' + totalSlides;
+        var badgeHtml = idx === 0 ? '\n                  <span class="live-badge">Latest Article</span>' : '';
+        var dStr = formatPublishedDate(art.date);
+        var rTime = art.readingTime ? '<span>' + art.readingTime + ' min read</span>' : '';
+        var dateHtml = dStr ? '<span class="date">' + dStr + '</span>' : '';
+        var imgHtml = art.image
+          ? '<div class="feature-img"><img src="' + art.image + '" alt="' + (art.title || '').replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.parentElement.remove()"></div>'
+          : '';
+
+        return '          <div class="slider-slide' + isActive + '" data-slide="' + idx + '">' +
+          '\n            <a href="' + art.url + '" target="_blank" rel="noopener" class="feature-card">' +
+          '\n              <div class="feature-content">' +
+          '\n                <div class="feature-header-row">' +
+          '\n                  <span class="flag">Top Recent ' + numStr + '</span>' + badgeHtml +
+          '\n                </div>' +
+          '\n                <h3>' + art.title + '</h3>' +
+          '\n                <p>' + (art.description || art.title) + '</p>' +
+          '\n                <div class="meta"><span class="topic">' + art.topic + '</span><span>' + art.source + '</span>' + dateHtml + rTime + '</div>' +
+          '\n              </div>' +
+          '\n              ' + imgHtml +
+          '\n            </a>' +
+          '\n          </div>';
+      }).join('\n');
+
+      sliderContainer.innerHTML = slidesHtml;
+
+      if (sliderDotsContainer) {
+        var dotsHtml = '';
+        for (var d = 0; d < totalSlides; d++) {
+          var dotActive = d === currentSlide ? ' active' : '';
+          dotsHtml += '<button type="button" class="slider-dot' + dotActive + '" data-index="' + d + '" aria-label="Slide ' + (d + 1) + '"></button>';
+        }
+        sliderDotsContainer.innerHTML = dotsHtml;
+      }
+
+      if (sliderCounter) {
+        sliderCounter.textContent = (currentSlide + 1) + ' of ' + totalSlides;
+      }
+
+      if (!sliderControlsInitialized) {
+        initSliderControls();
+        sliderControlsInitialized = true;
+      }
+
+      startAutoSlide();
+    }
+
+    function goToSlide(targetIdx) {
+      if (!sliderContainer) return;
+      var slides = sliderContainer.querySelectorAll('.slider-slide');
+      var dots = sliderDotsContainer ? sliderDotsContainer.querySelectorAll('.slider-dot') : [];
+      if (!slides.length) return;
+
+      currentSlide = (targetIdx + slides.length) % slides.length;
+
+      slides.forEach(function(s, idx) {
+        if (idx === currentSlide) {
+          s.classList.add('active');
+        } else {
+          s.classList.remove('active');
+        }
+      });
+
+      dots.forEach(function(dot, idx) {
+        if (idx === currentSlide) {
+          dot.classList.add('active');
+        } else {
+          dot.classList.remove('active');
+        }
+      });
+
+      if (sliderCounter) {
+        sliderCounter.textContent = (currentSlide + 1) + ' of ' + slides.length;
+      }
+    }
+
+    function startAutoSlide() {
+      stopAutoSlide();
+      autoSlideTimer = setInterval(function() {
+        goToSlide(currentSlide + 1);
+      }, 5500);
+    }
+
+    function stopAutoSlide() {
+      if (autoSlideTimer) {
+        clearInterval(autoSlideTimer);
+        autoSlideTimer = null;
+      }
+    }
+
+    function initSliderControls() {
+      if (sliderPrevBtn) {
+        sliderPrevBtn.onclick = function() {
+          goToSlide(currentSlide - 1);
+          startAutoSlide();
+        };
+      }
+      if (sliderNextBtn) {
+        sliderNextBtn.onclick = function() {
+          goToSlide(currentSlide + 1);
+          startAutoSlide();
+        };
+      }
+      if (sliderDotsContainer) {
+        sliderDotsContainer.onclick = function(e) {
+          var dot = e.target.closest('.slider-dot');
+          if (dot && dot.dataset.index !== undefined) {
+            goToSlide(Number(dot.dataset.index));
+            startAutoSlide();
+          }
+        };
+      }
+
+      if (featureSliderEl) {
+        featureSliderEl.onmouseenter = stopAutoSlide;
+        featureSliderEl.onmouseleave = startAutoSlide;
+
+        // Mobile touch swipe
+        var touchStartX = 0;
+        featureSliderEl.addEventListener('touchstart', function(e) {
+          if (e.changedTouches && e.changedTouches[0]) {
+            touchStartX = e.changedTouches[0].screenX;
+          }
+        }, { passive: true });
+
+        featureSliderEl.addEventListener('touchend', function(e) {
+          if (e.changedTouches && e.changedTouches[0]) {
+            var touchEndX = e.changedTouches[0].screenX;
+            var diff = touchStartX - touchEndX;
+            if (Math.abs(diff) > 45) {
+              if (diff > 0) {
+                goToSlide(currentSlide + 1);
+              } else {
+                goToSlide(currentSlide - 1);
+              }
+              startAutoSlide();
+            }
+          }
+        }, { passive: true });
+      }
+    }
+
+    // --- Paginated Articles List Renderer ---
     function renderPage() {
       var filtered = activeTopic === 'All'
         ? allListArticles
@@ -1798,138 +1962,108 @@
       var total = filtered.length;
       var totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
       if (curPage > totalPages) curPage = totalPages;
-      if (curPage < 1) curPage = 1;
 
-      var startIdx = (curPage - 1) * PAGE_SIZE;
-      var endIdx = Math.min(startIdx + PAGE_SIZE, total);
-      var pageItems = filtered.slice(startIdx, endIdx);
+      var start = (curPage - 1) * PAGE_SIZE;
+      var end = Math.min(start + PAGE_SIZE, total);
+      var slice = filtered.slice(start, end);
 
-      // Dynamic total count including all published articles
-      var displayTotal = activeTopic === 'All'
-        ? (allRawArticles && allRawArticles.length ? allRawArticles.length : allListArticles.length)
-        : filtered.length;
-      var displayEnd = (curPage === totalPages) ? displayTotal : Math.min(curPage * PAGE_SIZE, displayTotal);
-      var displayStart = Math.min(startIdx + 1, displayEnd);
+      postsOl.innerHTML = slice.map(function(item){
+        var isKmpProj = item.url && item.url.indexOf('787') !== -1;
+        var imgSrc = item.image;
+        if (!imgSrc && isKmpProj) imgSrc = 'https://dev-to-uploads.s3.us-east-2.amazonaws.com/uploads/articles/to1gb51dsmue6odhq3o0.png';
 
-      postsOl.innerHTML = '';
-      pageItems.forEach(function(item) {
-        var li = document.createElement('li');
-        li.setAttribute('data-topic', item.topic);
-
-        var a = document.createElement('a');
-        a.href = item.url;
-        a.target = '_blank';
-        a.rel = 'noopener';
-
-        var postMain = document.createElement('div');
-        postMain.className = 'post-main';
-
-        if (item.image) {
-          var thumb = document.createElement('div');
-          thumb.className = 'post-thumb';
-          var img = document.createElement('img');
-          img.src = item.image;
-          img.alt = item.title;
-          img.loading = 'lazy';
-          img.onerror = function() { thumb.remove(); };
-          thumb.appendChild(img);
-          postMain.appendChild(thumb);
+        var imgHtml = '';
+        if (imgSrc) {
+          imgHtml = '<div class="post-thumb"><img src="' + imgSrc + '" alt="' + item.title.replace(/"/g, '&quot;') + '" loading="lazy" onerror="this.parentElement.remove()"></div>';
         }
 
-        var postText = document.createElement('div');
-        postText.className = 'post-text';
-
-        var metaDiv = document.createElement('div');
-        metaDiv.className = 'meta';
         var dStr = formatPublishedDate(item.date);
-        metaDiv.innerHTML = '<span class="topic">' + item.topic + '</span>' + (dStr ? '<span class="date">' + dStr + '</span>' : '') + (item.readingTime ? '<span>' + item.readingTime + ' min read</span>' : '');
+        var rTime = item.readingTime ? '<span>' + item.readingTime + ' min read</span>' : '';
+        var dateHtml = dStr ? '<span class="date">' + dStr + '</span>' : '';
 
-        var titleEl = document.createElement('h3');
-        titleEl.textContent = item.title;
+        return '<li data-topic="' + item.topic + '">' +
+          '<a href="' + item.url + '" target="_blank" rel="noopener">' +
+            '<div class="post-main">' +
+              imgHtml +
+              '<div class="post-text">' +
+                '<div class="meta"><span class="topic">' + item.topic + '</span>' + dateHtml + rTime + '</div>' +
+                '<h3>' + item.title + '</h3>' +
+                '<p>' + (item.description || item.title) + '</p>' +
+              '</div>' +
+            '</div>' +
+            '<span class="source-tag">' + item.source + '</span>' +
+          '</a>' +
+        '</li>';
+      }).join('');
 
-        var descEl = document.createElement('p');
-        descEl.textContent = item.description || '';
+      renderPagination(total, totalPages);
+    }
 
-        postText.appendChild(metaDiv);
-        postText.appendChild(titleEl);
-        if (item.description) postText.appendChild(descEl);
-
-        postMain.appendChild(postText);
-
-        var srcSpan = document.createElement('span');
-        srcSpan.className = 'src';
-        srcSpan.textContent = item.source;
-
-        a.appendChild(postMain);
-        a.appendChild(srcSpan);
-        li.appendChild(a);
-        postsOl.appendChild(li);
-      });
-
-      // Update Pagination Controls
-      if (pgContainer) {
-        if (total > PAGE_SIZE) {
-          pgContainer.style.display = 'flex';
-          if (pgInfo) pgInfo.textContent = 'Showing ' + displayStart + '–' + displayEnd + ' of ' + displayTotal + ' articles';
-          if (pgPrev) {
-            pgPrev.style.display = 'inline-flex';
-            pgPrev.disabled = (curPage === 1);
-          }
-          if (pgNext) {
-            pgNext.style.display = 'inline-flex';
-            pgNext.disabled = (curPage === totalPages);
-          }
-          if (pgNumbers) {
-            pgNumbers.innerHTML = '';
-            for (var p = 1; p <= totalPages; p++) {
-              var btn = document.createElement('button');
-              btn.type = 'button';
-              btn.className = 'pg-btn' + (p === curPage ? ' active' : '');
-              btn.textContent = p;
-              btn.setAttribute('aria-label', 'Page ' + p);
-              (function(pageIdx){
-                btn.addEventListener('click', function(){
-                  curPage = pageIdx;
-                  renderPage();
-                  scrollToWriting();
-                });
-              })(p);
-              pgNumbers.appendChild(btn);
-            }
-          }
-        } else {
-          if (total > 0) {
-            pgContainer.style.display = 'flex';
-            if (pgInfo) pgInfo.textContent = 'Showing ' + total + ' articles';
-            if (pgPrev) pgPrev.style.display = 'none';
-            if (pgNext) pgNext.style.display = 'none';
-            if (pgNumbers) pgNumbers.innerHTML = '';
-          } else {
-            pgContainer.style.display = 'none';
-          }
-        }
+    function renderPagination(total, totalPages) {
+      if (!pgContainer) return;
+      if (total === 0) {
+        if (pgInfo) pgInfo.textContent = 'No articles found in this category';
+        if (pgNumbers) pgNumbers.innerHTML = '';
+        if (pgPrev) pgPrev.disabled = true;
+        if (pgNext) pgNext.disabled = true;
+        return;
       }
+
+      var displayStart = (curPage - 1) * PAGE_SIZE + 1;
+      var displayEnd = Math.min(curPage * PAGE_SIZE, total);
+      if (pgInfo) pgInfo.textContent = 'Showing ' + displayStart + '–' + displayEnd + ' of ' + total + ' articles';
+
+      if (pgPrev) pgPrev.disabled = curPage <= 1;
+      if (pgNext) pgNext.disabled = curPage >= totalPages;
+
+      if (totalPages <= 1) {
+        if (pgNumbers) pgNumbers.innerHTML = '';
+        return;
+      }
+
+      var htmlStr = '';
+      for (var i = 1; i <= totalPages; i++) {
+        var isCur = i === curPage;
+        htmlStr += '<button type="button" class="blog-pg-btn' + (isCur ? ' on' : '') + '" data-page="' + i + '"' + (isCur ? ' aria-current="page"' : '') + '>' + i + '</button>';
+      }
+      if (pgNumbers) pgNumbers.innerHTML = htmlStr;
     }
 
     if (pgPrev) {
-      pgPrev.addEventListener('click', function(){
+      pgPrev.onclick = function(){
         if (curPage > 1) {
           curPage--;
           renderPage();
           scrollToWriting();
         }
-      });
+      };
     }
-
     if (pgNext) {
-      pgNext.addEventListener('click', function(){
-        curPage++;
-        renderPage();
-        scrollToWriting();
-      });
+      pgNext.onclick = function(){
+        var filtered = activeTopic === 'All' ? allListArticles : allListArticles.filter(function(a){ return a.topic === activeTopic; });
+        var totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+        if (curPage < totalPages) {
+          curPage++;
+          renderPage();
+          scrollToWriting();
+        }
+      };
+    }
+    if (pgNumbers) {
+      pgNumbers.onclick = function(e){
+        var btn = e.target.closest('.blog-pg-btn');
+        if (btn && btn.dataset.page) {
+          var targetPage = parseInt(btn.dataset.page, 10);
+          if (targetPage !== curPage) {
+            curPage = targetPage;
+            renderPage();
+            scrollToWriting();
+          }
+        }
+      };
     }
 
-    var filterBtns = document.querySelectorAll('.filter:not(.pf) button');
+    var filterBtns = [].slice.call(document.querySelectorAll('.filter button[data-f]'));
     filterBtns.forEach(function(b){
       b.addEventListener('click', function(){
         filterBtns.forEach(function(x){ x.classList.toggle('on', x === b); });
@@ -1939,63 +2073,25 @@
       });
     });
 
+    // --- Master setArticles: Updates Slider, Counters, and Articles List ---
     function setArticles(articles) {
       if (!articles || !articles.length) return;
-      allRawArticles = articles;
 
-      // 1. Featured card (pin "One Codebase, Two Attack Surfaces" or fallback to newest)
-      var featIdx = -1;
-      for (var fi = 0; fi < articles.length; fi++) {
-        if (articles[fi].title.indexOf('One Codebase, Two Attack Surfaces') !== -1) {
-          featIdx = fi;
-          break;
-        }
-      }
-      var top = featIdx !== -1 ? articles[featIdx] : articles[0];
-      featuredArticle = top;
-      if (featA && top) {
-        featA.href = top.url;
-        featA.target = '_blank';
-        var h3 = featA.querySelector('h3');
-        var p = featA.querySelector('p');
-        var meta = featA.querySelector('.meta');
+      // Ensure sorted by published date descending
+      articles.sort(function(a, b){ return b.date - a.date; });
 
-        var featImg = featA.querySelector('.feature-img');
-        if (top.image) {
-          if (!featImg) {
-            featImg = document.createElement('div');
-            featImg.className = 'feature-img';
-            var imEl = document.createElement('img');
-            imEl.loading = 'lazy';
-            featImg.appendChild(imEl);
-            featA.appendChild(featImg);
-          }
-          var imTag = featImg.querySelector('img');
-          if (imTag) {
-            imTag.src = top.image;
-            imTag.alt = top.title;
-            imTag.onerror = function(){ featImg.remove(); };
-          }
-        } else if (featImg && !top.image) {
-          featImg.remove();
-        }
-
-        if (h3) h3.textContent = top.title;
-        if (p) p.textContent = top.description || top.title;
-        if (meta) {
-          var dStr = formatPublishedDate(top.date);
-          meta.innerHTML = '<span class="topic">' + top.topic + '</span><span>' + top.source + '</span>' + (dStr ? '<span class="date">' + dStr + '</span>' : '') + (top.readingTime ? '<span>' + top.readingTime + ' min read</span>' : '');
-        }
-      }
+      // 1. DYNAMICALLY UPDATE TOP 5 RECENT SLIDER BANNER!
+      // Guarantees any new published article appears instantly as Slide 1 with "Latest Article" badge
+      renderTopSlider(articles);
 
       // 2. Update stat counter in about section
       var statCountEl = document.getElementById('stat-articles-count');
-      if (statCountEl && articles && articles.length) {
+      if (statCountEl) {
         statCountEl.innerHTML = articles.length + '<em>+</em>';
       }
 
-      // 3. All subsequent articles go to paginated list
-      allListArticles = articles.filter(function(a, idx) { return idx !== (featIdx !== -1 ? featIdx : 0); });
+      // 3. All articles go to paginated list starting from the newest
+      allListArticles = articles;
       renderPage();
     }
 
@@ -2015,8 +2111,8 @@
       }
     } catch(e) {}
 
-    // 1. Live Real-Time Fetch from Dev.to REST API (official reading_time_minutes)
-    var fDevRest = fetch('https://dev.to/api/articles?username=' + DEVTO_USER + '&per_page=100')
+    // 1. Live Real-Time Fetch from Dev.to REST API (cache-busted)
+    var fDevRest = fetch('https://dev.to/api/articles?username=' + DEVTO_USER + '&per_page=100&_t=' + Date.now())
       .then(function(r){ return r.ok ? r.json() : []; })
       .then(function(arr){
         if (!Array.isArray(arr)) return [];
@@ -2036,45 +2132,35 @@
       })
       .catch(function(){ return []; });
 
-    // 2. Dev.to RSS Feed Fallback (dynamic word-count calculation)
-    var fDevRss = fetch('https://dev.to/feed/' + DEVTO_USER)
-      .then(function(r){ return r.ok ? r.text() : ''; })
-      .then(function(xmlStr){
-        if (!xmlStr) return [];
-        try {
-          var parser = new DOMParser();
-          var xml = parser.parseFromString(xmlStr, 'text/xml');
-          var items = [].slice.call(xml.querySelectorAll('item'));
-          return items.map(function(item){
-            var title = (item.querySelector('title') ? item.querySelector('title').textContent : '').trim();
-            var link = (item.querySelector('link') ? item.querySelector('link').textContent : '').trim();
-            var pubDate = (item.querySelector('pubDate') ? item.querySelector('pubDate').textContent : '').trim();
-            var desc = (item.querySelector('description') ? item.querySelector('description').textContent : '');
-            var fullText = (item.querySelector('encoded') ? item.querySelector('encoded').textContent : '') || desc;
-            var plainDesc = desc.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').replace(/SVT Task Manager/gi, 'Cyber Threat Platform').trim();
-            if (plainDesc.length > 170) plainDesc = plainDesc.slice(0, 170) + '…';
-            var cats = [].slice.call(item.querySelectorAll('category')).map(function(c){ return c.textContent; });
-            var img = null;
-            var imgM = desc.match(/<img[^>]+src=["']([^"']+)["']/i);
+    // 2. Dev.to RSS Feed via CORS-friendly rss2json (instant fallback for brand new articles)
+    var fDevRss = fetch('https://api.rss2json.com/v1/api.json?rss_url=https://dev.to/feed/' + DEVTO_USER)
+      .then(function(r){ return r.ok ? r.json() : {}; })
+      .then(function(res){
+        if (!res || !Array.isArray(res.items)) return [];
+        return res.items.map(function(item){
+          var plainDesc = (item.description || '').replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+          if (plainDesc.length > 170) plainDesc = plainDesc.slice(0, 170) + '…';
+          var img = item.thumbnail || null;
+          if (!img && item.description) {
+            var imgM = item.description.match(/<img[^>]+src=["']([^"']+)["']/i);
             if (imgM && imgM[1]) img = cleanImageUrl(imgM[1]);
-            return {
-              title: title,
-              description: plainDesc,
-              url: link,
-              date: new Date(pubDate).getTime() || Date.now(),
-              readingTime: calculateReadingTime(fullText),
-              source: 'dev.to',
-              topic: mapTopic(cats, title),
-              image: img
-            };
-          });
-        } catch(err) {
-          return [];
-        }
+          }
+          var fullContent = item.content || item.description || '';
+          return {
+            title: (item.title || '').replace(/&amp;/g, '&'),
+            description: plainDesc,
+            url: item.link,
+            date: new Date(item.pubDate).getTime() || Date.now(),
+            readingTime: calculateReadingTime(fullContent),
+            source: 'dev.to',
+            topic: mapTopic(item.categories || [], item.title),
+            image: cleanImageUrl(img)
+          };
+        });
       })
       .catch(function(){ return []; });
 
-    // 3. Medium RSS Feed (dynamic real-time calculation from story word & image count)
+    // 3. Medium RSS Feed via rss2json
     var fMed = fetch('https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@' + MEDIUM_USER)
       .then(function(r){ return r.ok ? r.json() : {}; })
       .then(function(res){
@@ -2133,22 +2219,6 @@
           return !item.url || item.url.indexOf('11d6') === -1;
         });
         combined.sort(function(a, b){ return b.date - a.date; });
-
-        // If top article still has no image, fetch single article API
-        if (combined[0] && !combined[0].image && combined[0].url.indexOf('dev.to/' + DEVTO_USER) !== -1) {
-          var slug = combined[0].url.split('/').pop();
-          fetch('https://dev.to/api/articles/' + DEVTO_USER + '/' + slug)
-            .then(function(r){ return r.json(); })
-            .then(function(single){
-              if (single && (single.cover_image || single.social_image)) {
-                combined[0].image = cleanImageUrl(single.cover_image || single.social_image);
-                setArticles(combined);
-                try {
-                  localStorage.setItem(CACHE_KEY, JSON.stringify(combined));
-                } catch(e) {}
-              }
-            }).catch(function(){});
-        }
 
         setArticles(combined);
         try {

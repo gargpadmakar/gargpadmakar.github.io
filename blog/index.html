@@ -1515,7 +1515,18 @@
           </div>
         </article>
 
-        <!-- Open Source SDK 1: MTProtoCrypto -->
+        <!-- Open Source SDK 1: MediaPickerKMP -->
+        <article data-cat="sdk">
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/mediapicker-kmp.svg" alt="MediaPickerKMP - Kotlin Multiplatform Media Picker" loading="lazy"></div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#06b6d4;background:rgba(6,182,212,.1);border-color:rgba(6,182,212,.25);">Kotlin Multiplatform Library</span></div>
+            <h3><a href="https://github.com/gargpadmakar/MediaPickerKMP" target="_blank" rel="noopener">MediaPickerKMP</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Unified, zero-boilerplate media and camera picker library for Kotlin Multiplatform &amp; Compose Multiplatform. Seamlessly pick images, videos, and capture photos across Android and iOS with native performance, permission handling, and clean coroutine-based APIs.</p>
+            <p class="tags"><span>Kotlin Multiplatform (KMP)</span><span>Compose Multiplatform</span><span>Android &amp; iOS</span><span>Camera &amp; Gallery</span></p>
+          </div>
+        </article>
+
+        <!-- Open Source SDK 2: MTProtoCrypto -->
         <article data-cat="security sdk">
           <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/mtproto.svg" alt="MTProtoCrypto" loading="lazy"></div>
           <div class="proj-body">
@@ -1565,11 +1576,27 @@
       <div class="head rv"><span class="kicker">Architecture</span><h2>How the open-source SDKs are built</h2></div>
       <div class="arch rv" data-tabs>
         <div class="tablist" role="tablist" aria-label="SDK architectures">
-          <button role="tab" type="button" aria-selected="true"><b>MTProtoCrypto</b></button>
+          <button role="tab" type="button" aria-selected="true"><b>MediaPickerKMP</b></button>
+          <button role="tab" type="button" aria-selected="false"><b>MTProtoCrypto</b></button>
           <button role="tab" type="button" aria-selected="false"><b>OfflineFirstKit</b></button>
           <button role="tab" type="button" aria-selected="false"><b>screen-analytics-android</b></button>
         </div>
         <div class="panel" role="tabpanel">
+          <h3>MediaPickerKMP</h3>
+          <p>A unified, production-grade Kotlin Multiplatform &amp; Compose Multiplatform library for seamlessly picking images, videos, and capturing camera photos across Android &amp; iOS.</p>
+          <ol class="flow">
+            <li><strong>Compose Multiplatform UI</strong><span>rememberMediaPickerController() API</span></li>
+            <li><strong>Picker Facade</strong><span>Single, Multi-select, Camera, &amp; Video modes</span></li>
+            <li><strong>Android Engine</strong><span>ActivityResultContracts.PickVisualMedia / CameraX</span></li>
+            <li><strong>iOS Engine</strong><span>PHPickerViewController &amp; UIImagePickerController</span></li>
+            <li><strong>Memory &amp; Storage</strong><span>Byte arrays, file paths, compression &amp; Exif</span></li>
+            <li><strong>Coroutines Flow</strong><span>Lifecycle-safe asynchronous results</span></li>
+          </ol>
+          <div class="chipset"><span>Kotlin Multiplatform (KMP)</span><span>Compose Multiplatform</span><span>Android &amp; iOS</span><span>No Platform Boilerplate</span><span>Apache-2.0</span></div>
+          <p class="note">Unified Media Selection Engine for Kotlin Multiplatform.</p>
+          <a class="btn" href="https://github.com/gargpadmakar/MediaPickerKMP" rel="noopener" target="_blank">View on GitHub</a>
+        </div>
+        <div class="panel" role="tabpanel" hidden>
           <h3>MTProtoCrypto</h3>
           <p>An Android cryptography library with MTProto 2.0 message encryption, 2048-bit Diffie-Hellman key exchange and streaming media encryption, built without native NDK binaries.</p>
           <ol class="flow">

@@ -1206,7 +1206,7 @@
           <span class="source-tag">dev.to</span>
         </a></li>
       </ol>
-      <div class="blog-pg rv" id="blog-pg" style="display:none;">
+      <div class="blog-pg rv" id="blog-pg">
         <div class="blog-pg-info" id="blog-pg-info">Showing articles</div>
         <div class="blog-pg-controls">
           <button type="button" class="pg-btn" id="pg-prev" aria-label="Previous page">← Prev</button>
@@ -1732,8 +1732,8 @@
 
     var DEVTO_USER = 'gargpadmakar';
     var MEDIUM_USER = 'worldpadmakar007';
-    var CACHE_KEY = 'pg_blog_articles_cache_v18';
-    var CACHE_TIME_KEY = 'pg_blog_articles_time_v18';
+    var CACHE_KEY = 'pg_blog_articles_cache_v19';
+    var CACHE_TIME_KEY = 'pg_blog_articles_time_v19';
     var TTL = 2 * 60 * 1000;
     var PAGE_SIZE = 8;
 
@@ -2002,6 +2002,7 @@
     function renderPagination(total, totalPages) {
       if (!pgContainer) return;
       if (total === 0) {
+        pgContainer.style.display = 'none';
         if (pgInfo) pgInfo.textContent = 'No articles found in this category';
         if (pgNumbers) pgNumbers.innerHTML = '';
         if (pgPrev) pgPrev.disabled = true;
@@ -2009,6 +2010,7 @@
         return;
       }
 
+      pgContainer.style.display = 'flex';
       var displayStart = (curPage - 1) * PAGE_SIZE + 1;
       var displayEnd = Math.min(curPage * PAGE_SIZE, total);
       if (pgInfo) pgInfo.textContent = 'Showing ' + displayStart + '–' + displayEnd + ' of ' + total + ' articles';
@@ -2024,7 +2026,7 @@
       var htmlStr = '';
       for (var i = 1; i <= totalPages; i++) {
         var isCur = i === curPage;
-        htmlStr += '<button type="button" class="blog-pg-btn' + (isCur ? ' on' : '') + '" data-page="' + i + '"' + (isCur ? ' aria-current="page"' : '') + '>' + i + '</button>';
+        htmlStr += '<button type="button" class="pg-btn' + (isCur ? ' active' : '') + '" data-page="' + i + '"' + (isCur ? ' aria-current="page"' : '') + '>' + i + '</button>';
       }
       if (pgNumbers) pgNumbers.innerHTML = htmlStr;
     }
@@ -2051,7 +2053,7 @@
     }
     if (pgNumbers) {
       pgNumbers.onclick = function(e){
-        var btn = e.target.closest('.blog-pg-btn');
+        var btn = e.target.closest('.pg-btn');
         if (btn && btn.dataset.page) {
           var targetPage = parseInt(btn.dataset.page, 10);
           if (targetPage !== curPage) {

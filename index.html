@@ -1318,12 +1318,12 @@ Time Management Tools – Practice under timed conditions like the actual exam.
               </div>
             </div>
 
-            <!-- Big CTA to read all 34+ articles on the blog -->
+            <!-- Big CTA to read all 35+ articles on the blog -->
             <div class="text-center animate-in-up pub-cta-box">
-              <h5 class="pub-cta-heading">Explore All 34+ Technical Publications</h5>
+              <h5 class="pub-cta-heading">Explore All <span id="pub-count-heading">35</span>+ Technical Publications</h5>
               <p class="small pub-cta-desc">Read full tutorials, system design breakdowns, and open-source architectural patterns on my dedicated publication portal.</p>
               <a href="https://gargpadmakar.github.io/blog/" class="btn" style="background: linear-gradient(135deg, #0284c7, #2563eb); color: #fff; border: 1px solid #38bdf8; border-radius: 999px; padding: 12px 28px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; font-size: 0.82rem; display: inline-flex; align-items: center; gap: 8px; box-shadow: 0 0 20px rgba(14, 165, 233, 0.35);">
-                <span>Read All 34 Articles on My Blog</span>
+                <span>Read All <span id="pub-count-btn">35</span> Articles on My Blog</span>
                 <i class="ph-bold ph-arrow-right"></i>
               </a>
             </div>
@@ -1501,7 +1501,21 @@ Time Management Tools – Practice under timed conditions like the actual exam.
     <!-- Load Scripts End -->
     
   <script>
-</script>
+    (function(){
+      try {
+        var c = localStorage.getItem('pg_blog_articles_cache_v17');
+        if (c) {
+          var arr = JSON.parse(c);
+          if (arr && arr.length >= 35) {
+            var h = document.getElementById('pub-count-heading');
+            var b = document.getElementById('pub-count-btn');
+            if (h) h.textContent = arr.length;
+            if (b) b.textContent = arr.length;
+          }
+        }
+      } catch(e) {}
+    })();
+  </script>
 </body>
 
 </html>

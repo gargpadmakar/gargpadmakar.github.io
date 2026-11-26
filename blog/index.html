@@ -214,17 +214,18 @@
     .btn svg{width:15px;height:15px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
     .btn:hover svg{transform:translateX(3px)}
 
-    /* hero (reference style) */
-    .hero{position:relative;display:grid;grid-template-columns:1.05fr 0.95fr;gap:36px;align-items:center;min-height:560px;padding:64px 0 24px;overflow:hidden}
+    /* hero (reference style: 100% match) */
+    .hero{position:relative;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;min-height:580px;padding:54px 0 20px;overflow:hidden}
     @media(min-width:1100px){
       .hero{grid-template-columns:1.15fr 0.85fr;gap:48px}
     }
     .hero-col{position:relative;z-index:3}
-    .hero-col-left{max-width:540px}
-    .hero-bar{width:46px;height:3px;background:var(--ink);border-radius:2px;margin-bottom:22px}
-    .hero-circle-btn{display:inline-grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--blue);color:var(--blue-ink);box-shadow:0 8px 24px rgba(37,99,235,.35);transition:transform .2s,background .2s;text-decoration:none;flex-shrink:0}
-    .hero-circle-btn:hover{background:var(--blue2);transform:translateY(3px)}
-    .hero-circle-btn svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+    .hero-col-left{max-width:500px}
+    .hero-bar{width:64px;height:4px;background:#ffffff;border-radius:2px;margin-bottom:28px}
+    .hero-title{font-size:clamp(2.6rem, 5.2vw, 3.8rem);font-weight:700;line-height:1.12;letter-spacing:-.03em;color:#ffffff;margin:0 0 18px}
+    .hero-circle-btn{display:inline-grid;place-items:center;width:60px;height:60px;border-radius:50%;background:#1d68ff;color:#ffffff;box-shadow:0 10px 28px rgba(29,104,255,.45);transition:transform .2s,background .2s;text-decoration:none}
+    .hero-circle-btn:hover{background:#1752cc;transform:translateY(3px)}
+    .hero-circle-btn svg{width:22px;height:22px;stroke:#ffffff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
     .eyebrow{display:inline-flex;align-items:center;gap:9px;font:500 .74rem/1 var(--mono);color:var(--blue2);border:1px solid rgba(59,130,246,.35);background:rgba(59,130,246,.08);border-radius:999px;padding:7px 14px;margin-bottom:26px;letter-spacing:.02em}
     .eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--blue2);box-shadow:0 0 0 4px rgba(96,165,250,.2)}
     h1{font-weight:400;line-height:1.08}
@@ -232,43 +233,49 @@
     h1 .hi b{color:var(--blue)}
     h1 .im{display:block;font-size:1.05rem;font-weight:500;color:var(--mute);margin-top:20px;letter-spacing:-.005em}
     h1 .role{display:block;font-size:clamp(1.2rem,2.2vw,1.55rem);font-weight:600;margin-top:4px;letter-spacing:-.02em;color:var(--ink)}
-    .lede{margin-top:24px;color:var(--mute);max-width:34em;font-size:1.02rem}
-    .lede strong{color:var(--ink);font-weight:600}
-    .actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .lede{margin-top:0;margin-bottom:34px;color:#9ca3af;max-width:380px;font-size:1.02rem;line-height:1.65}
+    .lede strong{color:#ffffff;font-weight:600}
+    .actions{margin-top:0;display:flex;gap:16px;align-items:center}
 
     /* Background Portrait (seamless central background) */
-    .hero-portrait-bg{position:absolute;left:50%;bottom:0;transform:translateX(-48%);height:100%;max-height:560px;width:auto;z-index:1;display:flex;align-items:flex-end;justify-content:center;pointer-events:none}
-    .hero-portrait-bg::before{content:"";position:absolute;top:15%;left:50%;transform:translateX(-50%);width:110%;height:80%;background:radial-gradient(circle,rgba(59,130,246,.22) 0%,rgba(37,99,235,.06) 50%,transparent 70%);filter:blur(42px);pointer-events:none;z-index:-1}
-    .hero-portrait-bg img{display:block;height:100%;max-height:560px;width:auto;aspect-ratio:641/700;object-fit:contain;object-position:center bottom;mix-blend-mode:lighten;filter:contrast(1.05) brightness(1.02);
-      -webkit-mask-image:linear-gradient(to bottom, #000 82%, transparent 100%);
-      mask-image:linear-gradient(to bottom, #000 82%, transparent 100%)}
+    .hero-portrait-bg{position:absolute;left:50%;bottom:0;transform:translateX(-50%);height:100%;max-height:590px;width:auto;z-index:1;display:flex;align-items:flex-end;justify-content:center;pointer-events:none}
+    .hero-portrait-bg::before{content:"";position:absolute;top:15%;left:50%;transform:translateX(-50%);width:110%;height:80%;background:radial-gradient(circle,rgba(59,130,246,.2) 0%,rgba(37,99,235,.05) 50%,transparent 70%);filter:blur(42px);pointer-events:none;z-index:-1}
+    .hero-portrait-bg img{display:block;height:100%;max-height:590px;width:auto;aspect-ratio:641/700;object-fit:contain;object-position:center bottom;mix-blend-mode:lighten;filter:contrast(1.06) brightness(1.02);
+      -webkit-mask-image:linear-gradient(to bottom, #000 84%, transparent 100%);
+      mask-image:linear-gradient(to bottom, #000 84%, transparent 100%)}
 
-    /* Right Column (Reference Panel: About, Skills, Socials) */
-    .hero-col-right{display:flex;flex-direction:column;gap:26px;justify-self:end;max-width:320px;text-align:left}
-    .hero-info-block{position:relative}
-    .hero-info-lbl{display:block;font:600 .74rem/1 var(--mono);color:var(--ink);text-transform:uppercase;letter-spacing:.1em;margin-bottom:10px}
-    .hero-info-block p{font-size:.88rem;color:var(--mute);line-height:1.58;margin-bottom:8px}
-    .hero-info-link{display:inline-flex;align-items:center;gap:6px;font:600 .76rem/1 var(--mono);color:var(--ink);text-transform:uppercase;letter-spacing:.06em;text-decoration:none;border-bottom:1.5px solid var(--ink);padding-bottom:3px;transition:color .2s,border-color .2s}
+    /* Right Column (Reference Panel: About, My Work, Follow Me) */
+    .hero-col-right{display:flex;flex-direction:column;gap:22px;justify-self:end;max-width:320px;text-align:left}
+    .hero-info-block{position:relative;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08)}
+    .hero-info-block:last-child{border-bottom:none;padding-bottom:0}
+    .hero-info-lbl{display:block;font-size:.8rem;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:.12em;margin-bottom:10px}
+    .hero-info-block p{font-size:.88rem;color:#9ca3af;line-height:1.58;margin-bottom:10px}
+    .hero-info-link{display:inline-flex;align-items:center;gap:6px;font-size:.76rem;font-weight:700;color:#ffffff;text-transform:uppercase;letter-spacing:.08em;text-decoration:none;border-bottom:1.5px solid #ffffff;padding-bottom:3px;transition:color .2s,border-color .2s}
     .hero-info-link:hover{color:var(--blue2);border-color:var(--blue2)}
     .hero-info-link svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .2s}
     .hero-info-link:hover svg{transform:translateX(3px)}
 
     /* Skills Badges (Kotlin, Jetpack Compose, KMP, Mobile Security) */
-    .hero-col-right .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:2px}
-    .hero-col-right .tagrow span{font:600 .72rem/1 var(--mono);color:var(--ink);background:rgba(255,255,255,.06);border:1px solid var(--line2);border-radius:6px;padding:6px 11px;transition:all .2s ease}
-    .hero-col-right .tagrow span:hover{border-color:var(--blue2);color:var(--blue2);background:var(--glow)}
+    .hero-col-right .tagrow{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0 12px}
+    .hero-col-right .tagrow span{font-size:.72rem;font-weight:600;color:#ffffff;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:6px;padding:5px 10px;transition:all .2s ease}
+    .hero-col-right .tagrow span:hover{border-color:var(--blue2);color:var(--blue2);background:rgba(59,130,246,.15)}
 
-    /* Social Icons */
-    .hero-socials{display:flex;align-items:center;gap:12px;margin-top:2px}
-    .hero-socials a{display:grid;place-items:center;width:34px;height:34px;border-radius:8px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:var(--mute);transition:all .2s ease;text-decoration:none}
-    .hero-socials a:hover{color:var(--ink);border-color:var(--blue);background:var(--glow);transform:translateY(-2px)}
-    .hero-socials svg{width:16px;height:16px}
+    /* Social Icons (Minimalist matching reference) */
+    .hero-socials{display:flex;align-items:center;gap:16px;margin-top:4px}
+    .hero-socials a{display:inline-flex;align-items:center;justify-content:center;color:#9ca3af;transition:color .2s,transform .2s;text-decoration:none}
+    .hero-socials a:hover{color:#ffffff;transform:translateY(-2px)}
+    .hero-socials svg{width:18px;height:18px}
 
     /* Light Theme Adjustments */
+    :root[data-theme="light"] .hero-bar{background:#0f172a}
+    :root[data-theme="light"] .hero-title{color:#0f172a}
     :root[data-theme="light"] .hero-portrait-bg img{mix-blend-mode:normal;opacity:.88}
-    :root[data-theme="light"] .hero-col-right .tagrow span{background:rgba(15,23,42,.05);color:var(--ink)}
-    :root[data-theme="light"] .hero-socials a{background:rgba(15,23,42,.03);color:var(--dim)}
-    :root[data-theme="light"] .hero-socials a:hover{color:var(--blue);border-color:var(--blue)}
+    :root[data-theme="light"] .hero-info-lbl{color:#0f172a}
+    :root[data-theme="light"] .hero-info-link{color:#0f172a;border-color:#0f172a}
+    :root[data-theme="light"] .hero-info-block{border-color:rgba(15,23,42,.08)}
+    :root[data-theme="light"] .hero-col-right .tagrow span{background:rgba(15,23,42,.06);color:#0f172a;border-color:rgba(15,23,42,.15)}
+    :root[data-theme="light"] .hero-socials a{color:#64748b}
+    :root[data-theme="light"] .hero-socials a:hover{color:#0f172a}
 
     /* sections */
     section{padding:88px 0 8px}
@@ -1010,25 +1017,22 @@
 <main>
   <div class="wrap">
     <div class="hero">
-      <!-- Left Column (Reference style headline & actions) -->
+      <!-- Left Column (Reference style headline & single action button) -->
       <div class="hero-col hero-col-left">
         <div class="hero-bar" aria-hidden="true"></div>
-        <h1>
-          <span class="hi">I'm Padmakar, a<br><b>Android Developer</b></span>
-          <span class="im">Senior Mobile Engineer &amp; Security Researcher</span>
+        <h1 class="hero-title">
+          I'm Padmakar, a<br>
+          Android Developer
         </h1>
         <p class="lede">
-          Articles on Kotlin, Jetpack Compose, Kotlin Multiplatform, mobile security and release automation from
-          <strong>Padmakar Garg</strong>, with 8+ years of experience and 120+ apps published on Google Play.
+          Articles on Kotlin, Jetpack Compose, Kotlin Multiplatform, mobile security and release automation.
+          8+ years of experience with 120+ apps published on Google Play.
         </p>
         <div class="actions">
           <a class="hero-circle-btn" href="#writing" aria-label="Scroll to articles">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9l-7 7-7-7"/></svg>
           </a>
-          <a class="btn fill" href="#writing">Read the articles <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-          <button class="btn" type="button" data-open-cv>View CV</button>
         </div>
-        <button class="copy" type="button" data-copy="worldpadmakar007@gmail.com" aria-label="Copy email address"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 0 1 2-2h9"/></svg>worldpadmakar007@gmail.com</button>
       </div>
 
       <!-- Center Background Portrait (Blended seamlessly into the dark background) -->
@@ -1036,27 +1040,28 @@
         <img src="https://gargpadmakar.github.io/img/myprofile.png" alt="Padmakar Garg" width="641" height="700" loading="eager">
       </div>
 
-      <!-- Right Column (Reference: ABOUT ME, KEY EXPERTISE, FOLLOW ME) -->
+      <!-- Right Column (Reference: ABOUT ME, MY WORK, FOLLOW ME) -->
       <div class="hero-col hero-col-right">
         <div class="hero-info-block">
-          <span class="hero-info-lbl">About Me</span>
+          <span class="hero-info-lbl">ABOUT ME</span>
           <p>Senior Android Developer &amp; Mobile Security Engineer specializing in banking, enterprise VoIP, and offline-first mobile apps.</p>
-          <a href="#who" class="hero-info-link">Learn More <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="#who" class="hero-info-link">LEARN MORE <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </div>
 
         <div class="hero-info-block">
-          <span class="hero-info-lbl">Key Expertise</span>
+          <span class="hero-info-lbl">MY WORK</span>
+          <p>Production engineering &amp; mobile architecture with deep expertise in:</p>
           <div class="tagrow">
             <span>Kotlin</span>
             <span>Jetpack Compose</span>
             <span>KMP</span>
             <span>Mobile Security</span>
           </div>
-          <a href="https://gargpadmakar.github.io/" class="hero-info-link" style="margin-top:12px">Browse Portfolio <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          <a href="https://gargpadmakar.github.io/" class="hero-info-link">BROWSE PORTFOLIO <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
         </div>
 
         <div class="hero-info-block">
-          <span class="hero-info-lbl">Follow Me</span>
+          <span class="hero-info-lbl">FOLLOW ME</span>
           <div class="hero-socials">
             <a href="https://github.com/gargpadmakar" target="_blank" rel="noopener" aria-label="GitHub" title="GitHub">
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>

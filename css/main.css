@@ -3048,10 +3048,13 @@ form textarea:required:valid {
   -ms-transform: translateX(-50%);
   transform: translateX(-50%);
   bottom: 1.5rem;
-  width: auto;
+  width: -moz-max-content;
+  width: max-content;
+  max-width: -moz-calc(100vw - 24px);
+  max-width: calc(100vw - 24px);
   height: 4.4rem;
-  -moz-border-radius: 2rem;
-  border-radius: 2rem;
+  -moz-border-radius: 2.2rem;
+  border-radius: 2.2rem;
   background-color: rgba(0, 0, 0, 0.03);
   -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
@@ -3110,9 +3113,17 @@ form textarea:required:valid {
   }
 }
 
+.header__controls {
+  gap: 0.8rem;
+}
+
 @media only screen and (min-width: 992px) {
+  .header__controls {
+    gap: 1rem;
+  }
+
   .header__controls .btn {
-    margin-right: 1rem;
+    margin-right: 0;
   }
 
   .header__controls .btn:last-child {
@@ -3121,9 +3132,11 @@ form textarea:required:valid {
 }
 
 .header__trigger {
-  width: 4.4rem;
+  width: auto;
+  min-width: 4.4rem;
   height: 4.4rem;
-  font-size: 1.6rem;
+  padding: 0 1.6rem;
+  font: normal 700 1.35rem/4.4rem var(--_font-default);
   white-space: nowrap;
 }
 
@@ -3168,7 +3181,7 @@ form textarea:required:valid {
 }
 
 .header__trigger span {
-  display: none;
+  display: block;
 }
 
 @media only screen and (min-width: 992px) {
@@ -3238,7 +3251,7 @@ form textarea:required:valid {
 }
 
 .trigger__caption {
-  display: none;
+  display: inline;
 }
 
 @media only screen and (min-width: 992px) {

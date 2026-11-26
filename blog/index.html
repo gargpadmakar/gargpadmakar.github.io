@@ -828,11 +828,15 @@
     .exp .tablist{flex-direction:column}
     .arch .tablist{flex-wrap:wrap;margin-bottom:16px}
     .arch .tablist button{padding:11px 18px}
-    ol.flow{list-style:none;display:flex;gap:28px;margin-top:26px}
-    ol.flow li{flex:1 1 0;min-width:0;position:relative;background:var(--bg);border:1px solid var(--line2);border-radius:12px;padding:14px}
-    ol.flow li+li::before{content:"";position:absolute;left:-20px;top:50%;width:12px;height:12px;border-top:2px solid var(--blue);border-right:2px solid var(--blue);transform:translateY(-50%) rotate(45deg) scale(.7)}
-    ol.flow strong{display:block;font-size:.84rem;font-weight:600;line-height:1.3;letter-spacing:-.01em}
-    ol.flow span{display:block;font-size:.74rem;color:var(--mute);margin-top:6px;line-height:1.45}
+    ol.flow{list-style:none;display:flex;gap:18px;margin-top:26px}
+    ol.flow li{flex:1 1 0;min-width:0;position:relative;background:var(--bg);border:1px solid var(--line2);border-radius:12px;padding:14px 10px;word-break:break-word;overflow-wrap:anywhere}
+    ol.flow li+li::before{content:"";position:absolute;left:-13px;top:50%;width:10px;height:10px;border-top:2px solid var(--blue);border-right:2px solid var(--blue);transform:translateY(-50%) rotate(45deg) scale(.7);z-index:2}
+    ol.flow strong{display:block;font-size:.82rem;font-weight:600;line-height:1.3;letter-spacing:-.01em;word-break:break-word;overflow-wrap:anywhere}
+    ol.flow span{display:block;font-size:.72rem;color:var(--mute);margin-top:6px;line-height:1.45;word-break:break-word;overflow-wrap:anywhere}
+    @media(max-width:1160px) and (min-width:961px){
+      ol.flow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+      ol.flow li+li::before{display:none}
+    }
     .chipset{display:flex;flex-wrap:wrap;gap:6px;margin-top:20px}
     .chipset span{font:500 .72rem/1 var(--mono);color:var(--blue2);background:rgba(59,130,246,.08);border:1px solid rgba(59,130,246,.2);border-radius:6px;padding:6px 9px}
     .panel .note{font-size:.78rem;color:var(--dim);margin-top:18px;max-width:none}
@@ -1585,12 +1589,12 @@
           <h3>MediaPickerKMP</h3>
           <p>A unified, production-grade Kotlin Multiplatform &amp; Compose Multiplatform library for seamlessly picking images, videos, and capturing camera photos across Android &amp; iOS.</p>
           <ol class="flow">
-            <li><strong>Compose Multiplatform UI</strong><span>rememberMediaPickerController() API</span></li>
-            <li><strong>Picker Facade</strong><span>Single, Multi-select, Camera, &amp; Video modes</span></li>
-            <li><strong>Android Engine</strong><span>ActivityResultContracts.PickVisualMedia / CameraX</span></li>
-            <li><strong>iOS Engine</strong><span>PHPickerViewController &amp; UIImagePickerController</span></li>
-            <li><strong>Memory &amp; Storage</strong><span>Byte arrays, file paths, compression &amp; Exif</span></li>
-            <li><strong>Coroutines Flow</strong><span>Lifecycle-safe asynchronous results</span></li>
+            <li><strong>Compose UI</strong><span>rememberMediaPicker state &amp; callbacks</span></li>
+            <li><strong>Picker Facade</strong><span>Single, multi-select, camera &amp; video</span></li>
+            <li><strong>Android Engine</strong><span>Photo Picker API &amp; CameraX capture</span></li>
+            <li><strong>iOS Engine</strong><span>PHPicker &amp; Camera controllers</span></li>
+            <li><strong>Memory &amp; Storage</strong><span>Byte arrays, file paths &amp; compression</span></li>
+            <li><strong>Coroutines Flow</strong><span>Lifecycle-safe async results</span></li>
           </ol>
           <div class="chipset"><span>Kotlin Multiplatform (KMP)</span><span>Compose Multiplatform</span><span>Android &amp; iOS</span><span>No Platform Boilerplate</span><span>Apache-2.0</span></div>
           <p class="note">Unified Media Selection Engine for Kotlin Multiplatform.</p>

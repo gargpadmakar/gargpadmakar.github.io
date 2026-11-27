@@ -1567,6 +1567,17 @@ window.handleImgError = function(img, secUrl, topic, title) {
           </div>
         </article>
 
+        <!-- Open Source SDK: KotlinImageLoader -->
+        <article data-cat="sdk">
+          <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/kotlin-image-loader.svg" alt="KotlinImageLoader - Modular Android Image Loading Library" loading="lazy"></div>
+          <div class="proj-body">
+            <div class="proj-badge-row"><span class="badge-enterprise" style="color:#a855f7;background:rgba(168,85,247,.1);border-color:rgba(168,85,247,.25);">Open Source Library</span></div>
+            <h3><a href="https://github.com/gargpadmakar/KotlinImageLoader" target="_blank" rel="noopener">KotlinImageLoader</a><svg class="ext" viewBox="0 0 16 16" aria-hidden="true"><path d="M6 3H3v10h10v-3M9 3h4v4M13 3L7 9"/></svg></h3>
+            <p>Modular, high-performance image loading library for Android developed in Kotlin. Built upon Clean Architecture and MVI with heap-aware LRU memory caching, target downsampling, zoomable touch components, and seamless Jetpack Compose &amp; XML View support.</p>
+            <p class="tags"><span>Kotlin</span><span>Jetpack Compose</span><span>Image Loader</span><span>Clean Architecture</span><span>MVI</span><span>LRU Cache</span></p>
+          </div>
+        </article>
+
         <!-- Open Source SDK 1: MediaPickerKMP -->
         <article data-cat="sdk">
           <div class="proj-banner"><img src="https://gargpadmakar.github.io/img/projects/mediapicker-kmp.svg" alt="MediaPickerKMP - Kotlin Multiplatform Media Picker" loading="lazy"></div>
@@ -1628,12 +1639,28 @@ window.handleImgError = function(img, secUrl, topic, title) {
       <div class="head rv"><span class="kicker">Architecture</span><h2>How the open-source SDKs are built</h2></div>
       <div class="arch rv" data-tabs>
         <div class="tablist" role="tablist" aria-label="SDK architectures">
-          <button role="tab" type="button" aria-selected="true"><b>MediaPickerKMP</b></button>
+          <button role="tab" type="button" aria-selected="true"><b>KotlinImageLoader</b></button>
+          <button role="tab" type="button" aria-selected="false"><b>MediaPickerKMP</b></button>
           <button role="tab" type="button" aria-selected="false"><b>MTProtoCrypto</b></button>
           <button role="tab" type="button" aria-selected="false"><b>OfflineFirstKit</b></button>
           <button role="tab" type="button" aria-selected="false"><b>screen-analytics-android</b></button>
         </div>
         <div class="panel" role="tabpanel">
+          <h3>KotlinImageLoader</h3>
+          <p>A modular, high-performance Kotlin image loading library for Android featuring LRU in-memory and disk caching, Compose AsyncImage, XML View support, and Clean Architecture with MVI.</p>
+          <ol class="flow">
+            <li><strong>UI Targets</strong><span>AsyncImage &amp; ImageView.loadImage</span></li>
+            <li><strong>MVI Engine</strong><span>Unidirectional state, intents &amp; reducer</span></li>
+            <li><strong>Request Pipeline</strong><span>Memory LRU cache check &amp; policies</span></li>
+            <li><strong>Fetcher SPI</strong><span>HttpURLConnection with redirect safety</span></li>
+            <li><strong>Bitmap Decoder</strong><span>Bounds sniffing &amp; target downsampling</span></li>
+            <li><strong>Main Thread</strong><span>Lifecycle-safe render &amp; recycling protection</span></li>
+          </ol>
+          <div class="chipset"><span>Kotlin</span><span>Jetpack Compose</span><span>MVI Architecture</span><span>LRU Memory Cache</span><span>Zoomable Image</span><span>Apache-2.0</span></div>
+          <p class="note">Modular image loading engine with Clean Architecture and unidirectional data flow.</p>
+          <a class="btn" href="https://github.com/gargpadmakar/KotlinImageLoader" rel="noopener" target="_blank">View on GitHub</a>
+        </div>
+        <div class="panel" role="tabpanel" hidden>
           <h3>MediaPickerKMP</h3>
           <p>A unified, production-grade Kotlin Multiplatform &amp; Compose Multiplatform library for seamlessly picking images, videos, and capturing camera photos across Android &amp; iOS.</p>
           <ol class="flow">

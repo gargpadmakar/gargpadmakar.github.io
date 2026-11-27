@@ -1,13 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
-	<style type="text/css">
-		.icon {
-			fill: #7059e2;
-		}
-		@media (prefers-color-scheme: dark) {
-			.icon {
-				fill: #CEC4EF;
-			}
-		}
-	</style>
-	<circle class="icon" cx="8" cy="8" r="6"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <!-- Deep obsidian space background -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0a1020"/>
+      <stop offset="45%" stop-color="#060913"/>
+      <stop offset="100%" stop-color="#020307"/>
+    </linearGradient>
+
+    <!-- Vibrant cyan to cobalt electric gradient for P -->
+    <linearGradient id="pGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <!-- Vibrant blue to royal violet electric gradient for G -->
+    <linearGradient id="gGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#60a5fa"/>
+      <stop offset="60%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#6366f1"/>
+    </linearGradient>
+
+    <!-- Outer tech neon border -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95"/>
+      <stop offset="40%" stop-color="#2563eb" stop-opacity="0.6"/>
+      <stop offset="80%" stop-color="#818cf8" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#c084fc" stop-opacity="0.95"/>
+    </linearGradient>
+
+    <!-- Glow Filter for Favicon Pop -->
+    <filter id="neonGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Modern Rounded Squircle Base -->
+  <rect width="512" height="512" rx="124" fill="url(#bgGrad)"/>
+
+  <!-- High-Tech Perimeter Neon Border -->
+  <rect x="14" y="14" width="484" height="484" rx="110" fill="none" stroke="url(#borderGrad)" stroke-width="16"/>
+
+  <!-- Ambient Light Accents -->
+  <circle cx="100" cy="100" r="130" fill="#38bdf8" opacity="0.12"/>
+  <circle cx="412" cy="412" r="130" fill="#818cf8" opacity="0.10"/>
+
+  <!-- Monogram Logo: PG -->
+  <g filter="url(#neonGlow)">
+    <!-- ===== LETTER P ===== -->
+    <!-- Vertical Spine of P -->
+    <line x1="126" y1="132" x2="126" y2="380" stroke="url(#pGrad)" stroke-width="48" stroke-linecap="round"/>
+    
+    <!-- Curved Head of P -->
+    <path d="M 126 156 L 192 156 C 234 156 254 180 254 212 C 254 244 234 268 192 268 L 126 268" 
+          fill="none" 
+          stroke="url(#pGrad)" 
+          stroke-width="48" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+
+    <!-- ===== LETTER G ===== -->
+    <!-- Curved Orbit & Inward Crossbar of G -->
+    <path d="M 406 182 C 390 148 358 132 324 132 C 264 132 232 186 232 256 C 232 326 264 380 326 380 C 378 380 412 344 416 288 L 328 288" 
+          fill="none" 
+          stroke="url(#gGrad)" 
+          stroke-width="48" 
+          stroke-linecap="round" 
+          stroke-linejoin="round"/>
+
+    <!-- Tech Dot / Spark Accent on G (Represents Code / Core Signal) -->
+    <circle cx="328" cy="288" r="12" fill="#38bdf8"/>
+  </g>
 </svg>
